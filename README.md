@@ -1,0 +1,1 @@
+Create a new Bolt project from the template here: http://bolt.new/github.com/poviolabs/bolt-template
