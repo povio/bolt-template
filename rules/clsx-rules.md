@@ -1,32 +1,26 @@
-# clsx Usage Guidelines
-
-## Core Rule
-
-**ALWAYS use the `clsx()` function for dynamic class names.**
-
-## Usage Examples
+**ALWAYS use `clsx()` for dynamic class names.**
 
 ```typescript
 import clsx from 'clsx';
 
 // Single condition
-className={clsx('px-4 py-2 rounded', isActive && 'bg-blue-500 text-white')}
+className={clsx('px-4 py-2', isActive && 'bg-blue-500')}
 
 // Multiple conditions
 className={clsx(
-  'px-4 py-2 rounded border',
-  isActive && 'bg-blue-500 text-white',
-  isDisabled && 'opacity-50 cursor-not-allowed',
+  'px-4 py-2 border',
+  isActive && 'bg-blue-500',
+  isDisabled && 'opacity-50',
   hasError && 'border-red-500'
 )}
 
-// Simple ternary (one condition only)
-className={clsx('px-4 py-2 rounded', isActive ? 'bg-blue-500' : 'bg-gray-500')}
+// Simple ternary (no nesting)
+className={clsx('px-4 py-2', isActive ? 'bg-blue-500' : 'bg-gray-500')}
 ```
 
 ## Rules
 
-1. **Always use `clsx()` for dynamic class names** - Never use template literals or string concatenation
-2. **Use `&&` for conditions** - `condition && 'tailwind-classes'`
-3. **Simple ternaries only** - `condition ? 'class-a' : 'class-b'` (no nesting)
-4. **Never nest ternaries** - Use multiple `&&` statements instead
+1. Always use `clsx()` - never template literals or concatenation
+2. Use `&&` for conditions: `condition && 'classes'`
+3. Simple ternaries only (no nesting)
+4. One condition per line for readability
