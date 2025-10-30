@@ -14,11 +14,14 @@ className={`bg-${size}-500`}
 
 ## ✅ ALWAYS DO THIS:
 
-### 1. Use ternary for two options:
+### 1. Use ternary for two options (with clsx for combining):
 
 ```typescript
+// Simple ternary
 className={isActive ? 'bg-blue-500' : 'bg-gray-500'}
-className={size === 'large' ? 'text-xl' : 'text-sm'}
+
+// With clsx when combining with other classes
+className={clsx('px-4 py-2', isActive ? 'bg-blue-500' : 'bg-gray-500')}
 ```
 
 ### 2. Use helper function with switch for multiple options:
@@ -33,7 +36,8 @@ function getVariantClasses(variant: string) {
   }
 }
 
-className={getVariantClasses(variant)}
+// Use with clsx when combining with other classes
+className={clsx('px-4 py-2 rounded', getVariantClasses(variant))}
 ```
 
 ### 3. Use object mapping:
@@ -45,7 +49,8 @@ const variants = {
   danger: 'bg-red-500 text-white',
 };
 
-className={variants[variant]}
+// Use with clsx when combining with other classes
+className={clsx('px-4 py-2 rounded', variants[variant])}
 ```
 
 **Key**: Every class name must appear as a complete string somewhere in your code.
