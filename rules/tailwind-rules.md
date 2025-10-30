@@ -1,51 +1,40 @@
-# Tailwind CSS Usage Guidelines
+# Core Rule
 
-## Core Rule
-
-**NEVER concatenate class names dynamically. Tailwind's JIT compiler needs to see complete class names in source code.**
-
-## ❌ NEVER DO THIS:
+**NEVER concatenate class names dynamically. Tailwind's JIT needs complete class names in source.**
 
 ```typescript
-// BAD - Tailwind won't recognize these
+// ❌ BAD - Won't work
 className={`text-${color}-500`}
-className={`bg-${size}-500`}
-```
 
-## ✅ ALWAYS DO THIS:
-
-### 1. Use ternary for two options:
-
-```typescript
+// ✅ GOOD - Complete class names
 className={isActive ? 'bg-blue-500' : 'bg-gray-500'}
-className={size === 'large' ? 'text-xl' : 'text-sm'}
+className={clsx('px-4 py-2', isActive ? 'bg-blue-500' : 'bg-gray-500')}
 ```
 
-### 2. Use helper function with switch for multiple options:
+# Patterns
 
+## Ternary (2 options)
 ```typescript
-function getVariantClasses(variant: string) {
-  switch (variant) {
+className={clsx('px-4 py-2', size === 'large' ? 'text-xl' : 'text-sm')}
+```
+
+## Helper Function (3+ options)
+```typescript
+function getVariant(v: string) {
+  switch (v) {
     case 'primary': return 'bg-blue-500 text-white';
     case 'secondary': return 'bg-gray-500 text-black';
-    case 'danger': return 'bg-red-500 text-white';
-    default: return 'bg-gray-200 text-gray-900';
+    default: return 'bg-gray-200';
   }
 }
-
-className={getVariantClasses(variant)}
+className={clsx('px-4 py-2', getVariant(variant))}
 ```
 
-### 3. Use object mapping:
-
+## Object Mapping
 ```typescript
 const variants = {
   primary: 'bg-blue-500 text-white',
   secondary: 'bg-gray-500 text-black',
-  danger: 'bg-red-500 text-white',
 };
-
-className={variants[variant]}
+className={clsx('px-4 py-2', variants[variant])}
 ```
-
-**Key**: Every class name must appear as a complete string somewhere in your code.

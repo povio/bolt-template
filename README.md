@@ -5,6 +5,7 @@ Make sure to copy paste the rules inside the rules folder into your team's Packa
 Package Name => Package Prompt:
 - `@tanstack/react-query` => `rules/react-query-rules.md`
 - `@tanstack/react-router` => `rules/tanstack-router-rules.md`
+- `clsx` => `rules/clsx-rules.md`
 - `tailwindcss` => `rules/tailwind-rules.md`
 - `react-hook-form` => `rules/react-hook-form-rules.md`
 
