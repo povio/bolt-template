@@ -1,9 +1,12 @@
 import { createFileRoute } from '@tanstack/react-router';
+import { Button, TextInput, Typography } from '@povio/ui';
 
 function HomePage() {
   return (
-    <div className="p-20 flex justify-center items-center">
-      <p className="text-3xl">Hello World!</p>
+    <div className="p-20 flex flex-col gap-4 justify-center items-center">
+      <Typography size="title-4">Hello World!</Typography>
+      <Button>Click me</Button>
+      <TextInput label="Name" placeholder="Enter your name" />
     </div>
   );
 }
