@@ -1,9 +1,11 @@
-**ALWAYS use `useForm` for forms connected to mutations. NEVER use `useState` for form data.**
+**ALWAYS use `useForm` or `useFormAutosave` from `@povio/ui` for forms. NEVER use `useState` for form data.**
 
 ```typescript
-const form = useForm({
-  resolver: zodResolver(PostsModels.createPostSchema),
+import { useForm } from "@povio/ui";
+
+const { control, handleSubmit } = useForm({
+  schema: PostsModels.createPostSchema,
 });
 ```
 
-Use zodResolver with the schema from your data layer.
+Pass `formControl={{ control, name: "fieldName" }}` to input components from `@povio/ui`.

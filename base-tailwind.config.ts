@@ -1,11 +1,13 @@
 import { type Config } from "tailwindcss";
 import tailwindcssReactAriaComponents from "tailwindcss-react-aria-components";
+import colors from "tailwindcss/colors";
 
 const pxToRem = (px: number) => `${px / 16}rem`;
 
 const baseTailwindConfig: Omit<Config, "content"> = {
   theme: {
     colors: {
+      ...colors,
       inherit: "inherit",
       transparent: "transparent",
       current: "currentColor",

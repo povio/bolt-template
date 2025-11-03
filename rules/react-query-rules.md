@@ -35,6 +35,6 @@ const { data } = PostsQueries.useList();
 
 1. Use namespace syntax (PostsQueries, PostsModels)
 2. Use z.string() for IDs (not z.uuid())
-3. Use react-hook-form with zodResolver
+3. Use useForm/useFormAutosave from @povio/ui (not react-hook-form directly)
 4. Invalidate cache after mutations
 5. Use Supabase joins for nested data

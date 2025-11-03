@@ -9,7 +9,8 @@ For all designs, create beautiful, production-ready interfaces. Avoid cookie-cut
 -   Only install additional UI packages when explicitly requested
 -   @tanstack/react-query for API integration
 -   @tanstack/react-router for routing
--   ALWAYS use react-hook-form for forms
+-   **@povio/ui for ALL UI components (buttons, inputs, etc.)**
+-   **ALWAYS use useForm or useFormAutosave from @povio/ui for forms**
 -   ALWAYS use absolute imports with the @ alias which points to src
 
 ## Component Organization
