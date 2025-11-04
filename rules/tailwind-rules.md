@@ -1,7 +1,5 @@
-NEVER concatenate class names dynamically via string concatenation or template literals. Tailwind's JIT needs complete class names in source code.
+NEVER concatenate class names dynamically. Tailwind's JIT needs complete class names in source code.
 
-Use clsx for conditionally combining classNames.
-
-Never nest ternary conditions - only use them for one condition. Otherwise use a helper function with a switch statement or an object map.
-
-Try to use the semantic colors defined in `tailwind.config.ts` over default Tailwind colors in most cases.
+- Use `clsx()` for conditional classes
+- No nested ternaries - use helper function with switch/object map instead
+- Prefer semantic colors from `tailwind.config.ts` over default Tailwind colors

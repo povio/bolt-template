@@ -1,16 +1,11 @@
-File Structure
-
+Structure:
 ```
-src/data/
-  └── posts/
-      ├── posts.queries.ts  // PostsQueries namespace
-      └── posts.models.ts   // PostsModels namespace
+src/data/posts/
+  ├── posts.queries.ts  // PostsQueries namespace
+  └── posts.models.ts   // PostsModels namespace
 ```
 
-Naming: camelCase folders (`userProfiles/`), PascalCase namespaces (`UserProfilesQueries`)
-
-Pattern
-
+Pattern:
 ```typescript
 // posts.models.ts
 export namespace PostsModels {
@@ -26,15 +21,11 @@ export namespace PostsQueries {
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["posts"] })
   });
 }
-
-// Usage
-const { data } = PostsQueries.useList();
 ```
 
 Rules:
-
-1. Use namespace syntax (PostsQueries, PostsModels)
-2. Use z.string() for IDs (not z.uuid())
-3. Use useForm/useFormAutosave from @povio/ui (not react-hook-form directly)
+1. Use namespace syntax: `PostsQueries`, `PostsModels`
+2. Naming: camelCase folders (`userProfiles/`), PascalCase namespaces (`UserProfilesQueries`)
+3. Use `z.string()` for IDs (not `z.uuid()`)
 4. Invalidate cache after mutations
 5. Use Supabase joins for nested data

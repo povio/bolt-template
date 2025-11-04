@@ -1,10 +1,11 @@
-ALWAYS use the UI components from @povio/ui. NEVER use default HTML elements if this package supports it.
+ALWAYS use components and hooks from @povio/ui. NEVER use default HTML elements when @povio/ui has an equivalent.
 
-Use the Typography component instead of default HTML text elements.
-
-Always use hooks from @povio/ui when available.
-
-For forms, always use useForm or useFormAutosave from @povio/ui. Use input components from the package and pass them the formControl from these hooks. For example:
+Key Rules:
+- Use `Typography` instead of HTML text elements
+- Use `useForm`/`useFormAutosave` for forms (pass `formControl` to inputs)
+- Use `Confirmation.useConfirmation` instead of native `confirm()`
+- Use `useToast` for user messages
+- Check component props before usage and if you have TypeScript issues
 
 Below is a list of components, hooks and functions that you have access to
 

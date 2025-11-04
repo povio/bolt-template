@@ -1,78 +1,36 @@
 For all designs, create beautiful, production-ready interfaces. Avoid cookie-cutter solutions and aim for fully featured webpages.
 
-Tech Stack Defaults
--   Lucide React and @povio/ui for icons (DO NOT install other icon libraries)
--   @povio/ui for ALL UI components (DO NOT install other UI libraries)
--   @tanstack/react-query for API integration and caching server data
--   @tanstack/react-router for routing (always regenerate `routeTree.gen.ts` by running the development server)
--   Zustand for global state management
--   ALWAYS use absolute imports with the @ alias which points to src
+Tech Stack:
+-   @povio/ui and Lucide React for ALL UI components and icons (DO NOT install other UI/icon libraries)
+-   @tanstack/react-query for data fetching/caching
+-   @tanstack/react-router for routing (run dev server after route changes to regenerate `routeTree.gen.ts`)
+-   Zustand for global state
+-   Absolute imports with @ alias (points to src)
+-   Avoid code duplication - extract components and constants
 
-## Component Organization
-
-1. Page Components (`src/pages`):
-
-    - Keep page components focused on layout and data fetching
-    - Extract complex UI sections into separate feature components
-    - Split into subcomponents when file exceeds ~200 lines
-
-2. Feature Components (`src/components/features`):
-
-    ```
-    src/components/features/
-      └── users/
-          ├── UserCard.tsx         // Reusable user display
-          └── UserStatsGraph.tsx   // Complex UI component
-    ```
-
-    - Group by feature/domain
-    - Extract reusable parts of pages
-    - Create for complex UI sections
-    - Use for shared functionality between pages if required
-
-## Data Layer Architecture
-
-All data logic lives in `src/data` folder:
-
+Data Layer (`src/data`):
 ```
-src/data/
-  ├── posts/
-  │   ├── posts.queries.ts    // React Query hooks wrapping Supabase
-  │   └── posts.models.ts     // Zod schemas and inferred TypeScript types
-  └── userProfiles/           // Use camelCase for multi-word resources
-      ├── userProfiles.queries.ts
-      └── userProfiles.models.ts
+src/data/posts/
+  ├── posts.queries.ts  // PostsQueries namespace (React Query + Supabase)
+  └── posts.models.ts   // PostsModels namespace (Zod schemas)
 ```
 
-### Database Setup
+Naming: camelCase folders (`userProfiles/`), PascalCase namespaces (`UserProfilesModels`, `UserProfilesQueries`)
 
-When setting up the database:
+Database Setup:
+1. Create tables/schema
+2. Add dummy/seed data (enough to demonstrate UI)
+3. Use camelCase for all entity properties
 
-1. Create necessary tables/schema
-2. ALWAYS add dummy/seed data to populate tables with realistic examples (enough to demonstrate UI properly)
-3. Use camelCase for all properties of entities
+Data Hooks:
+1. Define Zod schemas in `*.models.ts`, export as namespace
+2. Create React Query hooks in `*.queries.ts` wrapping Supabase, export as namespace
+3. Invalidate cache after mutations
+4. Use Supabase joins for nested data displayed together
 
-### Creating Data Hooks
+API Design:
+- Nest related entities when displayed together
+- Focus on UI needs, not database structure
+- Use single queries with joins over multiple separate queries
 
-1. Define Zod schemas in `*.models.ts` and export as namespace (e.g., `PostsModels`, `UserProfilesModels`)
-2. Create React Query hooks in `*.queries.ts` that wrap Supabase and export as namespace (e.g., `PostsQueries`, `UserProfilesQueries`)
-3. Use proper cache invalidation for mutations
-4. Use Supabase joins for nested data when entities are displayed together
-
-**Naming Convention:**
-
--   Use camelCase for multi-word resources: `userProfiles/`, `blogPosts/`, `orderItems/`
--   Namespace follows PascalCase: `UserProfilesModels`, `BlogPostsQueries`
-
-### API Design Principles
-
-When designing data structures:
-
--   Nest related entities in responses when they're displayed together
--   Focus on UI needs, not database structure
--   Use Supabase joins to fetch nested data in single queries
--   Avoid multiple separate queries when data is used in a feature together
-
-### OpenAPI Specification
-
-When asked to generate or update an OpenAPI specification, check the rules in `rules/openapi-rules.md`.
+OpenAPI: Check `rules/openapi-rules.md` when generating/updating specs
