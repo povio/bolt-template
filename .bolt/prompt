@@ -3,8 +3,9 @@ For all designs, create beautiful, production-ready interfaces. Avoid cookie-cut
 Tech Stack Defaults
 -   Lucide React and @povio/ui for icons (DO NOT install other icon libraries)
 -   @povio/ui for ALL UI components (DO NOT install other UI libraries)
--   @tanstack/react-query for API integration
--   @tanstack/react-router for routing
+-   @tanstack/react-query for API integration and caching server data
+-   @tanstack/react-router for routing (always regenerate `routeTree.gen.ts` by running the development server)
+-   Zustand for global state management
 -   ALWAYS use absolute imports with the @ alias which points to src
 
 ## Component Organization

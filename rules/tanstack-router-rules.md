@@ -1,3 +1,5 @@
+IMPORTANT: After adding or changing routes in the app you must run the development server for the router to regenerate `routeTree.gen.ts`. If you have any type issues with routes, ALWAYS do this first.
+
 # File Structure
 
 ```

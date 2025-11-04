@@ -1,5 +1,7 @@
 ALWAYS use the UI components from @povio/ui. NEVER use default HTML elements if this package supports it.
 
+Use the Typography component instead of default HTML text elements.
+
 Always use hooks from @povio/ui when available.
 
 For forms, always use useForm or useFormAutosave from @povio/ui. Use input components from the package and pass them the formControl from these hooks. For example:
@@ -15,16 +17,13 @@ Button, IconButton, InlineIconButton, PillButton, SplitButton, TextButton, Toggl
 Checkbox, DatePicker, DateRangePicker, DateTimePicker, TimePicker, FileUpload, FileUploadContainer, InputUpload, FormField, NumberInput, PasswordInput, TextArea, TextInput, RadioGroup, Autocomplete, QueryAutocomplete, Select, Slider, TextEditor, Toggle, Segment
 
 ### Menu Components
-Menu, MenuPopover
+Menu
 
 ### Overlay Components
-ActionModal, BottomSheet, Drawer, Modal, ResponsivePopover, Tooltip, TooltipEllipsis
-
-### Pagination Components
-Pagination, PaginationList
+BottomSheet, Drawer, Modal, ResponsivePopover, Tooltip
 
 ### Status Components
-Alert, Loader, Toast, ToastContainer
+Alert, Loader
 
 ### Table Components
 InfiniteTable, PaginatedTable, Table
@@ -32,12 +31,9 @@ InfiniteTable, PaginatedTable, Table
 ### Text Components
 Link, Tag, Typography
 
-### Config/Context Components
-Confirmation
-
 ## Hooks
 
-useToast, useAutosave, useBreakpoint, useForm, useFormAutosave, useLocalStorage
+useToast, useForm, useFormAutosave, Confirmation.useConfirmation
 
 ## Icons
 
@@ -46,4 +42,3 @@ AlignCenterIcon, AlignLeftIcon, AlignLeftRightIcon, AlignRightIcon, ArrowDropDow
 ## Utils
 
 ArrayUtils, DateUtils, DateTimeUtils, FileUtils, StringUtils
-
