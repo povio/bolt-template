@@ -1,4 +1,4 @@
-# Structure
+File Structure
 
 ```
 src/data/
@@ -7,9 +7,9 @@ src/data/
       └── posts.models.ts   // PostsModels namespace
 ```
 
-**Naming:** camelCase folders (`userProfiles/`), PascalCase namespaces (`UserProfilesQueries`)
+Naming: camelCase folders (`userProfiles/`), PascalCase namespaces (`UserProfilesQueries`)
 
-# Pattern
+Pattern
 
 ```typescript
 // posts.models.ts
@@ -31,7 +31,7 @@ export namespace PostsQueries {
 const { data } = PostsQueries.useList();
 ```
 
-# Rules
+Rules:
 
 1. Use namespace syntax (PostsQueries, PostsModels)
 2. Use z.string() for IDs (not z.uuid())

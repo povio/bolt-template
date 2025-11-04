@@ -1,16 +1,10 @@
-# Development Guidelines
-
 For all designs, create beautiful, production-ready interfaces. Avoid cookie-cutter solutions and aim for fully featured webpages.
 
-## Tech Stack Defaults
-
--   JSX syntax with Tailwind CSS for styling
--   Lucide React for icons (DO NOT install other library)
--   Only install additional UI packages when explicitly requested
+Tech Stack Defaults
+-   Lucide React and @povio/ui for icons (DO NOT install other icon libraries)
+-   @povio/ui for ALL UI components (DO NOT install other UI libraries)
 -   @tanstack/react-query for API integration
 -   @tanstack/react-router for routing
--   **@povio/ui for ALL UI components (buttons, inputs, etc.)**
--   **ALWAYS use useForm or useFormAutosave from @povio/ui for forms**
 -   ALWAYS use absolute imports with the @ alias which points to src
 
 ## Component Organization
@@ -18,8 +12,8 @@ For all designs, create beautiful, production-ready interfaces. Avoid cookie-cut
 1. Page Components (`src/pages`):
 
     - Keep page components focused on layout and data fetching
-    - Extract complex UI sections into separate components
-    - Split into components when file exceeds ~200 lines
+    - Extract complex UI sections into separate feature components
+    - Split into subcomponents when file exceeds ~200 lines
 
 2. Feature Components (`src/components/features`):
 
@@ -27,7 +21,6 @@ For all designs, create beautiful, production-ready interfaces. Avoid cookie-cut
     src/components/features/
       └── users/
           ├── UserCard.tsx         // Reusable user display
-          ├── UserForm.tsx         // Shared create/edit form
           └── UserStatsGraph.tsx   // Complex UI component
     ```
 
@@ -55,8 +48,8 @@ src/data/
 When setting up the database:
 
 1. Create necessary tables/schema
-2. **ALWAYS add dummy/seed data** to populate tables with realistic examples
-3. Add enough data to demonstrate the UI properly (minimum 3-5 records per table)
+2. ALWAYS add dummy/seed data to populate tables with realistic examples (enough to demonstrate UI properly)
+3. Use camelCase for all properties of entities
 
 ### Creating Data Hooks
 
@@ -70,15 +63,6 @@ When setting up the database:
 -   Use camelCase for multi-word resources: `userProfiles/`, `blogPosts/`, `orderItems/`
 -   Namespace follows PascalCase: `UserProfilesModels`, `BlogPostsQueries`
 
-**Namespace Usage:**
-
-```typescript
-// Export: export namespace UserProfilesModels {
-//   export const userProfileSchema = z.object({ id: z.string(), ... });  // Use z.string() for IDs
-// }
-// Usage: import { UserProfilesModels } from "@/data/userProfiles/userProfiles.models";
-```
-
 ### API Design Principles
 
 When designing data structures:
@@ -86,42 +70,8 @@ When designing data structures:
 -   Nest related entities in responses when they're displayed together
 -   Focus on UI needs, not database structure
 -   Use Supabase joins to fetch nested data in single queries
--   Avoid multiple separate queries when data is used together
+-   Avoid multiple separate queries when data is used in a feature together
 
 ### OpenAPI Specification
 
-After implementing features:
-
-1. Create/update `openapi.json` in root directory
-2. Follow rules in `openapi-rules.md`
-3. Ensure specification matches the implementation:
-    - Same data structures
-    - Same endpoint patterns
-    - Similar response formats
-
-## Documentation
-
--   OpenAPI specification rules: `openapi-rules.md` (MUST READ for OpenAPI structure)
--   API documentation: `api-documentation.md` (Generate with `npm run openapi:md` if missing)
-
-## Feature Development
-
-When implementing new features:
-
-1. Create data layer in `src/data`:
-
-    - Define Zod schemas in `*.models.ts`
-    - Create React Query hooks wrapping Supabase in `*.queries.ts`
-    - Use proper TypeScript types and cache invalidation
-
-2. Component Organization:
-
-    - Start with page component
-    - Extract to feature components when complexity grows
-    - Create shared components for reusable UI
-    - Keep pages focused on layout and data flow
-
-3. Update OpenAPI spec:
-    - Document the API structure in `openapi.json`
-    - Follow all OpenAPI rules
-    - Keep spec in sync with implementation
+When asked to generate or update an OpenAPI specification, check the rules in `rules/openapi-rules.md`.

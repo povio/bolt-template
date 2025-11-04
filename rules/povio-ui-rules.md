@@ -1,36 +1,49 @@
-ALWAYS use the UI components from @povio/ui. NEVER use default buttons or inputs.
+ALWAYS use the UI components from @povio/ui. NEVER use default HTML elements if this package supports it.
 
-Use hooks from @povio/ui when available for a certain feature you need.
+Always use hooks from @povio/ui when available.
 
 For forms, always use useForm or useFormAutosave from @povio/ui. Use input components from the package and pass them the formControl from these hooks. For example:
 
-```typescript
-import { Button, TextArea, TextInput, useForm } from "@povio/ui";
-import { PostsModels } from "@/data/posts/posts.models";
+Below is a list of components, hooks and functions that you have access to
 
-const { control, handleSubmit } = useForm({
-  schema: PostsModels.CreatePostSchema,
-});
+## Components
 
-const onSubmit = (data: PostsModels.CreatePostDto) => {
-  // call mutation
-}
+### Button Components
+Button, IconButton, InlineIconButton, PillButton, SplitButton, TextButton, ToggleButton
 
-return (
-  <form onSubmit={handleSubmit(onSubmit)}>
-    <TextInput 
-      formControl={{ control, name: "title" }}
-      label="Title" 
-      name="Enter title"
-    />
+### Input Components
+Checkbox, DatePicker, DateRangePicker, DateTimePicker, TimePicker, FileUpload, FileUploadContainer, InputUpload, FormField, NumberInput, PasswordInput, TextArea, TextInput, RadioGroup, Autocomplete, QueryAutocomplete, Select, Slider, TextEditor, Toggle, Segment
 
-    <TextArea
-      formControl={{ control, name: "description" }}
-      label="Description" 
-      name="Enter description"
-    />
+### Menu Components
+Menu, MenuPopover
 
-    <Button type="submit">Create</Button>
-  </form>
-)
-```
+### Overlay Components
+ActionModal, BottomSheet, Drawer, Modal, ResponsivePopover, Tooltip, TooltipEllipsis
+
+### Pagination Components
+Pagination, PaginationList
+
+### Status Components
+Alert, Loader, Toast, ToastContainer
+
+### Table Components
+InfiniteTable, PaginatedTable, Table
+
+### Text Components
+Link, Tag, Typography
+
+### Config/Context Components
+Confirmation
+
+## Hooks
+
+useToast, useAutosave, useBreakpoint, useForm, useFormAutosave, useLocalStorage
+
+## Icons
+
+AlignCenterIcon, AlignLeftIcon, AlignLeftRightIcon, AlignRightIcon, ArrowDropDownIcon, ArrowDropUpIcon, ArrowLeftIcon, ArrowRightIcon, BoldIcon, BulletedListIcon, CalendarIcon, CheckIcon, CheckboxCheckmarkIcon, CheckboxIndeterminateIcon, ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon, ChevronsLeftIcon, ChevronsRightIcon, ChevronUpIcon, ClockIcon, CloseIcon, DateTimeIcon, HighlightIcon, HighlightOnIcon, InfoIcon, ItalicIcon, LinkIcon, MenuIcon, NumberedListIcon, PointerHorizontalIcon, PointerVerticalIcon, SendIcon, StrikethroughIcon, TextColorIcon, UnderlinedIcon, ViewIcon, ViewOffIcon
+
+## Utils
+
+ArrayUtils, DateUtils, DateTimeUtils, FileUtils, StringUtils
+
