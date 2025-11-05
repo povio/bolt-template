@@ -8,6 +8,8 @@ Tech Stack:
 -   Absolute imports with @ alias (points to src)
 -   Avoid code duplication - extract components and constants
 
+Code Examples: `src/pages/code-examples/` contains reference examples for @povio/ui components and routing patterns. **NEVER modify these files** - refer to them as examples only.
+
 Data Layer (`src/data`):
 ```
 src/data/posts/

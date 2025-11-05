@@ -10,11 +10,23 @@
 
 import { Route as rootRouteImport } from './pages/__root'
 import { Route as AboutRouteImport } from './pages/about'
+import { Route as CodeExamplesRouteRouteImport } from './pages/code-examples/route'
 import { Route as IndexRouteImport } from './pages/index'
+import { Route as CodeExamplesIndexRouteImport } from './pages/code-examples/index'
+import { Route as CodeExamplesToastsRouteImport } from './pages/code-examples/toasts'
+import { Route as CodeExamplesTableRouteImport } from './pages/code-examples/table'
+import { Route as CodeExamplesModalsRouteImport } from './pages/code-examples/modals'
+import { Route as CodeExamplesInputsRouteImport } from './pages/code-examples/inputs'
+import { Route as CodeExamplesButtonsRouteImport } from './pages/code-examples/buttons'
 
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CodeExamplesRouteRoute = CodeExamplesRouteRouteImport.update({
+  id: '/code-examples',
+  path: '/code-examples',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -22,30 +34,108 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CodeExamplesIndexRoute = CodeExamplesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CodeExamplesRouteRoute,
+} as any)
+const CodeExamplesToastsRoute = CodeExamplesToastsRouteImport.update({
+  id: '/toasts',
+  path: '/toasts',
+  getParentRoute: () => CodeExamplesRouteRoute,
+} as any)
+const CodeExamplesTableRoute = CodeExamplesTableRouteImport.update({
+  id: '/table',
+  path: '/table',
+  getParentRoute: () => CodeExamplesRouteRoute,
+} as any)
+const CodeExamplesModalsRoute = CodeExamplesModalsRouteImport.update({
+  id: '/modals',
+  path: '/modals',
+  getParentRoute: () => CodeExamplesRouteRoute,
+} as any)
+const CodeExamplesInputsRoute = CodeExamplesInputsRouteImport.update({
+  id: '/inputs',
+  path: '/inputs',
+  getParentRoute: () => CodeExamplesRouteRoute,
+} as any)
+const CodeExamplesButtonsRoute = CodeExamplesButtonsRouteImport.update({
+  id: '/buttons',
+  path: '/buttons',
+  getParentRoute: () => CodeExamplesRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/code-examples': typeof CodeExamplesRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/code-examples/buttons': typeof CodeExamplesButtonsRoute
+  '/code-examples/inputs': typeof CodeExamplesInputsRoute
+  '/code-examples/modals': typeof CodeExamplesModalsRoute
+  '/code-examples/table': typeof CodeExamplesTableRoute
+  '/code-examples/toasts': typeof CodeExamplesToastsRoute
+  '/code-examples/': typeof CodeExamplesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/code-examples/buttons': typeof CodeExamplesButtonsRoute
+  '/code-examples/inputs': typeof CodeExamplesInputsRoute
+  '/code-examples/modals': typeof CodeExamplesModalsRoute
+  '/code-examples/table': typeof CodeExamplesTableRoute
+  '/code-examples/toasts': typeof CodeExamplesToastsRoute
+  '/code-examples': typeof CodeExamplesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/code-examples': typeof CodeExamplesRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/code-examples/buttons': typeof CodeExamplesButtonsRoute
+  '/code-examples/inputs': typeof CodeExamplesInputsRoute
+  '/code-examples/modals': typeof CodeExamplesModalsRoute
+  '/code-examples/table': typeof CodeExamplesTableRoute
+  '/code-examples/toasts': typeof CodeExamplesToastsRoute
+  '/code-examples/': typeof CodeExamplesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths:
+    | '/'
+    | '/code-examples'
+    | '/about'
+    | '/code-examples/buttons'
+    | '/code-examples/inputs'
+    | '/code-examples/modals'
+    | '/code-examples/table'
+    | '/code-examples/toasts'
+    | '/code-examples/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to:
+    | '/'
+    | '/about'
+    | '/code-examples/buttons'
+    | '/code-examples/inputs'
+    | '/code-examples/modals'
+    | '/code-examples/table'
+    | '/code-examples/toasts'
+    | '/code-examples'
+  id:
+    | '__root__'
+    | '/'
+    | '/code-examples'
+    | '/about'
+    | '/code-examples/buttons'
+    | '/code-examples/inputs'
+    | '/code-examples/modals'
+    | '/code-examples/table'
+    | '/code-examples/toasts'
+    | '/code-examples/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CodeExamplesRouteRoute: typeof CodeExamplesRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
 }
 
@@ -58,6 +148,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/code-examples': {
+      id: '/code-examples'
+      path: '/code-examples'
+      fullPath: '/code-examples'
+      preLoaderRoute: typeof CodeExamplesRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -65,11 +162,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/code-examples/': {
+      id: '/code-examples/'
+      path: '/'
+      fullPath: '/code-examples/'
+      preLoaderRoute: typeof CodeExamplesIndexRouteImport
+      parentRoute: typeof CodeExamplesRouteRoute
+    }
+    '/code-examples/toasts': {
+      id: '/code-examples/toasts'
+      path: '/toasts'
+      fullPath: '/code-examples/toasts'
+      preLoaderRoute: typeof CodeExamplesToastsRouteImport
+      parentRoute: typeof CodeExamplesRouteRoute
+    }
+    '/code-examples/table': {
+      id: '/code-examples/table'
+      path: '/table'
+      fullPath: '/code-examples/table'
+      preLoaderRoute: typeof CodeExamplesTableRouteImport
+      parentRoute: typeof CodeExamplesRouteRoute
+    }
+    '/code-examples/modals': {
+      id: '/code-examples/modals'
+      path: '/modals'
+      fullPath: '/code-examples/modals'
+      preLoaderRoute: typeof CodeExamplesModalsRouteImport
+      parentRoute: typeof CodeExamplesRouteRoute
+    }
+    '/code-examples/inputs': {
+      id: '/code-examples/inputs'
+      path: '/inputs'
+      fullPath: '/code-examples/inputs'
+      preLoaderRoute: typeof CodeExamplesInputsRouteImport
+      parentRoute: typeof CodeExamplesRouteRoute
+    }
+    '/code-examples/buttons': {
+      id: '/code-examples/buttons'
+      path: '/buttons'
+      fullPath: '/code-examples/buttons'
+      preLoaderRoute: typeof CodeExamplesButtonsRouteImport
+      parentRoute: typeof CodeExamplesRouteRoute
+    }
   }
 }
 
+interface CodeExamplesRouteRouteChildren {
+  CodeExamplesButtonsRoute: typeof CodeExamplesButtonsRoute
+  CodeExamplesInputsRoute: typeof CodeExamplesInputsRoute
+  CodeExamplesModalsRoute: typeof CodeExamplesModalsRoute
+  CodeExamplesTableRoute: typeof CodeExamplesTableRoute
+  CodeExamplesToastsRoute: typeof CodeExamplesToastsRoute
+  CodeExamplesIndexRoute: typeof CodeExamplesIndexRoute
+}
+
+const CodeExamplesRouteRouteChildren: CodeExamplesRouteRouteChildren = {
+  CodeExamplesButtonsRoute: CodeExamplesButtonsRoute,
+  CodeExamplesInputsRoute: CodeExamplesInputsRoute,
+  CodeExamplesModalsRoute: CodeExamplesModalsRoute,
+  CodeExamplesTableRoute: CodeExamplesTableRoute,
+  CodeExamplesToastsRoute: CodeExamplesToastsRoute,
+  CodeExamplesIndexRoute: CodeExamplesIndexRoute,
+}
+
+const CodeExamplesRouteRouteWithChildren =
+  CodeExamplesRouteRoute._addFileChildren(CodeExamplesRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CodeExamplesRouteRoute: CodeExamplesRouteRouteWithChildren,
   AboutRoute: AboutRoute,
 }
 export const routeTree = rootRouteImport

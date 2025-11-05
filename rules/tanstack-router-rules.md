@@ -1,5 +1,7 @@
 **IMPORTANT:** After adding/changing routes, run dev server to regenerate `routeTree.gen.ts`.
 
+Code Examples: See `src/pages/code-examples/` for a working example of nested routes with a layout (`route.tsx`) and child pages. **NEVER modify files in this directory** - they are reference examples only.
+
 Structure:
 ```
 src/pages/

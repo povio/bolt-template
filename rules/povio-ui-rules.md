@@ -1,5 +1,7 @@
 ALWAYS use components and hooks from @povio/ui. NEVER use default HTML elements when @povio/ui has an equivalent.
 
+Code Examples: See `src/pages/code-examples/` for working examples of buttons, inputs, modals, tables, and toasts. **NEVER modify files in this directory** - they are reference examples only.
+
 Key Rules:
 - Use `Typography` instead of HTML text elements
 - Use `useForm`/`useFormAutosave` for forms (pass `formControl` to inputs)
