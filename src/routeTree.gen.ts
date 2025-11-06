@@ -9,7 +9,6 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './pages/__root'
-import { Route as AboutRouteImport } from './pages/about'
 import { Route as CodeExamplesRouteRouteImport } from './pages/code-examples/route'
 import { Route as IndexRouteImport } from './pages/index'
 import { Route as CodeExamplesIndexRouteImport } from './pages/code-examples/index'
@@ -21,11 +20,6 @@ import { Route as CodeExamplesInputsRouteImport } from './pages/code-examples/in
 import { Route as CodeExamplesFormsRouteImport } from './pages/code-examples/forms'
 import { Route as CodeExamplesButtonsRouteImport } from './pages/code-examples/buttons'
 
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const CodeExamplesRouteRoute = CodeExamplesRouteRouteImport.update({
   id: '/code-examples',
   path: '/code-examples',
@@ -80,7 +74,6 @@ const CodeExamplesButtonsRoute = CodeExamplesButtonsRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/code-examples': typeof CodeExamplesRouteRouteWithChildren
-  '/about': typeof AboutRoute
   '/code-examples/buttons': typeof CodeExamplesButtonsRoute
   '/code-examples/forms': typeof CodeExamplesFormsRoute
   '/code-examples/inputs': typeof CodeExamplesInputsRoute
@@ -92,7 +85,6 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/code-examples/buttons': typeof CodeExamplesButtonsRoute
   '/code-examples/forms': typeof CodeExamplesFormsRoute
   '/code-examples/inputs': typeof CodeExamplesInputsRoute
@@ -106,7 +98,6 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/code-examples': typeof CodeExamplesRouteRouteWithChildren
-  '/about': typeof AboutRoute
   '/code-examples/buttons': typeof CodeExamplesButtonsRoute
   '/code-examples/forms': typeof CodeExamplesFormsRoute
   '/code-examples/inputs': typeof CodeExamplesInputsRoute
@@ -121,7 +112,6 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/code-examples'
-    | '/about'
     | '/code-examples/buttons'
     | '/code-examples/forms'
     | '/code-examples/inputs'
@@ -133,7 +123,6 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/about'
     | '/code-examples/buttons'
     | '/code-examples/forms'
     | '/code-examples/inputs'
@@ -146,7 +135,6 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/code-examples'
-    | '/about'
     | '/code-examples/buttons'
     | '/code-examples/forms'
     | '/code-examples/inputs'
@@ -160,18 +148,10 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CodeExamplesRouteRoute: typeof CodeExamplesRouteRouteWithChildren
-  AboutRoute: typeof AboutRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/code-examples': {
       id: '/code-examples'
       path: '/code-examples'
@@ -273,7 +253,6 @@ const CodeExamplesRouteRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CodeExamplesRouteRoute: CodeExamplesRouteRouteWithChildren,
-  AboutRoute: AboutRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

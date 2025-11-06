@@ -1,5 +1,4 @@
 import { Route as HomeRoute } from '@/pages/index';
-import { Route as AboutRoute } from '@/pages/about';
 import { Route as CodeExamplesRoute } from '@/pages/code-examples/route';
 import { Route as CodeExamplesButtonsRoute } from '@/pages/code-examples/buttons';
 import { Route as CodeExamplesFormsRoute } from '@/pages/code-examples/forms';
@@ -11,7 +10,6 @@ import { Route as CodeExamplesToastsRoute } from '@/pages/code-examples/toasts';
 
 export const RouteConfig = {
   home: HomeRoute,
-  about: AboutRoute,
   codeExamples: {
     index: CodeExamplesRoute,
     buttons: CodeExamplesButtonsRoute,
