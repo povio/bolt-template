@@ -24,6 +24,8 @@ src/data/posts/
   └── posts.models.ts   // PostsModels namespace (Zod schemas)
 ```
 
+**CRITICAL:** NEVER use Supabase directly in components - ALL data fetching/mutations MUST go through `*.queries.ts` files
+
 Naming: camelCase folders (`userProfiles/`), PascalCase namespaces (`UserProfilesModels`, `UserProfilesQueries`)
 
 Database Setup:
