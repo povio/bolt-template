@@ -15,7 +15,7 @@ src/pages/
 
 Rules:
 1. **Navigation:** ALWAYS use `RouteConfig.routeName.to`, NEVER hardcoded strings
-2. **Folders:** Only create for 2+ children. When adding children to `posts.tsx`, move to `posts/index.tsx` first
+2. **Folders:** NEVER have both a file and folder with the same name (e.g., `posts.tsx` + `posts/`) - TanStack Router will only generate routes for one. When adding children to a route, FIRST move the file to `index.tsx` inside a folder, THEN add child routes
 3. **Layouts:** Create `route.tsx` with `<Outlet />` only when pages share UI (headers, navbars, sidebars)
 4. **Dynamic Routes:** Use `$` prefix (`$userId.tsx`)
 5. **Route Config:** Update `src/config/route.config.ts` after adding routes

@@ -3,7 +3,9 @@ For all designs, create beautiful, production-ready interfaces. Avoid cookie-cut
 Tech Stack:
 -   @povio/ui and Lucide React for ALL UI components and icons (DO NOT install other UI/icon libraries)
 -   @tanstack/react-query for data fetching/caching
--   @tanstack/react-router for routing - **CRITICAL: After adding/modifying routes, ALWAYS run dev server to regenerate `routeTree.gen.ts`**
+-   @tanstack/react-router for routing:
+  - **CRITICAL: After adding/modifying routes, ALWAYS run dev server to regenerate `routeTree.gen.ts`**
+  - **NEVER have both a file and folder with the same name (e.g., `posts.tsx` + `posts/`) - move file to `index.tsx` inside folder first**
 -   Zustand for global state
 -   Absolute imports with @ alias (points to src)
 -   Avoid code duplication - extract components and constants
