@@ -14,9 +14,11 @@ import { Route as CodeExamplesRouteRouteImport } from './pages/code-examples/rou
 import { Route as IndexRouteImport } from './pages/index'
 import { Route as CodeExamplesIndexRouteImport } from './pages/code-examples/index'
 import { Route as CodeExamplesToastsRouteImport } from './pages/code-examples/toasts'
+import { Route as CodeExamplesTextRouteImport } from './pages/code-examples/text'
 import { Route as CodeExamplesTableRouteImport } from './pages/code-examples/table'
 import { Route as CodeExamplesModalsRouteImport } from './pages/code-examples/modals'
 import { Route as CodeExamplesInputsRouteImport } from './pages/code-examples/inputs'
+import { Route as CodeExamplesFormsRouteImport } from './pages/code-examples/forms'
 import { Route as CodeExamplesButtonsRouteImport } from './pages/code-examples/buttons'
 
 const AboutRoute = AboutRouteImport.update({
@@ -44,6 +46,11 @@ const CodeExamplesToastsRoute = CodeExamplesToastsRouteImport.update({
   path: '/toasts',
   getParentRoute: () => CodeExamplesRouteRoute,
 } as any)
+const CodeExamplesTextRoute = CodeExamplesTextRouteImport.update({
+  id: '/text',
+  path: '/text',
+  getParentRoute: () => CodeExamplesRouteRoute,
+} as any)
 const CodeExamplesTableRoute = CodeExamplesTableRouteImport.update({
   id: '/table',
   path: '/table',
@@ -59,6 +66,11 @@ const CodeExamplesInputsRoute = CodeExamplesInputsRouteImport.update({
   path: '/inputs',
   getParentRoute: () => CodeExamplesRouteRoute,
 } as any)
+const CodeExamplesFormsRoute = CodeExamplesFormsRouteImport.update({
+  id: '/forms',
+  path: '/forms',
+  getParentRoute: () => CodeExamplesRouteRoute,
+} as any)
 const CodeExamplesButtonsRoute = CodeExamplesButtonsRouteImport.update({
   id: '/buttons',
   path: '/buttons',
@@ -70,9 +82,11 @@ export interface FileRoutesByFullPath {
   '/code-examples': typeof CodeExamplesRouteRouteWithChildren
   '/about': typeof AboutRoute
   '/code-examples/buttons': typeof CodeExamplesButtonsRoute
+  '/code-examples/forms': typeof CodeExamplesFormsRoute
   '/code-examples/inputs': typeof CodeExamplesInputsRoute
   '/code-examples/modals': typeof CodeExamplesModalsRoute
   '/code-examples/table': typeof CodeExamplesTableRoute
+  '/code-examples/text': typeof CodeExamplesTextRoute
   '/code-examples/toasts': typeof CodeExamplesToastsRoute
   '/code-examples/': typeof CodeExamplesIndexRoute
 }
@@ -80,9 +94,11 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/code-examples/buttons': typeof CodeExamplesButtonsRoute
+  '/code-examples/forms': typeof CodeExamplesFormsRoute
   '/code-examples/inputs': typeof CodeExamplesInputsRoute
   '/code-examples/modals': typeof CodeExamplesModalsRoute
   '/code-examples/table': typeof CodeExamplesTableRoute
+  '/code-examples/text': typeof CodeExamplesTextRoute
   '/code-examples/toasts': typeof CodeExamplesToastsRoute
   '/code-examples': typeof CodeExamplesIndexRoute
 }
@@ -92,9 +108,11 @@ export interface FileRoutesById {
   '/code-examples': typeof CodeExamplesRouteRouteWithChildren
   '/about': typeof AboutRoute
   '/code-examples/buttons': typeof CodeExamplesButtonsRoute
+  '/code-examples/forms': typeof CodeExamplesFormsRoute
   '/code-examples/inputs': typeof CodeExamplesInputsRoute
   '/code-examples/modals': typeof CodeExamplesModalsRoute
   '/code-examples/table': typeof CodeExamplesTableRoute
+  '/code-examples/text': typeof CodeExamplesTextRoute
   '/code-examples/toasts': typeof CodeExamplesToastsRoute
   '/code-examples/': typeof CodeExamplesIndexRoute
 }
@@ -105,9 +123,11 @@ export interface FileRouteTypes {
     | '/code-examples'
     | '/about'
     | '/code-examples/buttons'
+    | '/code-examples/forms'
     | '/code-examples/inputs'
     | '/code-examples/modals'
     | '/code-examples/table'
+    | '/code-examples/text'
     | '/code-examples/toasts'
     | '/code-examples/'
   fileRoutesByTo: FileRoutesByTo
@@ -115,9 +135,11 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/code-examples/buttons'
+    | '/code-examples/forms'
     | '/code-examples/inputs'
     | '/code-examples/modals'
     | '/code-examples/table'
+    | '/code-examples/text'
     | '/code-examples/toasts'
     | '/code-examples'
   id:
@@ -126,9 +148,11 @@ export interface FileRouteTypes {
     | '/code-examples'
     | '/about'
     | '/code-examples/buttons'
+    | '/code-examples/forms'
     | '/code-examples/inputs'
     | '/code-examples/modals'
     | '/code-examples/table'
+    | '/code-examples/text'
     | '/code-examples/toasts'
     | '/code-examples/'
   fileRoutesById: FileRoutesById
@@ -176,6 +200,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CodeExamplesToastsRouteImport
       parentRoute: typeof CodeExamplesRouteRoute
     }
+    '/code-examples/text': {
+      id: '/code-examples/text'
+      path: '/text'
+      fullPath: '/code-examples/text'
+      preLoaderRoute: typeof CodeExamplesTextRouteImport
+      parentRoute: typeof CodeExamplesRouteRoute
+    }
     '/code-examples/table': {
       id: '/code-examples/table'
       path: '/table'
@@ -197,6 +228,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CodeExamplesInputsRouteImport
       parentRoute: typeof CodeExamplesRouteRoute
     }
+    '/code-examples/forms': {
+      id: '/code-examples/forms'
+      path: '/forms'
+      fullPath: '/code-examples/forms'
+      preLoaderRoute: typeof CodeExamplesFormsRouteImport
+      parentRoute: typeof CodeExamplesRouteRoute
+    }
     '/code-examples/buttons': {
       id: '/code-examples/buttons'
       path: '/buttons'
@@ -209,18 +247,22 @@ declare module '@tanstack/react-router' {
 
 interface CodeExamplesRouteRouteChildren {
   CodeExamplesButtonsRoute: typeof CodeExamplesButtonsRoute
+  CodeExamplesFormsRoute: typeof CodeExamplesFormsRoute
   CodeExamplesInputsRoute: typeof CodeExamplesInputsRoute
   CodeExamplesModalsRoute: typeof CodeExamplesModalsRoute
   CodeExamplesTableRoute: typeof CodeExamplesTableRoute
+  CodeExamplesTextRoute: typeof CodeExamplesTextRoute
   CodeExamplesToastsRoute: typeof CodeExamplesToastsRoute
   CodeExamplesIndexRoute: typeof CodeExamplesIndexRoute
 }
 
 const CodeExamplesRouteRouteChildren: CodeExamplesRouteRouteChildren = {
   CodeExamplesButtonsRoute: CodeExamplesButtonsRoute,
+  CodeExamplesFormsRoute: CodeExamplesFormsRoute,
   CodeExamplesInputsRoute: CodeExamplesInputsRoute,
   CodeExamplesModalsRoute: CodeExamplesModalsRoute,
   CodeExamplesTableRoute: CodeExamplesTableRoute,
+  CodeExamplesTextRoute: CodeExamplesTextRoute,
   CodeExamplesToastsRoute: CodeExamplesToastsRoute,
   CodeExamplesIndexRoute: CodeExamplesIndexRoute,
 }

@@ -7,6 +7,7 @@ Key Rules:
 - Use `useForm`/`useFormAutosave` for forms (pass `formControl` to inputs)
 - Use `Confirmation.useConfirmation` instead of native `confirm()`
 - Use `useToast` for user messages
+- Use `Table`, `PaginatedTable`, or `InfiniteTable` instead of HTML table elements
 - Check component props before usage and if you have TypeScript issues
 
 Below is a list of components, hooks and functions that you have access to
@@ -28,8 +29,8 @@ BottomSheet, Drawer, Modal, ResponsivePopover, Tooltip
 ### Status Components
 Alert, Loader
 
-### Table Components
-InfiniteTable, PaginatedTable, Table
+### Table Components & Hooks
+InfiniteTable, PaginatedTable, Table, usePagination, useSorting
 
 ### Text Components
 Link, Tag, Typography

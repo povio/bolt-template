@@ -8,6 +8,11 @@ Tech Stack:
 -   Absolute imports with @ alias (points to src)
 -   Avoid code duplication - extract components and constants
 
+Styling & Components:
+-   **Use Tailwind's blue palette only** (blue-50 to blue-950) - matches @povio/ui defaults
+-   Buttons: pass text as children (not JSX), add icons via `icon` prop, use `width="hug"` for normal width (default is full-width)
+-   Avoid other colors except semantic (red=error, green=success)
+
 Code Examples: `src/pages/code-examples/` contains reference examples for @povio/ui components and routing patterns. **NEVER modify these files** - refer to them as examples only.
 
 Data Layer (`src/data`):
