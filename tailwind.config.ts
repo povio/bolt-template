@@ -4,17 +4,11 @@ import type { Config } from "tailwindcss";
 import baseTailwindConfig from "./base-tailwind.config";
 
 const config: Config = {
-  content: [
-    './index.html', 
-    './src/**/*.{js,ts,jsx,tsx}',
-    './node_modules/@povio/ui/dist/**/*.js'
-  ],
-  "presets": [
-    baseTailwindConfig
-  ],
-  "theme": {
-    "extend": {
-      "colors": {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}", "./node_modules/@povio/ui/dist/**/*.js"],
+  presets: [baseTailwindConfig],
+  theme: {
+    extend: {
+      colors: {
         "support-default": "#000000",
         "support-inverted": "#ffffff",
         "interactive-outlined-primary-idle": "#ffffff00",
@@ -346,22 +340,22 @@ const config: Config = {
         "interactive-contained-error-toggled-hovered": "#b33322",
         "interactive-contained-error-on-toggled-hovered": "#f6f7f8",
         "interactive-subtle-error-on-toggled-hovered": "#f8b2a9",
-        "interactive-subtle-error-toggled-hovered": "#f28677"
+        "interactive-subtle-error-toggled-hovered": "#f28677",
       },
-      "borderRadius": {
-        "none": "0rem",
+      borderRadius: {
+        none: "0rem",
         "2xs": "0.125rem",
-        "xs": "0.25rem",
-        "s": "0.375rem",
-        "sm": "0.5rem",
-        "ml": "0.75rem",
-        "xl": "1rem",
+        xs: "0.25rem",
+        s: "0.375rem",
+        sm: "0.5rem",
+        ml: "0.75rem",
+        xl: "1rem",
         "4xl": "1.5rem",
-        "full": "624.9375rem",
+        full: "624.9375rem",
         "5xl": "1.75rem",
         "6xl": "2rem",
-        "m": "0.625rem",
-        "l": "0.875rem",
+        m: "0.625rem",
+        l: "0.875rem",
         "2xl": "1.125rem",
         "3xl": "1.25rem",
         "global-rounding-xs": "0.25rem",
@@ -397,9 +391,9 @@ const config: Config = {
         "image-overlay-outside-rounding-full": "624.9375rem",
         "avatar-rounding-default": "624.9375rem",
         "progress-rounding-default": "0.25rem",
-        "slider-rounding-default": "0.25rem"
+        "slider-rounding-default": "0.25rem",
       },
-      "maxWidth": {
+      maxWidth: {
         "0": "0rem",
         "1": "0.25rem",
         "2": "0.5rem",
@@ -431,11 +425,11 @@ const config: Config = {
         "72": "18rem",
         "80": "20rem",
         "96": "24rem",
-        "xs": "20rem",
-        "sm": "24rem",
-        "md": "28rem",
-        "lg": "32rem",
-        "xl": "36rem",
+        xs: "20rem",
+        sm: "24rem",
+        md: "28rem",
+        lg: "32rem",
+        xl: "36rem",
         "2xl": "42rem",
         "3xl": "48rem",
         "4xl": "56rem",
@@ -449,7 +443,7 @@ const config: Config = {
         "4-5xs": "7rem",
         "5-5xs": "4.75rem",
         "5xs": "6rem",
-        "px": "0.0625rem",
+        px: "0.0625rem",
         "0-5": "0.125rem",
         "1-5": "0.375rem",
         "2-5": "0.625rem",
@@ -658,9 +652,9 @@ const config: Config = {
         "button-segment-control-segment-height-m": "0.375rem",
         "button-segment-control-segment-height-l": "0.375rem",
         "button-gap-icon-to-label": "0.25rem",
-        "fill-inner": "NaNrem"
+        "fill-inner": "NaNrem",
       },
-      "spacing": {
+      spacing: {
         "0": "0rem",
         "1": "0.25rem",
         "2": "0.5rem",
@@ -692,7 +686,7 @@ const config: Config = {
         "72": "18rem",
         "80": "20rem",
         "96": "24rem",
-        "px": "0.0625rem",
+        px: "0.0625rem",
         "0-5": "0.125rem",
         "1-5": "0.375rem",
         "2-5": "0.625rem",
@@ -901,18 +895,18 @@ const config: Config = {
         "button-segment-control-segment-height-m": "0.375rem",
         "button-segment-control-segment-height-l": "0.375rem",
         "button-gap-icon-to-label": "0.25rem",
-        "fill-inner": "NaNrem"
+        "fill-inner": "NaNrem",
       },
-      "boxShadow": {
+      boxShadow: {
         "1": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
         "2": "0 1px 3px 0 rgba(0, 0, 0, 0.10), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
         "3": "0 4px 6px -1px rgba(0, 0, 0, 0.10), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
         "4": "0 10px 15px -3px rgba(0, 0, 0, 0.10), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
         "6": "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
         ".text-shadow-dark-mode": "0 2px 6px 0 rgba(0, 0, 0, 0.30)",
-        "inner": "0 2px 4px 0 rgba(0, 0, 0, 0.06) inset"
+        inner: "0 2px 4px 0 rgba(0, 0, 0, 0.06) inset",
       },
-      "blur": {
+      blur: {
         "0": "0px",
         "1": "2px",
         "2": "4px",
@@ -920,193 +914,193 @@ const config: Config = {
         "4": "8px",
         "5": "12px",
         "6": "20px",
-        "7": "32px"
+        "7": "32px",
       },
-      "backdropBlur": {
+      backdropBlur: {
         "1": "2px",
         "2": "4px",
         "3": "6px",
         "4": "8px",
         "5": "12px",
         "6": "20px",
-        "7": "32px"
+        "7": "32px",
       },
-      "fontSize": {
+      fontSize: {
         "desktop-headline-1": [
           "3.5rem",
           {
-            "lineHeight": "1.2857",
-            "letterSpacing": "0em"
-          }
+            lineHeight: "1.2857",
+            letterSpacing: "0em",
+          },
         ],
         "desktop-title-1": [
           "3rem",
           {
-            "lineHeight": "1.25",
-            "letterSpacing": "0em"
-          }
+            lineHeight: "1.25",
+            letterSpacing: "0em",
+          },
         ],
         "desktop-title-2": [
           "2rem",
           {
-            "lineHeight": "1.3125",
-            "letterSpacing": "0em"
-          }
+            lineHeight: "1.3125",
+            letterSpacing: "0em",
+          },
         ],
         "desktop-title-3": [
           "1.75rem",
           {
-            "lineHeight": "1.3571",
-            "letterSpacing": "0em"
-          }
+            lineHeight: "1.3571",
+            letterSpacing: "0em",
+          },
         ],
         "desktop-title-4": [
           "1.375rem",
           {
-            "lineHeight": "1.2727",
-            "letterSpacing": "0em"
-          }
+            lineHeight: "1.2727",
+            letterSpacing: "0em",
+          },
         ],
         "desktop-title-5": [
           "1.125rem",
           {
-            "lineHeight": "1.4444",
-            "letterSpacing": "0em"
-          }
+            lineHeight: "1.4444",
+            letterSpacing: "0em",
+          },
         ],
         "desktop-title-6": [
           "1rem",
           {
-            "lineHeight": "1.5",
-            "letterSpacing": "0em"
-          }
+            lineHeight: "1.5",
+            letterSpacing: "0em",
+          },
         ],
         "mobile-headline-1": [
           "2rem",
           {
-            "lineHeight": "1.1875",
-            "letterSpacing": "0em"
-          }
+            lineHeight: "1.1875",
+            letterSpacing: "0em",
+          },
         ],
         "mobile-title-1": [
           "1.75rem",
           {
-            "lineHeight": "1.2857",
-            "letterSpacing": "0em"
-          }
+            lineHeight: "1.2857",
+            letterSpacing: "0em",
+          },
         ],
         "mobile-title-2": [
           "1.5rem",
           {
-            "lineHeight": "1.3333",
-            "letterSpacing": "0em"
-          }
+            lineHeight: "1.3333",
+            letterSpacing: "0em",
+          },
         ],
         "mobile-title-3": [
           "1.125rem",
           {
-            "lineHeight": "1.4444",
-            "letterSpacing": "0em"
-          }
+            lineHeight: "1.4444",
+            letterSpacing: "0em",
+          },
         ],
         "mobile-title-4": [
           "1rem",
           {
-            "lineHeight": "1.5",
-            "letterSpacing": "0em"
-          }
+            lineHeight: "1.5",
+            letterSpacing: "0em",
+          },
         ],
         "mobile-title-5": [
           "0.875rem",
           {
-            "lineHeight": "1.2857",
-            "letterSpacing": "0em"
-          }
+            lineHeight: "1.2857",
+            letterSpacing: "0em",
+          },
         ],
         "mobile-title-6": [
           "0.875rem",
           {
-            "lineHeight": "1.2857",
-            "letterSpacing": "0em"
-          }
+            lineHeight: "1.2857",
+            letterSpacing: "0em",
+          },
         ],
         "desktop-body-1": [
           "1.25rem",
           {
-            "lineHeight": "1.8",
-            "letterSpacing": "0em"
-          }
+            lineHeight: "1.8",
+            letterSpacing: "0em",
+          },
         ],
         "desktop-body-2": [
           "1.125rem",
           {
-            "lineHeight": "1.7778",
-            "letterSpacing": "-0.0018em"
-          }
+            lineHeight: "1.7778",
+            letterSpacing: "-0.0018em",
+          },
         ],
         "desktop-body-3": [
           "1rem",
           {
-            "lineHeight": "1.75",
-            "letterSpacing": "-0.0016em"
-          }
+            lineHeight: "1.75",
+            letterSpacing: "-0.0016em",
+          },
         ],
         "desktop-body-4": [
           "0.875rem",
           {
-            "lineHeight": "1.7143",
-            "letterSpacing": "-0.0014em"
-          }
+            lineHeight: "1.7143",
+            letterSpacing: "-0.0014em",
+          },
         ],
         "mobile-body-1": [
           "1.125rem",
           {
-            "lineHeight": "1.5556",
-            "letterSpacing": "0em"
-          }
+            lineHeight: "1.5556",
+            letterSpacing: "0em",
+          },
         ],
         "mobile-body-2": [
           "1rem",
           {
-            "lineHeight": "1.75",
-            "letterSpacing": "-0.0016em"
-          }
+            lineHeight: "1.75",
+            letterSpacing: "-0.0016em",
+          },
         ],
         "mobile-body-3": [
           "0.9375rem",
           {
-            "lineHeight": "1.7333",
-            "letterSpacing": "-0.0015em"
-          }
+            lineHeight: "1.7333",
+            letterSpacing: "-0.0015em",
+          },
         ],
         "mobile-body-4": [
           "0.875rem",
           {
-            "lineHeight": "1.7143",
-            "letterSpacing": "-0.0014em"
-          }
+            lineHeight: "1.7143",
+            letterSpacing: "-0.0014em",
+          },
         ],
         "label-1": [
           "1rem",
           {
-            "lineHeight": "1.5",
-            "letterSpacing": "0em"
-          }
+            lineHeight: "1.5",
+            letterSpacing: "0em",
+          },
         ],
         "label-2": [
           "0.875rem",
           {
-            "lineHeight": "1.7143",
-            "letterSpacing": "0em"
-          }
+            lineHeight: "1.7143",
+            letterSpacing: "0em",
+          },
         ],
         "label-3": [
           "0.75rem",
           {
-            "lineHeight": "1.3333",
-            "letterSpacing": "-0.0012em"
-          }
-        ]
+            lineHeight: "1.3333",
+            letterSpacing: "-0.0012em",
+          },
+        ],
       },
       fontFamily: {
         secondary: ["var(--font-geist)", ...fontFamily.sans],
@@ -1114,18 +1108,18 @@ const config: Config = {
         primary: ["var(--font-inter)", ...fontFamily.sans],
         inter: ["var(--font-inter)", ...fontFamily.sans],
       },
-      "fontWeight": {
+      fontWeight: {
         "headings-default": "500",
         "headings-prominent-1": "600",
         "body-default": "400",
         "body-prominent-1": "500",
         "body-prominent-2": "600",
         "labels-default": "500",
-        "labels-prominent-1": "600"
+        "labels-prominent-1": "600",
       },
-      "backgroundImage": {}
-    }
-  }
+      backgroundImage: {},
+    },
+  },
 };
 
 export default config;

@@ -1,7 +1,7 @@
-import { TextInput, NumberInput, Select, Button, useForm, useFormAutosave, Typography } from '@povio/ui';
-import { createFileRoute } from '@tanstack/react-router'
-import z from 'zod'
-import { useState } from 'react';
+import { Button, NumberInput, Select, TextInput, Typography, useForm, useFormAutosave } from "@povio/ui";
+import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import z from "zod";
 
 const optionEnum = z.enum(["ONE", "TWO", "THREE"]);
 const OptionEnum = optionEnum.enum;
@@ -43,7 +43,7 @@ function RegularFormExample() {
       lastName: "",
       age: 18,
       country: OptionEnum.ONE,
-    }
+    },
   });
 
   const onSubmit = (data: RegularFormType) => {
@@ -53,12 +53,24 @@ function RegularFormExample() {
 
   return (
     <section className="flex flex-col gap-4">
-      <Typography as="h2" size="title-3">Regular Form</Typography>
-      <Typography as="p" size="body-2" className="text-content-secondary">
+      <Typography
+        as="h2"
+        size="title-3"
+      >
+        Regular Form
+      </Typography>
+      <Typography
+        as="p"
+        size="body-2"
+        className="text-content-secondary"
+      >
         A traditional form that submits data when the user clicks the submit button. Uses <code>useForm</code> hook.
       </Typography>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 max-w-md">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex max-w-md flex-col gap-4"
+      >
         <TextInput
           formControl={{ control, name: "firstName" }}
           label="First Name"
@@ -101,8 +113,14 @@ function RegularFormExample() {
       </form>
 
       {submittedData && (
-        <div className="mt-4 p-4 bg-elevation-fill-default-2 rounded-lg max-w-md">
-          <Typography as="h3" size="title-5" className="mb-2">Submitted Data:</Typography>
+        <div className="mt-4 max-w-md rounded-lg bg-elevation-fill-default-2 p-4">
+          <Typography
+            as="h3"
+            size="title-5"
+            className="mb-2"
+          >
+            Submitted Data:
+          </Typography>
           <pre className="text-sm">{JSON.stringify(submittedData, null, 2)}</pre>
         </div>
       )}
@@ -125,7 +143,7 @@ function AutosaveFormExample() {
     onAutosave: async (data: Partial<AutosaveFormType>) => {
       console.log("Autosave triggered:", data);
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 500));
       setAutosaveData(data as AutosaveFormType);
       setLastSavedAt(new Date());
     },
@@ -134,12 +152,22 @@ function AutosaveFormExample() {
 
   return (
     <section className="flex flex-col gap-4">
-      <Typography as="h2" size="title-3">Autosave Form</Typography>
-      <Typography as="p" size="body-2" className="text-content-secondary">
-        A form that automatically saves data as the user types. Uses <code>useFormAutosave</code> hook with debouncing to avoid excessive API calls.
+      <Typography
+        as="h2"
+        size="title-3"
+      >
+        Autosave Form
+      </Typography>
+      <Typography
+        as="p"
+        size="body-2"
+        className="text-content-secondary"
+      >
+        A form that automatically saves data as the user types. Uses <code>useFormAutosave</code> hook with debouncing
+        to avoid excessive API calls.
       </Typography>
 
-      <form className="flex flex-col gap-4 max-w-md">
+      <form className="flex max-w-md flex-col gap-4">
         <TextInput
           formControl={{ control, name: "title" }}
           label="Title"
@@ -160,15 +188,25 @@ function AutosaveFormExample() {
         />
 
         {lastSavedAt && (
-          <Typography as="p" size="body-3" className="text-content-secondary">
+          <Typography
+            as="p"
+            size="body-3"
+            className="text-content-secondary"
+          >
             Last saved at: {lastSavedAt.toLocaleTimeString()}
           </Typography>
         )}
       </form>
 
       {autosaveData && (
-        <div className="mt-4 p-4 bg-elevation-fill-default-2 rounded-lg max-w-md">
-          <Typography as="h3" size="title-5" className="mb-2">Autosaved Data:</Typography>
+        <div className="mt-4 max-w-md rounded-lg bg-elevation-fill-default-2 p-4">
+          <Typography
+            as="h3"
+            size="title-5"
+            className="mb-2"
+          >
+            Autosaved Data:
+          </Typography>
           <pre className="text-sm">{JSON.stringify(autosaveData, null, 2)}</pre>
         </div>
       )}
@@ -178,14 +216,14 @@ function AutosaveFormExample() {
 
 function FormsExamplesPage() {
   return (
-    <div className="p-20 flex flex-col gap-8">
+    <div className="flex flex-col gap-8 p-20">
       <RegularFormExample />
-      <div className="border-t border-elevation-stroke-default" />
+      <div className="border-elevation-stroke-default border-t" />
       <AutosaveFormExample />
     </div>
-  )
+  );
 }
 
-export const Route = createFileRoute('/code-examples/forms')({
+export const Route = createFileRoute("/code-examples/forms")({
   component: FormsExamplesPage,
-})
+});

@@ -1,14 +1,19 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { Typography } from '@povio/ui';
+import { Typography } from "@povio/ui";
+import { createFileRoute } from "@tanstack/react-router";
 
 function HomePage() {
   return (
-    <div className="p-20 flex flex-col gap-10 justify-center items-center">
-      <Typography as="h1" size="title-4">Hello World!</Typography>
+    <div className="flex flex-col items-center justify-center gap-10 p-20">
+      <Typography
+        as="h1"
+        size="title-4"
+      >
+        Hello World!
+      </Typography>
     </div>
   );
 }
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute("/")({
   component: HomePage,
 });

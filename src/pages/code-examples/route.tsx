@@ -1,10 +1,11 @@
-import { RouteConfig } from '@/config/route.config'
-import { createFileRoute, Link, Outlet } from '@tanstack/react-router'
+import { Link, Outlet, createFileRoute } from "@tanstack/react-router";
+
+import { RouteConfig } from "@/config/route.config";
 
 function CodeExamplesLayout() {
   return (
     <div>
-      <header className="flex justify-between items-center p-5 bg-elevation-fill-default-3">
+      <header className="flex items-center justify-between bg-elevation-fill-default-3 p-5">
         <Link to={RouteConfig.home.to}>Home</Link>
 
         <nav className="flex gap-4">
@@ -21,9 +22,9 @@ function CodeExamplesLayout() {
 
       <Outlet />
     </div>
-  )
+  );
 }
 
-export const Route = createFileRoute('/code-examples')({
+export const Route = createFileRoute("/code-examples")({
   component: CodeExamplesLayout,
-})
+});

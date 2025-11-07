@@ -8,6 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
     "openapi:gen": "openapi-codegen generate",
     "openapi:md": "openapi-to-md openapi.json > api-documentation.md"
   },
@@ -29,6 +31,7 @@
     "zustand": "^5.0.8"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.3.4",
     "@eslint/js": "^9.38.0",
     "@povio/openapi-codegen-cli": "^1.2.3",
     "@tanstack/router-plugin": "^1.99.14",

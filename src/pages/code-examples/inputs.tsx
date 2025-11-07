@@ -1,6 +1,25 @@
-import { TextArea, NumberInput, TextInput, useForm, Select, PasswordInput, Autocomplete, Slider, Checkbox, Toggle, RadioGroup, DatePicker, DateRangePicker, TimePicker, DateTimePicker, Segment, InputUpload, Button } from '@povio/ui';
-import { createFileRoute } from '@tanstack/react-router'
-import z from 'zod'
+import {
+  Autocomplete,
+  Button,
+  Checkbox,
+  DatePicker,
+  DateRangePicker,
+  DateTimePicker,
+  InputUpload,
+  NumberInput,
+  PasswordInput,
+  RadioGroup,
+  Segment,
+  Select,
+  Slider,
+  TextArea,
+  TextInput,
+  TimePicker,
+  Toggle,
+  useForm,
+} from "@povio/ui";
+import { createFileRoute } from "@tanstack/react-router";
+import z from "zod";
 
 enum OptionEnum {
   Option1 = "option-1",
@@ -50,7 +69,6 @@ const segmentOptions = [
 ];
 
 function InputExamplesPage() {
-
   const { control, handleSubmit, reset } = useForm({
     zodSchema: FormSchema,
   });
@@ -60,7 +78,10 @@ function InputExamplesPage() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="p-20 flex flex-col gap-4">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-col gap-4 p-20"
+    >
       <TextInput
         formControl={{ control, name: "input" }}
         label="Input label"
@@ -188,9 +209,9 @@ function InputExamplesPage() {
         </Button>
       </div>
     </form>
-  )
+  );
 }
 
-export const Route = createFileRoute('/code-examples/inputs')({
+export const Route = createFileRoute("/code-examples/inputs")({
   component: InputExamplesPage,
-})
+});

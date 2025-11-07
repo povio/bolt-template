@@ -1,6 +1,6 @@
-import { type Config } from "tailwindcss";
-import tailwindcssReactAriaComponents from "tailwindcss-react-aria-components";
+import type { Config } from "tailwindcss";
 import colors from "tailwindcss/colors";
+import tailwindcssReactAriaComponents from "tailwindcss-react-aria-components";
 
 const pxToRem = (px: number) => `${px / 16}rem`;
 
