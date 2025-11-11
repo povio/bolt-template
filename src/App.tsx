@@ -1,5 +1,6 @@
 import { Confirmation, ToastContainer, UIConfig } from "@povio/ui";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { useState } from "react";
 
@@ -23,6 +24,7 @@ export default function App() {
         <Confirmation.Provider>
           <RouterProvider router={router} />
           <ToastContainer />
+          <ReactQueryDevtools />
         </Confirmation.Provider>
       </UIConfig.Provider>
     </QueryClientProvider>

@@ -1,5 +1,7 @@
 {
   "biome.enabled": true,
+  "oxc.enable": true,
+  "oxc.typeAware": true,
   "files.exclude": {
     "**/.idea": true
   },
@@ -36,5 +38,8 @@
   "[jsonc]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.preferences.importModuleSpecifier": "non-relative",
   "typescript.preferences.includePackageJsonAutoImports": "on"
 }
