@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "support-default": "var(--support-default-base)",
-        "support-inverted": "var(--support-inverted-base)",
+        "support-default": "rgb(var(--support-default-base) / <alpha-value>)",
+        "support-inverted": "rgb(var(--support-inverted-base) / <alpha-value>)",
         "interactive-outlined-primary-idle": "var(--interactive-outlined-primary-idle-base)",
         "interactive-outlined-primary-disabled": "var(--interactive-outlined-primary-disabled-base)",
         "interactive-outlined-secondary-idle": "var(--interactive-outlined-secondary-idle-base)",
@@ -22,343 +22,495 @@ const config: Config = {
         "interactive-outlined-error-idle": "var(--interactive-outlined-error-idle-base)",
         "interactive-outlined-error-disabled": "var(--interactive-outlined-error-disabled-base)",
         "support-overlay": "var(--support-overlay-base)",
-        "elevation-fill-default-1": "var(--elevation-fill-default-1-base)",
-        "elevation-fill-default-2": "var(--elevation-fill-default-2-base)",
-        "elevation-outline-default-1": "var(--elevation-outline-default-1-base)",
-        "elevation-outline-default-2": "var(--elevation-outline-default-2-base)",
-        "interactive-contained-primary-on-idle": "var(--interactive-contained-primary-on-idle-base)",
-        "interactive-contained-primary-idle": "var(--interactive-contained-primary-idle-base)",
-        "interactive-contained-primary-hover": "var(--interactive-contained-primary-hover-base)",
-        "interactive-contained-primary-disabled": "var(--interactive-contained-primary-disabled-base)",
-        "interactive-contained-primary-focus": "var(--interactive-contained-primary-focus-base)",
-        "interactive-contained-secondary-on-idle": "var(--interactive-contained-secondary-on-idle-base)",
-        "interactive-contained-secondary-idle": "var(--interactive-contained-secondary-idle-base)",
-        "interactive-contained-secondary-hover": "var(--interactive-contained-secondary-hover-base)",
-        "interactive-contained-secondary-disabled": "var(--interactive-contained-secondary-disabled-base)",
-        "interactive-contained-secondary-focus": "var(--interactive-contained-secondary-focus-base)",
-        "interactive-outlined-primary-on-idle": "var(--interactive-outlined-primary-on-idle-base)",
-        "interactive-outlined-primary-outline-idle": "var(--interactive-outlined-primary-outline-idle-base)",
-        "interactive-outlined-primary-outline-hover": "var(--interactive-outlined-primary-outline-hover-base)",
-        "interactive-outlined-primary-outline-disabled": "var(--interactive-outlined-primary-outline-disabled-base)",
-        "interactive-outlined-primary-focus": "var(--interactive-outlined-primary-focus-base)",
-        "text-default-1": "var(--text-default-1-base)",
-        "text-default-2": "var(--text-default-2-base)",
-        "text-inverted-1": "var(--text-inverted-1-base)",
-        "text-inverted-2": "var(--text-inverted-2-base)",
-        "text-default-3": "var(--text-default-3-base)",
-        "text-inverted-3": "var(--text-inverted-3-base)",
-        "interactive-contained-primary-pressed": "var(--interactive-contained-primary-pressed-base)",
-        "interactive-contained-secondary-pressed": "var(--interactive-contained-secondary-pressed-base)",
-        "interactive-outlined-primary-outline-pressed": "var(--interactive-outlined-primary-outline-pressed-base)",
-        "elevation-fill-default-3": "#EDEEF1",
-        "input-outlined-idle": "var(--input-outlined-idle-base)",
-        "input-outlined-active": "var(--input-outlined-active-base)",
-        "input-filled-idle": "var(--input-filled-idle-base)",
-        "input-filled-active": "var(--input-filled-active-base)",
-        "input-outlined-hover": "var(--input-outlined-hover-base)",
-        "input-outlined-error": "var(--input-outlined-error-base)",
-        "input-outlined-disabled": "var(--input-outlined-disabled-base)",
-        "input-filled-hover": "var(--input-filled-hover-base)",
-        "input-filled-error": "var(--input-filled-error-base)",
-        "input-filled-disabled": "var(--input-filled-disabled-base)",
-        "interactive-contained-success-on-idle": "var(--interactive-contained-success-on-idle-base)",
-        "interactive-contained-success-idle": "var(--interactive-contained-success-idle-base)",
-        "interactive-contained-success-hover": "var(--interactive-contained-success-hover-base)",
-        "interactive-contained-success-pressed": "var(--interactive-contained-success-pressed-base)",
-        "interactive-contained-success-disabled": "var(--interactive-contained-success-disabled-base)",
-        "interactive-contained-success-focus": "var(--interactive-contained-success-focus-base)",
-        "interactive-contained-warning-on-idle": "var(--interactive-contained-warning-on-idle-base)",
-        "interactive-contained-warning-idle": "var(--interactive-contained-warning-idle-base)",
-        "interactive-contained-warning-hover": "var(--interactive-contained-warning-hover-base)",
-        "interactive-contained-warning-pressed": "var(--interactive-contained-warning-pressed-base)",
-        "interactive-contained-warning-disabled": "var(--interactive-contained-warning-disabled-base)",
-        "interactive-contained-warning-focus": "var(--interactive-contained-warning-focus-base)",
-        "interactive-contained-error-on-idle": "var(--interactive-contained-error-on-idle-base)",
-        "interactive-contained-error-idle": "var(--interactive-contained-error-idle-base)",
-        "interactive-contained-error-hover": "var(--interactive-contained-error-hover-base)",
-        "interactive-contained-error-pressed": "var(--interactive-contained-error-pressed-base)",
-        "interactive-contained-error-disabled": "var(--interactive-contained-error-disabled-base)",
-        "interactive-contained-error-focus": "var(--interactive-contained-error-focus-base)",
-        "interactive-outlined-secondary-on-idle": "var(--interactive-outlined-secondary-on-idle-base)",
-        "interactive-outlined-secondary-outline-idle": "var(--interactive-outlined-secondary-outline-idle-base)",
-        "interactive-outlined-secondary-outline-hover": "var(--interactive-outlined-secondary-outline-hover-base)",
-        "interactive-outlined-secondary-outline-pressed": "var(--interactive-outlined-secondary-outline-pressed-base)",
+        "elevation-fill-default-1": "rgb(var(--elevation-fill-default-1-base) / <alpha-value>)",
+        "elevation-fill-default-2": "rgb(var(--elevation-fill-default-2-base) / <alpha-value>)",
+        "elevation-outline-default-1": "rgb(var(--elevation-outline-default-1-base) / <alpha-value>)",
+        "elevation-outline-default-2": "rgb(var(--elevation-outline-default-2-base) / <alpha-value>)",
+        "interactive-contained-primary-on-idle":
+          "rgb(var(--interactive-contained-primary-on-idle-base) / <alpha-value>)",
+        "interactive-contained-primary-idle": "rgb(var(--interactive-contained-primary-idle-base) / <alpha-value>)",
+        "interactive-contained-primary-hover": "rgb(var(--interactive-contained-primary-hover-base) / <alpha-value>)",
+        "interactive-contained-primary-disabled":
+          "rgb(var(--interactive-contained-primary-disabled-base) / <alpha-value>)",
+        "interactive-contained-primary-focus": "rgb(var(--interactive-contained-primary-focus-base) / <alpha-value>)",
+        "interactive-contained-secondary-on-idle":
+          "rgb(var(--interactive-contained-secondary-on-idle-base) / <alpha-value>)",
+        "interactive-contained-secondary-idle": "rgb(var(--interactive-contained-secondary-idle-base) / <alpha-value>)",
+        "interactive-contained-secondary-hover":
+          "rgb(var(--interactive-contained-secondary-hover-base) / <alpha-value>)",
+        "interactive-contained-secondary-disabled":
+          "rgb(var(--interactive-contained-secondary-disabled-base) / <alpha-value>)",
+        "interactive-contained-secondary-focus":
+          "rgb(var(--interactive-contained-secondary-focus-base) / <alpha-value>)",
+        "interactive-outlined-primary-on-idle": "rgb(var(--interactive-outlined-primary-on-idle-base) / <alpha-value>)",
+        "interactive-outlined-primary-outline-idle":
+          "rgb(var(--interactive-outlined-primary-outline-idle-base) / <alpha-value>)",
+        "interactive-outlined-primary-outline-hover":
+          "rgb(var(--interactive-outlined-primary-outline-hover-base) / <alpha-value>)",
+        "interactive-outlined-primary-outline-disabled":
+          "rgb(var(--interactive-outlined-primary-outline-disabled-base) / <alpha-value>)",
+        "interactive-outlined-primary-focus": "rgb(var(--interactive-outlined-primary-focus-base) / <alpha-value>)",
+        "text-default-1": "rgb(var(--text-default-1-base) / <alpha-value>)",
+        "text-default-2": "rgb(var(--text-default-2-base) / <alpha-value>)",
+        "text-inverted-1": "rgb(var(--text-inverted-1-base) / <alpha-value>)",
+        "text-inverted-2": "rgb(var(--text-inverted-2-base) / <alpha-value>)",
+        "text-default-3": "rgb(var(--text-default-3-base) / <alpha-value>)",
+        "text-inverted-3": "rgb(var(--text-inverted-3-base) / <alpha-value>)",
+        "interactive-contained-primary-pressed":
+          "rgb(var(--interactive-contained-primary-pressed-base) / <alpha-value>)",
+        "interactive-contained-secondary-pressed":
+          "rgb(var(--interactive-contained-secondary-pressed-base) / <alpha-value>)",
+        "interactive-outlined-primary-outline-pressed":
+          "rgb(var(--interactive-outlined-primary-outline-pressed-base) / <alpha-value>)",
+        "elevation-fill-default-3": "rgb(var(--elevation-fill-default-3-base) / <alpha-value>)",
+        "input-outlined-idle": "rgb(var(--input-outlined-idle-base) / <alpha-value>)",
+        "input-outlined-active": "rgb(var(--input-outlined-active-base) / <alpha-value>)",
+        "input-filled-idle": "rgb(var(--input-filled-idle-base) / <alpha-value>)",
+        "input-filled-active": "rgb(var(--input-filled-active-base) / <alpha-value>)",
+        "input-outlined-hover": "rgb(var(--input-outlined-hover-base) / <alpha-value>)",
+        "input-outlined-error": "rgb(var(--input-outlined-error-base) / <alpha-value>)",
+        "input-outlined-disabled": "rgb(var(--input-outlined-disabled-base) / <alpha-value>)",
+        "input-filled-hover": "rgb(var(--input-filled-hover-base) / <alpha-value>)",
+        "input-filled-error": "rgb(var(--input-filled-error-base) / <alpha-value>)",
+        "input-filled-disabled": "rgb(var(--input-filled-disabled-base) / <alpha-value>)",
+        "interactive-contained-success-on-idle":
+          "rgb(var(--interactive-contained-success-on-idle-base) / <alpha-value>)",
+        "interactive-contained-success-idle": "rgb(var(--interactive-contained-success-idle-base) / <alpha-value>)",
+        "interactive-contained-success-hover": "rgb(var(--interactive-contained-success-hover-base) / <alpha-value>)",
+        "interactive-contained-success-pressed":
+          "rgb(var(--interactive-contained-success-pressed-base) / <alpha-value>)",
+        "interactive-contained-success-disabled":
+          "rgb(var(--interactive-contained-success-disabled-base) / <alpha-value>)",
+        "interactive-contained-success-focus": "rgb(var(--interactive-contained-success-focus-base) / <alpha-value>)",
+        "interactive-contained-warning-on-idle":
+          "rgb(var(--interactive-contained-warning-on-idle-base) / <alpha-value>)",
+        "interactive-contained-warning-idle": "rgb(var(--interactive-contained-warning-idle-base) / <alpha-value>)",
+        "interactive-contained-warning-hover": "rgb(var(--interactive-contained-warning-hover-base) / <alpha-value>)",
+        "interactive-contained-warning-pressed":
+          "rgb(var(--interactive-contained-warning-pressed-base) / <alpha-value>)",
+        "interactive-contained-warning-disabled":
+          "rgb(var(--interactive-contained-warning-disabled-base) / <alpha-value>)",
+        "interactive-contained-warning-focus": "rgb(var(--interactive-contained-warning-focus-base) / <alpha-value>)",
+        "interactive-contained-error-on-idle": "rgb(var(--interactive-contained-error-on-idle-base) / <alpha-value>)",
+        "interactive-contained-error-idle": "rgb(var(--interactive-contained-error-idle-base) / <alpha-value>)",
+        "interactive-contained-error-hover": "rgb(var(--interactive-contained-error-hover-base) / <alpha-value>)",
+        "interactive-contained-error-pressed": "rgb(var(--interactive-contained-error-pressed-base) / <alpha-value>)",
+        "interactive-contained-error-disabled": "rgb(var(--interactive-contained-error-disabled-base) / <alpha-value>)",
+        "interactive-contained-error-focus": "rgb(var(--interactive-contained-error-focus-base) / <alpha-value>)",
+        "interactive-outlined-secondary-on-idle":
+          "rgb(var(--interactive-outlined-secondary-on-idle-base) / <alpha-value>)",
+        "interactive-outlined-secondary-outline-idle":
+          "rgb(var(--interactive-outlined-secondary-outline-idle-base) / <alpha-value>)",
+        "interactive-outlined-secondary-outline-hover":
+          "rgb(var(--interactive-outlined-secondary-outline-hover-base) / <alpha-value>)",
+        "interactive-outlined-secondary-outline-pressed":
+          "rgb(var(--interactive-outlined-secondary-outline-pressed-base) / <alpha-value>)",
         "interactive-outlined-secondary-outline-disabled":
-          "var(--interactive-outlined-secondary-outline-disabled-base)",
-        "interactive-outlined-secondary-focus": "var(--interactive-outlined-secondary-focus-base)",
-        "interactive-outlined-success-on-idle": "var(--interactive-outlined-success-on-idle-base)",
-        "interactive-outlined-success-outline-idle": "var(--interactive-outlined-success-outline-idle-base)",
-        "interactive-outlined-success-outline-hover": "var(--interactive-outlined-success-outline-hover-base)",
-        "interactive-outlined-success-outline-pressed": "var(--interactive-outlined-success-outline-pressed-base)",
-        "interactive-outlined-success-outline-disabled": "var(--interactive-outlined-success-outline-disabled-base)",
-        "interactive-outlined-success-focus": "var(--interactive-outlined-success-focus-base)",
-        "interactive-outlined-warning-on-idle": "var(--interactive-outlined-warning-on-idle-base)",
-        "interactive-outlined-warning-outline-idle": "var(--interactive-outlined-warning-outline-idle-base)",
-        "interactive-outlined-warning-outline-hover": "var(--interactive-outlined-warning-outline-hover-base)",
-        "interactive-outlined-warning-outline-pressed": "var(--interactive-outlined-warning-outline-pressed-base)",
-        "interactive-outlined-warning-outline-disabled": "var(--interactive-outlined-warning-outline-disabled-base)",
-        "interactive-outlined-warning-focus": "var(--interactive-outlined-warning-focus-base)",
-        "interactive-outlined-error-on-idle": "var(--interactive-outlined-error-on-idle-base)",
-        "interactive-outlined-error-outline-idle": "var(--interactive-outlined-error-outline-idle-base)",
-        "interactive-outlined-error-outline-hover": "var(--interactive-outlined-error-outline-hover-base)",
-        "interactive-outlined-error-outline-pressed": "var(--interactive-outlined-error-outline-pressed-base)",
-        "interactive-outlined-error-outline-disabled": "var(--interactive-outlined-error-outline-disabled-base)",
-        "interactive-outlined-error-focus": "var(--interactive-outlined-error-focus-base)",
-        "interactive-subtle-primary-on-idle": "var(--interactive-subtle-primary-on-idle-base)",
-        "interactive-subtle-primary-idle": "var(--interactive-subtle-primary-idle-base)",
-        "interactive-subtle-primary-hover": "var(--interactive-subtle-primary-hover-base)",
-        "interactive-subtle-primary-pressed": "var(--interactive-subtle-primary-pressed-base)",
-        "interactive-subtle-primary-disabled": "var(--interactive-subtle-primary-disabled-base)",
-        "interactive-subtle-primary-focus": "var(--interactive-subtle-primary-focus-base)",
-        "interactive-subtle-secondary-on-idle": "var(--interactive-subtle-secondary-on-idle-base)",
-        "interactive-subtle-secondary-idle": "var(--interactive-subtle-secondary-idle-base)",
-        "interactive-subtle-secondary-hover": "var(--interactive-subtle-secondary-hover-base)",
-        "interactive-subtle-secondary-pressed": "var(--interactive-subtle-secondary-pressed-base)",
-        "interactive-subtle-secondary-disabled": "var(--interactive-subtle-secondary-disabled-base)",
-        "interactive-subtle-secondary-focus": "var(--interactive-subtle-secondary-focus-base)",
-        "interactive-subtle-success-on-idle": "var(--interactive-subtle-success-on-idle-base)",
-        "interactive-subtle-success-idle": "var(--interactive-subtle-success-idle-base)",
-        "interactive-subtle-success-hover": "var(--interactive-subtle-success-hover-base)",
-        "interactive-subtle-success-pressed": "var(--interactive-subtle-success-pressed-base)",
-        "interactive-subtle-success-disabled": "var(--interactive-subtle-success-disabled-base)",
-        "interactive-subtle-success-focus": "var(--interactive-subtle-success-focus-base)",
-        "interactive-subtle-warning-on-idle": "var(--interactive-subtle-warning-on-idle-base)",
-        "interactive-subtle-warning-idle": "var(--interactive-subtle-warning-idle-base)",
-        "interactive-subtle-warning-hover": "var(--interactive-subtle-warning-hover-base)",
-        "interactive-subtle-warning-pressed": "var(--interactive-subtle-warning-pressed-base)",
-        "interactive-subtle-warning-disabled": "var(--interactive-subtle-warning-disabled-base)",
-        "interactive-subtle-warning-focus": "var(--interactive-subtle-warning-focus-base)",
-        "interactive-subtle-error-on-idle": "var(--interactive-subtle-error-on-idle-base)",
-        "interactive-subtle-error-idle": "var(--interactive-subtle-error-idle-base)",
-        "interactive-subtle-error-hover": "var(--interactive-subtle-error-hover-base)",
-        "interactive-subtle-error-pressed": "var(--interactive-subtle-error-pressed-base)",
-        "interactive-subtle-error-disabled": "var(--interactive-subtle-error-disabled-base)",
-        "interactive-subtle-error-focus": "var(--interactive-subtle-error-focus-base)",
-        "interactive-subtle-primary-on-disabled": "var(--interactive-subtle-primary-on-disabled-base)",
-        "interactive-subtle-secondary-on-disabled": "var(--interactive-subtle-secondary-on-disabled-base)",
-        "interactive-subtle-success-on-disabled": "var(--interactive-subtle-success-on-disabled-base)",
-        "interactive-subtle-warning-on-disabled": "var(--interactive-subtle-warning-on-disabled-base)",
-        "interactive-subtle-error-on-disabled": "var(--interactive-subtle-error-on-disabled-base)",
-        "text-success-1": "var(--text-success-1-base)",
-        "text-warning-1": "var(--text-warning-1-base)",
-        "text-error-1": "var(--text-error-1-base)",
-        "interactive-text-primary-idle": "var(--interactive-text-primary-idle-base)",
-        "interactive-text-primary-hover": "var(--interactive-text-primary-hover-base)",
-        "interactive-text-primary-pressed": "var(--interactive-text-primary-pressed-base)",
-        "interactive-text-primary-disabled": "var(--interactive-text-primary-disabled-base)",
-        "interactive-text-primary-idle-inverted": "var(--interactive-text-primary-idle-inverted-base)",
-        "interactive-text-primary-hover-inverted": "var(--interactive-text-primary-hover-inverted-base)",
-        "interactive-text-primary-pressed-inverted": "var(--interactive-text-primary-pressed-inverted-base)",
-        "interactive-text-secondary-idle": "var(--interactive-text-secondary-idle-base)",
-        "interactive-text-secondary-hover": "var(--interactive-text-secondary-hover-base)",
-        "interactive-text-secondary-pressed": "var(--interactive-text-secondary-pressed-base)",
-        "interactive-text-secondary-disabled": "var(--interactive-text-secondary-disabled-base)",
-        "interactive-text-secondary-idle-inverted": "var(--interactive-text-secondary-idle-inverted-base)",
-        "interactive-text-secondary-hover-inverted": "var(--interactive-text-secondary-hover-inverted-base)",
-        "interactive-text-secondary-pressed-inverted": "var(--interactive-text-secondary-pressed-inverted-base)",
-        "interactive-text-success-idle": "var(--interactive-text-success-idle-base)",
-        "interactive-text-success-hover": "var(--interactive-text-success-hover-base)",
-        "interactive-text-success-pressed": "var(--interactive-text-success-pressed-base)",
-        "interactive-text-success-disabled": "var(--interactive-text-success-disabled-base)",
-        "interactive-text-success-idle-inverted": "var(--interactive-text-success-idle-inverted-base)",
-        "interactive-text-success-hover-inverted": "var(--interactive-text-success-hover-inverted-base)",
-        "interactive-text-success-pressed-inverted": "var(--interactive-text-success-pressed-inverted-base)",
-        "interactive-text-warning-idle": "var(--interactive-text-warning-idle-base)",
-        "interactive-text-warning-hover": "var(--interactive-text-warning-hover-base)",
-        "interactive-text-warning-pressed": "var(--interactive-text-warning-pressed-base)",
-        "interactive-text-warning-disabled": "var(--interactive-text-warning-disabled-base)",
-        "interactive-text-warning-idle-inverted": "var(--interactive-text-warning-idle-inverted-base)",
-        "interactive-text-warning-hover-inverted": "var(--interactive-text-warning-hover-inverted-base)",
-        "interactive-text-warning-pressed-inverted": "var(--interactive-text-warning-pressed-inverted-base)",
-        "interactive-text-error-idle": "var(--interactive-text-error-idle-base)",
-        "interactive-text-error-hover": "var(--interactive-text-error-hover-base)",
-        "interactive-text-error-pressed": "var(--interactive-text-error-pressed-base)",
-        "interactive-text-error-disabled": "var(--interactive-text-error-disabled-base)",
-        "interactive-text-error-idle-inverted": "var(--interactive-text-error-idle-inverted-base)",
-        "interactive-text-error-hover-inverted": "var(--interactive-text-error-hover-inverted-base)",
-        "interactive-text-error-pressed-inverted": "var(--interactive-text-error-pressed-inverted-base)",
-        "interactive-outlined-primary-hover": "var(--interactive-outlined-primary-hover-base)",
-        "interactive-outlined-secondary-hover": "var(--interactive-outlined-secondary-hover-base)",
-        "interactive-outlined-success-hover": "var(--interactive-outlined-success-hover-base)",
-        "interactive-outlined-warning-hover": "var(--interactive-outlined-warning-hover-base)",
-        "interactive-outlined-error-hover": "var(--interactive-outlined-error-hover-base)",
-        "elevation-outline-default-3": "var(--elevation-outline-default-3-base)",
-        "elevation-outline-inverted-1": "var(--elevation-outline-inverted-1-base)",
-        "elevation-outline-inverted-2": "var(--elevation-outline-inverted-2-base)",
-        "elevation-outline-inverted-3": "var(--elevation-outline-inverted-3-base)",
-        "elevation-outline-success-1": "var(--elevation-outline-success-1-base)",
-        "elevation-outline-warning-1": "var(--elevation-outline-warning-1-base)",
-        "elevation-outline-error-1": "var(--elevation-outline-error-1-base)",
-        "elevation-fill-inverted-1": "var(--elevation-fill-inverted-1-base)",
-        "elevation-fill-inverted-2": "var(--elevation-fill-inverted-2-base)",
-        "elevation-fill-inverted-3": "var(--elevation-fill-inverted-3-base)",
-        "elevation-fill-success-1": "var(--elevation-fill-success-1-base)",
-        "elevation-fill-warning-1": "var(--elevation-fill-warning-1-base)",
-        "elevation-fill-error-1": "var(--elevation-fill-error-1-base)",
-        "text-success-2": "var(--text-success-2-base)",
-        "text-warning-2": "var(--text-warning-2-base)",
-        "text-error-2": "var(--text-error-2-base)",
-        "text-success-3": "var(--text-success-3-base)",
-        "text-warning-3": "var(--text-warning-3-base)",
-        "text-error-3": "var(--text-error-3-base)",
-        "interactive-contained-primary-on-hover": "var(--interactive-contained-primary-on-hover-base)",
-        "interactive-contained-primary-on-pressed": "var(--interactive-contained-primary-on-pressed-base)",
-        "interactive-contained-primary-on-disabled": "var(--interactive-contained-primary-on-disabled-base)",
-        "interactive-contained-secondary-on-hover": "var(--interactive-contained-secondary-on-hover-base)",
-        "interactive-contained-secondary-on-pressed": "var(--interactive-contained-secondary-on-pressed-base)",
-        "interactive-contained-secondary-on-disabled": "var(--interactive-contained-secondary-on-disabled-base)",
-        "interactive-contained-success-on-hover": "var(--interactive-contained-success-on-hover-base)",
-        "interactive-contained-success-on-pressed": "var(--interactive-contained-success-on-pressed-base)",
-        "interactive-contained-success-on-disabled": "var(--interactive-contained-success-on-disabled-base)",
-        "interactive-contained-warning-on-hover": "var(--interactive-contained-warning-on-hover-base)",
-        "interactive-contained-warning-on-pressed": "var(--interactive-contained-warning-on-pressed-base)",
-        "interactive-contained-warning-on-disabled": "var(--interactive-contained-warning-on-disabled-base)",
-        "interactive-contained-error-on-hover": "var(--interactive-contained-error-on-hover-base)",
-        "interactive-contained-error-on-pressed": "var(--interactive-contained-error-on-pressed-base)",
-        "interactive-contained-error-on-disabled": "var(--interactive-contained-error-on-disabled-base)",
-        "interactive-outlined-primary-on-hover": "var(--interactive-outlined-primary-on-hover-base)",
-        "interactive-outlined-primary-on-pressed": "var(--interactive-outlined-primary-on-pressed-base)",
-        "interactive-outlined-primary-on-disabled": "var(--interactive-outlined-primary-on-disabled-base)",
-        "interactive-outlined-secondary-on-hover": "var(--interactive-outlined-secondary-on-hover-base)",
-        "interactive-outlined-secondary-on-pressed": "var(--interactive-outlined-secondary-on-pressed-base)",
-        "interactive-outlined-secondary-on-disabled": "var(--interactive-outlined-secondary-on-disabled-base)",
-        "interactive-outlined-success-on-hover": "var(--interactive-outlined-success-on-hover-base)",
-        "interactive-outlined-success-on-pressed": "var(--interactive-outlined-success-on-pressed-base)",
-        "interactive-outlined-success-on-disabled": "var(--interactive-outlined-success-on-disabled-base)",
-        "interactive-outlined-warning-on-hover": "var(--interactive-outlined-warning-on-hover-base)",
-        "interactive-outlined-warning-on-pressed": "var(--interactive-outlined-warning-on-pressed-base)",
-        "interactive-outlined-warning-on-disabled": "var(--interactive-outlined-warning-on-disabled-base)",
-        "interactive-outlined-error-on-hover": "var(--interactive-outlined-error-on-hover-base)",
-        "interactive-outlined-error-on-pressed": "var(--interactive-outlined-error-on-pressed-base)",
-        "interactive-outlined-error-on-disabled": "var(--interactive-outlined-error-on-disabled-base)",
-        "interactive-subtle-primary-toggled-idle": "var(--interactive-subtle-primary-toggled-idle-base)",
-        "interactive-subtle-primary-on-hover": "var(--interactive-subtle-primary-on-hover-base)",
-        "interactive-subtle-primary-on-pressed": "var(--interactive-subtle-primary-on-pressed-base)",
-        "interactive-subtle-primary-on-toggled-idle": "var(--interactive-subtle-primary-on-toggled-idle-base)",
-        "interactive-subtle-secondary-toggled-idle": "var(--interactive-subtle-secondary-toggled-idle-base)",
-        "interactive-subtle-secondary-on-hover": "var(--interactive-subtle-secondary-on-hover-base)",
-        "interactive-subtle-secondary-on-pressed": "var(--interactive-subtle-secondary-on-pressed-base)",
-        "interactive-subtle-secondary-on-toggled-idle": "var(--interactive-subtle-secondary-on-toggled-idle-base)",
-        "interactive-subtle-success-on-hover": "var(--interactive-subtle-success-on-hover-base)",
-        "interactive-subtle-success-on-pressed": "var(--interactive-subtle-success-on-pressed-base)",
-        "interactive-subtle-warning-on-hover": "var(--interactive-subtle-warning-on-hover-base)",
-        "interactive-subtle-warning-on-pressed": "var(--interactive-subtle-warning-on-pressed-base)",
-        "interactive-subtle-error-on-hover": "var(--interactive-subtle-error-on-hover-base)",
-        "interactive-subtle-error-on-pressed": "var(--interactive-subtle-error-on-pressed-base)",
-        "interactive-outlined-primary-on-toggled-idle": "var(--interactive-outlined-primary-on-toggled-idle-base)",
-        "interactive-outlined-primary-on-toggled-hover": "var(--interactive-outlined-primary-on-toggled-hover-base)",
+          "rgb(var(--interactive-outlined-secondary-outline-disabled-base) / <alpha-value>)",
+        "interactive-outlined-secondary-focus": "rgb(var(--interactive-outlined-secondary-focus-base) / <alpha-value>)",
+        "interactive-outlined-success-on-idle": "rgb(var(--interactive-outlined-success-on-idle-base) / <alpha-value>)",
+        "interactive-outlined-success-outline-idle":
+          "rgb(var(--interactive-outlined-success-outline-idle-base) / <alpha-value>)",
+        "interactive-outlined-success-outline-hover":
+          "rgb(var(--interactive-outlined-success-outline-hover-base) / <alpha-value>)",
+        "interactive-outlined-success-outline-pressed":
+          "rgb(var(--interactive-outlined-success-outline-pressed-base) / <alpha-value>)",
+        "interactive-outlined-success-outline-disabled":
+          "rgb(var(--interactive-outlined-success-outline-disabled-base) / <alpha-value>)",
+        "interactive-outlined-success-focus": "rgb(var(--interactive-outlined-success-focus-base) / <alpha-value>)",
+        "interactive-outlined-warning-on-idle": "rgb(var(--interactive-outlined-warning-on-idle-base) / <alpha-value>)",
+        "interactive-outlined-warning-outline-idle":
+          "rgb(var(--interactive-outlined-warning-outline-idle-base) / <alpha-value>)",
+        "interactive-outlined-warning-outline-hover":
+          "rgb(var(--interactive-outlined-warning-outline-hover-base) / <alpha-value>)",
+        "interactive-outlined-warning-outline-pressed":
+          "rgb(var(--interactive-outlined-warning-outline-pressed-base) / <alpha-value>)",
+        "interactive-outlined-warning-outline-disabled":
+          "rgb(var(--interactive-outlined-warning-outline-disabled-base) / <alpha-value>)",
+        "interactive-outlined-warning-focus": "rgb(var(--interactive-outlined-warning-focus-base) / <alpha-value>)",
+        "interactive-outlined-error-on-idle": "rgb(var(--interactive-outlined-error-on-idle-base) / <alpha-value>)",
+        "interactive-outlined-error-outline-idle":
+          "rgb(var(--interactive-outlined-error-outline-idle-base) / <alpha-value>)",
+        "interactive-outlined-error-outline-hover":
+          "rgb(var(--interactive-outlined-error-outline-hover-base) / <alpha-value>)",
+        "interactive-outlined-error-outline-pressed":
+          "rgb(var(--interactive-outlined-error-outline-pressed-base) / <alpha-value>)",
+        "interactive-outlined-error-outline-disabled":
+          "rgb(var(--interactive-outlined-error-outline-disabled-base) / <alpha-value>)",
+        "interactive-outlined-error-focus": "rgb(var(--interactive-outlined-error-focus-base) / <alpha-value>)",
+        "interactive-subtle-primary-on-idle": "rgb(var(--interactive-subtle-primary-on-idle-base) / <alpha-value>)",
+        "interactive-subtle-primary-idle": "rgb(var(--interactive-subtle-primary-idle-base) / <alpha-value>)",
+        "interactive-subtle-primary-hover": "rgb(var(--interactive-subtle-primary-hover-base) / <alpha-value>)",
+        "interactive-subtle-primary-pressed": "rgb(var(--interactive-subtle-primary-pressed-base) / <alpha-value>)",
+        "interactive-subtle-primary-disabled": "rgb(var(--interactive-subtle-primary-disabled-base) / <alpha-value>)",
+        "interactive-subtle-primary-focus": "rgb(var(--interactive-subtle-primary-focus-base) / <alpha-value>)",
+        "interactive-subtle-secondary-on-idle": "rgb(var(--interactive-subtle-secondary-on-idle-base) / <alpha-value>)",
+        "interactive-subtle-secondary-idle": "rgb(var(--interactive-subtle-secondary-idle-base) / <alpha-value>)",
+        "interactive-subtle-secondary-hover": "rgb(var(--interactive-subtle-secondary-hover-base) / <alpha-value>)",
+        "interactive-subtle-secondary-pressed": "rgb(var(--interactive-subtle-secondary-pressed-base) / <alpha-value>)",
+        "interactive-subtle-secondary-disabled":
+          "rgb(var(--interactive-subtle-secondary-disabled-base) / <alpha-value>)",
+        "interactive-subtle-secondary-focus": "rgb(var(--interactive-subtle-secondary-focus-base) / <alpha-value>)",
+        "interactive-subtle-success-on-idle": "rgb(var(--interactive-subtle-success-on-idle-base) / <alpha-value>)",
+        "interactive-subtle-success-idle": "rgb(var(--interactive-subtle-success-idle-base) / <alpha-value>)",
+        "interactive-subtle-success-hover": "rgb(var(--interactive-subtle-success-hover-base) / <alpha-value>)",
+        "interactive-subtle-success-pressed": "rgb(var(--interactive-subtle-success-pressed-base) / <alpha-value>)",
+        "interactive-subtle-success-disabled": "rgb(var(--interactive-subtle-success-disabled-base) / <alpha-value>)",
+        "interactive-subtle-success-focus": "rgb(var(--interactive-subtle-success-focus-base) / <alpha-value>)",
+        "interactive-subtle-warning-on-idle": "rgb(var(--interactive-subtle-warning-on-idle-base) / <alpha-value>)",
+        "interactive-subtle-warning-idle": "rgb(var(--interactive-subtle-warning-idle-base) / <alpha-value>)",
+        "interactive-subtle-warning-hover": "rgb(var(--interactive-subtle-warning-hover-base) / <alpha-value>)",
+        "interactive-subtle-warning-pressed": "rgb(var(--interactive-subtle-warning-pressed-base) / <alpha-value>)",
+        "interactive-subtle-warning-disabled": "rgb(var(--interactive-subtle-warning-disabled-base) / <alpha-value>)",
+        "interactive-subtle-warning-focus": "rgb(var(--interactive-subtle-warning-focus-base) / <alpha-value>)",
+        "interactive-subtle-error-on-idle": "rgb(var(--interactive-subtle-error-on-idle-base) / <alpha-value>)",
+        "interactive-subtle-error-idle": "rgb(var(--interactive-subtle-error-idle-base) / <alpha-value>)",
+        "interactive-subtle-error-hover": "rgb(var(--interactive-subtle-error-hover-base) / <alpha-value>)",
+        "interactive-subtle-error-pressed": "rgb(var(--interactive-subtle-error-pressed-base) / <alpha-value>)",
+        "interactive-subtle-error-disabled": "rgb(var(--interactive-subtle-error-disabled-base) / <alpha-value>)",
+        "interactive-subtle-error-focus": "rgb(var(--interactive-subtle-error-focus-base) / <alpha-value>)",
+        "interactive-subtle-primary-on-disabled":
+          "rgb(var(--interactive-subtle-primary-on-disabled-base) / <alpha-value>)",
+        "interactive-subtle-secondary-on-disabled":
+          "rgb(var(--interactive-subtle-secondary-on-disabled-base) / <alpha-value>)",
+        "interactive-subtle-success-on-disabled":
+          "rgb(var(--interactive-subtle-success-on-disabled-base) / <alpha-value>)",
+        "interactive-subtle-warning-on-disabled":
+          "rgb(var(--interactive-subtle-warning-on-disabled-base) / <alpha-value>)",
+        "interactive-subtle-error-on-disabled": "rgb(var(--interactive-subtle-error-on-disabled-base) / <alpha-value>)",
+        "text-success-1": "rgb(var(--text-success-1-base) / <alpha-value>)",
+        "text-warning-1": "rgb(var(--text-warning-1-base) / <alpha-value>)",
+        "text-error-1": "rgb(var(--text-error-1-base) / <alpha-value>)",
+        "interactive-text-primary-idle": "rgb(var(--interactive-text-primary-idle-base) / <alpha-value>)",
+        "interactive-text-primary-hover": "rgb(var(--interactive-text-primary-hover-base) / <alpha-value>)",
+        "interactive-text-primary-pressed": "rgb(var(--interactive-text-primary-pressed-base) / <alpha-value>)",
+        "interactive-text-primary-disabled": "rgb(var(--interactive-text-primary-disabled-base) / <alpha-value>)",
+        "interactive-text-primary-idle-inverted":
+          "rgb(var(--interactive-text-primary-idle-inverted-base) / <alpha-value>)",
+        "interactive-text-primary-hover-inverted":
+          "rgb(var(--interactive-text-primary-hover-inverted-base) / <alpha-value>)",
+        "interactive-text-primary-pressed-inverted":
+          "rgb(var(--interactive-text-primary-pressed-inverted-base) / <alpha-value>)",
+        "interactive-text-secondary-idle": "rgb(var(--interactive-text-secondary-idle-base) / <alpha-value>)",
+        "interactive-text-secondary-hover": "rgb(var(--interactive-text-secondary-hover-base) / <alpha-value>)",
+        "interactive-text-secondary-pressed": "rgb(var(--interactive-text-secondary-pressed-base) / <alpha-value>)",
+        "interactive-text-secondary-disabled": "rgb(var(--interactive-text-secondary-disabled-base) / <alpha-value>)",
+        "interactive-text-secondary-idle-inverted":
+          "rgb(var(--interactive-text-secondary-idle-inverted-base) / <alpha-value>)",
+        "interactive-text-secondary-hover-inverted":
+          "rgb(var(--interactive-text-secondary-hover-inverted-base) / <alpha-value>)",
+        "interactive-text-secondary-pressed-inverted":
+          "rgb(var(--interactive-text-secondary-pressed-inverted-base) / <alpha-value>)",
+        "interactive-text-success-idle": "rgb(var(--interactive-text-success-idle-base) / <alpha-value>)",
+        "interactive-text-success-hover": "rgb(var(--interactive-text-success-hover-base) / <alpha-value>)",
+        "interactive-text-success-pressed": "rgb(var(--interactive-text-success-pressed-base) / <alpha-value>)",
+        "interactive-text-success-disabled": "rgb(var(--interactive-text-success-disabled-base) / <alpha-value>)",
+        "interactive-text-success-idle-inverted":
+          "rgb(var(--interactive-text-success-idle-inverted-base) / <alpha-value>)",
+        "interactive-text-success-hover-inverted":
+          "rgb(var(--interactive-text-success-hover-inverted-base) / <alpha-value>)",
+        "interactive-text-success-pressed-inverted":
+          "rgb(var(--interactive-text-success-pressed-inverted-base) / <alpha-value>)",
+        "interactive-text-warning-idle": "rgb(var(--interactive-text-warning-idle-base) / <alpha-value>)",
+        "interactive-text-warning-hover": "rgb(var(--interactive-text-warning-hover-base) / <alpha-value>)",
+        "interactive-text-warning-pressed": "rgb(var(--interactive-text-warning-pressed-base) / <alpha-value>)",
+        "interactive-text-warning-disabled": "rgb(var(--interactive-text-warning-disabled-base) / <alpha-value>)",
+        "interactive-text-warning-idle-inverted":
+          "rgb(var(--interactive-text-warning-idle-inverted-base) / <alpha-value>)",
+        "interactive-text-warning-hover-inverted":
+          "rgb(var(--interactive-text-warning-hover-inverted-base) / <alpha-value>)",
+        "interactive-text-warning-pressed-inverted":
+          "rgb(var(--interactive-text-warning-pressed-inverted-base) / <alpha-value>)",
+        "interactive-text-error-idle": "rgb(var(--interactive-text-error-idle-base) / <alpha-value>)",
+        "interactive-text-error-hover": "rgb(var(--interactive-text-error-hover-base) / <alpha-value>)",
+        "interactive-text-error-pressed": "rgb(var(--interactive-text-error-pressed-base) / <alpha-value>)",
+        "interactive-text-error-disabled": "rgb(var(--interactive-text-error-disabled-base) / <alpha-value>)",
+        "interactive-text-error-idle-inverted": "rgb(var(--interactive-text-error-idle-inverted-base) / <alpha-value>)",
+        "interactive-text-error-hover-inverted":
+          "rgb(var(--interactive-text-error-hover-inverted-base) / <alpha-value>)",
+        "interactive-text-error-pressed-inverted":
+          "rgb(var(--interactive-text-error-pressed-inverted-base) / <alpha-value>)",
+        "interactive-outlined-primary-hover": "rgb(var(--interactive-outlined-primary-hover-base) / <alpha-value>)",
+        "interactive-outlined-secondary-hover": "rgb(var(--interactive-outlined-secondary-hover-base) / <alpha-value>)",
+        "interactive-outlined-success-hover": "rgb(var(--interactive-outlined-success-hover-base) / <alpha-value>)",
+        "interactive-outlined-warning-hover": "rgb(var(--interactive-outlined-warning-hover-base) / <alpha-value>)",
+        "interactive-outlined-error-hover": "rgb(var(--interactive-outlined-error-hover-base) / <alpha-value>)",
+        "elevation-outline-default-3": "rgb(var(--elevation-outline-default-3-base) / <alpha-value>)",
+        "elevation-outline-inverted-1": "rgb(var(--elevation-outline-inverted-1-base) / <alpha-value>)",
+        "elevation-outline-inverted-2": "rgb(var(--elevation-outline-inverted-2-base) / <alpha-value>)",
+        "elevation-outline-inverted-3": "rgb(var(--elevation-outline-inverted-3-base) / <alpha-value>)",
+        "elevation-outline-success-1": "rgb(var(--elevation-outline-success-1-base) / <alpha-value>)",
+        "elevation-outline-warning-1": "rgb(var(--elevation-outline-warning-1-base) / <alpha-value>)",
+        "elevation-outline-error-1": "rgb(var(--elevation-outline-error-1-base) / <alpha-value>)",
+        "elevation-fill-inverted-1": "rgb(var(--elevation-fill-inverted-1-base) / <alpha-value>)",
+        "elevation-fill-inverted-2": "rgb(var(--elevation-fill-inverted-2-base) / <alpha-value>)",
+        "elevation-fill-inverted-3": "rgb(var(--elevation-fill-inverted-3-base) / <alpha-value>)",
+        "elevation-fill-success-1": "rgb(var(--elevation-fill-success-1-base) / <alpha-value>)",
+        "elevation-fill-warning-1": "rgb(var(--elevation-fill-warning-1-base) / <alpha-value>)",
+        "elevation-fill-error-1": "rgb(var(--elevation-fill-error-1-base) / <alpha-value>)",
+        "text-success-2": "rgb(var(--text-success-2-base) / <alpha-value>)",
+        "text-warning-2": "rgb(var(--text-warning-2-base) / <alpha-value>)",
+        "text-error-2": "rgb(var(--text-error-2-base) / <alpha-value>)",
+        "text-success-3": "rgb(var(--text-success-3-base) / <alpha-value>)",
+        "text-warning-3": "rgb(var(--text-warning-3-base) / <alpha-value>)",
+        "text-error-3": "rgb(var(--text-error-3-base) / <alpha-value>)",
+        "interactive-contained-primary-on-hover":
+          "rgb(var(--interactive-contained-primary-on-hover-base) / <alpha-value>)",
+        "interactive-contained-primary-on-pressed":
+          "rgb(var(--interactive-contained-primary-on-pressed-base) / <alpha-value>)",
+        "interactive-contained-primary-on-disabled":
+          "rgb(var(--interactive-contained-primary-on-disabled-base) / <alpha-value>)",
+        "interactive-contained-secondary-on-hover":
+          "rgb(var(--interactive-contained-secondary-on-hover-base) / <alpha-value>)",
+        "interactive-contained-secondary-on-pressed":
+          "rgb(var(--interactive-contained-secondary-on-pressed-base) / <alpha-value>)",
+        "interactive-contained-secondary-on-disabled":
+          "rgb(var(--interactive-contained-secondary-on-disabled-base) / <alpha-value>)",
+        "interactive-contained-success-on-hover":
+          "rgb(var(--interactive-contained-success-on-hover-base) / <alpha-value>)",
+        "interactive-contained-success-on-pressed":
+          "rgb(var(--interactive-contained-success-on-pressed-base) / <alpha-value>)",
+        "interactive-contained-success-on-disabled":
+          "rgb(var(--interactive-contained-success-on-disabled-base) / <alpha-value>)",
+        "interactive-contained-warning-on-hover":
+          "rgb(var(--interactive-contained-warning-on-hover-base) / <alpha-value>)",
+        "interactive-contained-warning-on-pressed":
+          "rgb(var(--interactive-contained-warning-on-pressed-base) / <alpha-value>)",
+        "interactive-contained-warning-on-disabled":
+          "rgb(var(--interactive-contained-warning-on-disabled-base) / <alpha-value>)",
+        "interactive-contained-error-on-hover": "rgb(var(--interactive-contained-error-on-hover-base) / <alpha-value>)",
+        "interactive-contained-error-on-pressed":
+          "rgb(var(--interactive-contained-error-on-pressed-base) / <alpha-value>)",
+        "interactive-contained-error-on-disabled":
+          "rgb(var(--interactive-contained-error-on-disabled-base) / <alpha-value>)",
+        "interactive-outlined-primary-on-hover":
+          "rgb(var(--interactive-outlined-primary-on-hover-base) / <alpha-value>)",
+        "interactive-outlined-primary-on-pressed":
+          "rgb(var(--interactive-outlined-primary-on-pressed-base) / <alpha-value>)",
+        "interactive-outlined-primary-on-disabled":
+          "rgb(var(--interactive-outlined-primary-on-disabled-base) / <alpha-value>)",
+        "interactive-outlined-secondary-on-hover":
+          "rgb(var(--interactive-outlined-secondary-on-hover-base) / <alpha-value>)",
+        "interactive-outlined-secondary-on-pressed":
+          "rgb(var(--interactive-outlined-secondary-on-pressed-base) / <alpha-value>)",
+        "interactive-outlined-secondary-on-disabled":
+          "rgb(var(--interactive-outlined-secondary-on-disabled-base) / <alpha-value>)",
+        "interactive-outlined-success-on-hover":
+          "rgb(var(--interactive-outlined-success-on-hover-base) / <alpha-value>)",
+        "interactive-outlined-success-on-pressed":
+          "rgb(var(--interactive-outlined-success-on-pressed-base) / <alpha-value>)",
+        "interactive-outlined-success-on-disabled":
+          "rgb(var(--interactive-outlined-success-on-disabled-base) / <alpha-value>)",
+        "interactive-outlined-warning-on-hover":
+          "rgb(var(--interactive-outlined-warning-on-hover-base) / <alpha-value>)",
+        "interactive-outlined-warning-on-pressed":
+          "rgb(var(--interactive-outlined-warning-on-pressed-base) / <alpha-value>)",
+        "interactive-outlined-warning-on-disabled":
+          "rgb(var(--interactive-outlined-warning-on-disabled-base) / <alpha-value>)",
+        "interactive-outlined-error-on-hover": "rgb(var(--interactive-outlined-error-on-hover-base) / <alpha-value>)",
+        "interactive-outlined-error-on-pressed":
+          "rgb(var(--interactive-outlined-error-on-pressed-base) / <alpha-value>)",
+        "interactive-outlined-error-on-disabled":
+          "rgb(var(--interactive-outlined-error-on-disabled-base) / <alpha-value>)",
+        "interactive-subtle-primary-toggled-idle":
+          "rgb(var(--interactive-subtle-primary-toggled-idle-base) / <alpha-value>)",
+        "interactive-subtle-primary-on-hover": "rgb(var(--interactive-subtle-primary-on-hover-base) / <alpha-value>)",
+        "interactive-subtle-primary-on-pressed":
+          "rgb(var(--interactive-subtle-primary-on-pressed-base) / <alpha-value>)",
+        "interactive-subtle-primary-on-toggled-idle":
+          "rgb(var(--interactive-subtle-primary-on-toggled-idle-base) / <alpha-value>)",
+        "interactive-subtle-secondary-toggled-idle":
+          "rgb(var(--interactive-subtle-secondary-toggled-idle-base) / <alpha-value>)",
+        "interactive-subtle-secondary-on-hover":
+          "rgb(var(--interactive-subtle-secondary-on-hover-base) / <alpha-value>)",
+        "interactive-subtle-secondary-on-pressed":
+          "rgb(var(--interactive-subtle-secondary-on-pressed-base) / <alpha-value>)",
+        "interactive-subtle-secondary-on-toggled-idle":
+          "rgb(var(--interactive-subtle-secondary-on-toggled-idle-base) / <alpha-value>)",
+        "interactive-subtle-success-on-hover": "rgb(var(--interactive-subtle-success-on-hover-base) / <alpha-value>)",
+        "interactive-subtle-success-on-pressed":
+          "rgb(var(--interactive-subtle-success-on-pressed-base) / <alpha-value>)",
+        "interactive-subtle-warning-on-hover": "rgb(var(--interactive-subtle-warning-on-hover-base) / <alpha-value>)",
+        "interactive-subtle-warning-on-pressed":
+          "rgb(var(--interactive-subtle-warning-on-pressed-base) / <alpha-value>)",
+        "interactive-subtle-error-on-hover": "rgb(var(--interactive-subtle-error-on-hover-base) / <alpha-value>)",
+        "interactive-subtle-error-on-pressed": "rgb(var(--interactive-subtle-error-on-pressed-base) / <alpha-value>)",
+        "interactive-outlined-primary-on-toggled-idle":
+          "rgb(var(--interactive-outlined-primary-on-toggled-idle-base) / <alpha-value>)",
+        "interactive-outlined-primary-on-toggled-hover":
+          "rgb(var(--interactive-outlined-primary-on-toggled-hover-base) / <alpha-value>)",
         "interactive-outlined-primary-on-toggled-disabled":
-          "var(--interactive-outlined-primary-on-toggled-disabled-base)",
-        "interactive-outlined-primary-toggled-idle": "var(--interactive-outlined-primary-toggled-idle-base)",
-        "interactive-outlined-primary-toggled-hover": "var(--interactive-outlined-primary-toggled-hover-base)",
-        "interactive-outlined-primary-toggled-disabled": "var(--interactive-outlined-primary-toggled-disabled-base)",
-        "interactive-outlined-primary-pressed": "var(--interactive-outlined-primary-pressed-base)",
-        "interactive-outlined-secondary-pressed": "var(--interactive-outlined-secondary-pressed-base)",
-        "interactive-outlined-secondary-on-toggled-idle": "var(--interactive-outlined-secondary-on-toggled-idle-base)",
+          "rgb(var(--interactive-outlined-primary-on-toggled-disabled-base) / <alpha-value>)",
+        "interactive-outlined-primary-toggled-idle":
+          "rgb(var(--interactive-outlined-primary-toggled-idle-base) / <alpha-value>)",
+        "interactive-outlined-primary-toggled-hover":
+          "rgb(var(--interactive-outlined-primary-toggled-hover-base) / <alpha-value>)",
+        "interactive-outlined-primary-toggled-disabled":
+          "rgb(var(--interactive-outlined-primary-toggled-disabled-base) / <alpha-value>)",
+        "interactive-outlined-primary-pressed": "rgb(var(--interactive-outlined-primary-pressed-base) / <alpha-value>)",
+        "interactive-outlined-secondary-pressed":
+          "rgb(var(--interactive-outlined-secondary-pressed-base) / <alpha-value>)",
+        "interactive-outlined-secondary-on-toggled-idle":
+          "rgb(var(--interactive-outlined-secondary-on-toggled-idle-base) / <alpha-value>)",
         "interactive-outlined-secondary-on-toggled-hover":
-          "var(--interactive-outlined-secondary-on-toggled-hover-base)",
+          "rgb(var(--interactive-outlined-secondary-on-toggled-hover-base) / <alpha-value>)",
         "interactive-outlined-secondary-on-toggled-disabled":
-          "var(--interactive-outlined-secondary-on-toggled-disabled-base)",
-        "interactive-outlined-secondary-toggled-idle": "var(--interactive-outlined-secondary-toggled-idle-base)",
-        "interactive-outlined-secondary-toggled-hover": "var(--interactive-outlined-secondary-toggled-hover-base)",
+          "rgb(var(--interactive-outlined-secondary-on-toggled-disabled-base) / <alpha-value>)",
+        "interactive-outlined-secondary-toggled-idle":
+          "rgb(var(--interactive-outlined-secondary-toggled-idle-base) / <alpha-value>)",
+        "interactive-outlined-secondary-toggled-hover":
+          "rgb(var(--interactive-outlined-secondary-toggled-hover-base) / <alpha-value>)",
         "interactive-outlined-secondary-toggled-disabled":
-          "var(--interactive-outlined-secondary-toggled-disabled-base)",
-        "interactive-outlined-success-pressed": "var(--interactive-outlined-success-pressed-base)",
-        "interactive-outlined-warning-pressed": "var(--interactive-outlined-warning-pressed-base)",
-        "interactive-outlined-error-pressed": "var(--interactive-outlined-error-pressed-base)",
-        "elevation-fill-inverted-4": "var(--elevation-fill-inverted-4-base)",
-        "interactive-text-primary-focus": "var(--interactive-text-primary-focus-base)",
-        "interactive-text-secondary-focus": "var(--interactive-text-secondary-focus-base)",
-        "interactive-text-secondary-focus-inverted": "var(--interactive-text-secondary-focus-inverted-base)",
-        "interactive-text-primary-focus-inverted": "var(--interactive-text-primary-focus-inverted-base)",
-        "interactive-text-success-focus": "var(--interactive-text-success-focus-base)",
-        "interactive-text-success-focus-inverted": "var(--interactive-text-success-focus-inverted-base)",
-        "interactive-text-warning-focus": "var(--interactive-text-warning-focus-base)",
-        "interactive-text-warning-focus-inverted": "var(--interactive-text-warning-focus-inverted-base)",
-        "interactive-text-error-focus": "var(--interactive-text-error-focus-base)",
-        "interactive-text-error-focus-inverted": "var(--interactive-text-error-focus-inverted-base)",
-        "interactive-subtle-secondary-on-toggled-hover": "var(--interactive-subtle-secondary-on-toggled-hover-base)",
+          "rgb(var(--interactive-outlined-secondary-toggled-disabled-base) / <alpha-value>)",
+        "interactive-outlined-success-pressed": "rgb(var(--interactive-outlined-success-pressed-base) / <alpha-value>)",
+        "interactive-outlined-warning-pressed": "rgb(var(--interactive-outlined-warning-pressed-base) / <alpha-value>)",
+        "interactive-outlined-error-pressed": "rgb(var(--interactive-outlined-error-pressed-base) / <alpha-value>)",
+        "elevation-fill-inverted-4": "rgb(var(--elevation-fill-inverted-4-base) / <alpha-value>)",
+        "interactive-text-primary-focus": "rgb(var(--interactive-text-primary-focus-base) / <alpha-value>)",
+        "interactive-text-secondary-focus": "rgb(var(--interactive-text-secondary-focus-base) / <alpha-value>)",
+        "interactive-text-secondary-focus-inverted":
+          "rgb(var(--interactive-text-secondary-focus-inverted-base) / <alpha-value>)",
+        "interactive-text-primary-focus-inverted":
+          "rgb(var(--interactive-text-primary-focus-inverted-base) / <alpha-value>)",
+        "interactive-text-success-focus": "rgb(var(--interactive-text-success-focus-base) / <alpha-value>)",
+        "interactive-text-success-focus-inverted":
+          "rgb(var(--interactive-text-success-focus-inverted-base) / <alpha-value>)",
+        "interactive-text-warning-focus": "rgb(var(--interactive-text-warning-focus-base) / <alpha-value>)",
+        "interactive-text-warning-focus-inverted":
+          "rgb(var(--interactive-text-warning-focus-inverted-base) / <alpha-value>)",
+        "interactive-text-error-focus": "rgb(var(--interactive-text-error-focus-base) / <alpha-value>)",
+        "interactive-text-error-focus-inverted":
+          "rgb(var(--interactive-text-error-focus-inverted-base) / <alpha-value>)",
+        "interactive-subtle-secondary-on-toggled-hover":
+          "rgb(var(--interactive-subtle-secondary-on-toggled-hover-base) / <alpha-value>)",
         "interactive-subtle-secondary-on-toggled-disabled":
-          "var(--interactive-subtle-secondary-on-toggled-disabled-base)",
-        "interactive-subtle-secondary-toggled-hover": "var(--interactive-subtle-secondary-toggled-hover-base)",
-        "interactive-subtle-secondary-toggled-disabled": "var(--interactive-subtle-secondary-toggled-disabled-base)",
-        "interactive-text-primary-disabled-inverted": "var(--interactive-text-primary-disabled-inverted-base)",
-        "interactive-text-secondary-disabled-inverted": "var(--interactive-text-secondary-disabled-inverted-base)",
-        "interactive-text-success-disabled-inverted": "var(--interactive-text-success-disabled-inverted-base)",
-        "interactive-text-warning-disabled-inverted": "var(--interactive-text-warning-disabled-inverted-base)",
-        "interactive-text-error-disabled-inverted": "var(--interactive-text-error-disabled-inverted-base)",
-        "interactive-subtle-primary-on-toggled-hover": "var(--interactive-subtle-primary-on-toggled-hover-base)",
-        "interactive-subtle-primary-on-toggled-disabled": "var(--interactive-subtle-primary-on-toggled-disabled-base)",
-        "interactive-subtle-primary-toggled-hover": "var(--interactive-subtle-primary-toggled-hover-base)",
-        "interactive-subtle-primary-toggled-disabled": "var(--interactive-subtle-primary-toggled-disabled-base)",
-        "input-outlined-outline-idle": "var(--input-outlined-outline-idle-base)",
-        "input-outlined-outline-hover": "var(--input-outlined-outline-hover-base)",
-        "input-outlined-outline-active": "var(--input-outlined-outline-active-base)",
-        "input-outlined-outline-error": "var(--input-outlined-outline-error-base)",
-        "input-outlined-outline-disabled": "var(--input-outlined-outline-disabled-base)",
-        "input-filled-outline-error": "var(--input-filled-outline-error-base)",
-        "input-filled-outline-hover": "var(--input-filled-outline-hover-base)",
-        "input-filled-outline-active": "var(--input-filled-outline-active-base)",
+          "rgb(var(--interactive-subtle-secondary-on-toggled-disabled-base) / <alpha-value>)",
+        "interactive-subtle-secondary-toggled-hover":
+          "rgb(var(--interactive-subtle-secondary-toggled-hover-base) / <alpha-value>)",
+        "interactive-subtle-secondary-toggled-disabled":
+          "rgb(var(--interactive-subtle-secondary-toggled-disabled-base) / <alpha-value>)",
+        "interactive-text-primary-disabled-inverted":
+          "rgb(var(--interactive-text-primary-disabled-inverted-base) / <alpha-value>)",
+        "interactive-text-secondary-disabled-inverted":
+          "rgb(var(--interactive-text-secondary-disabled-inverted-base) / <alpha-value>)",
+        "interactive-text-success-disabled-inverted":
+          "rgb(var(--interactive-text-success-disabled-inverted-base) / <alpha-value>)",
+        "interactive-text-warning-disabled-inverted":
+          "rgb(var(--interactive-text-warning-disabled-inverted-base) / <alpha-value>)",
+        "interactive-text-error-disabled-inverted":
+          "rgb(var(--interactive-text-error-disabled-inverted-base) / <alpha-value>)",
+        "interactive-subtle-primary-on-toggled-hover":
+          "rgb(var(--interactive-subtle-primary-on-toggled-hover-base) / <alpha-value>)",
+        "interactive-subtle-primary-on-toggled-disabled":
+          "rgb(var(--interactive-subtle-primary-on-toggled-disabled-base) / <alpha-value>)",
+        "interactive-subtle-primary-toggled-hover":
+          "rgb(var(--interactive-subtle-primary-toggled-hover-base) / <alpha-value>)",
+        "interactive-subtle-primary-toggled-disabled":
+          "rgb(var(--interactive-subtle-primary-toggled-disabled-base) / <alpha-value>)",
+        "input-outlined-outline-idle": "rgb(var(--input-outlined-outline-idle-base) / <alpha-value>)",
+        "input-outlined-outline-hover": "rgb(var(--input-outlined-outline-hover-base) / <alpha-value>)",
+        "input-outlined-outline-active": "rgb(var(--input-outlined-outline-active-base) / <alpha-value>)",
+        "input-outlined-outline-error": "rgb(var(--input-outlined-outline-error-base) / <alpha-value>)",
+        "input-outlined-outline-disabled": "rgb(var(--input-outlined-outline-disabled-base) / <alpha-value>)",
+        "input-filled-outline-error": "rgb(var(--input-filled-outline-error-base) / <alpha-value>)",
+        "input-filled-outline-hover": "rgb(var(--input-filled-outline-hover-base) / <alpha-value>)",
+        "input-filled-outline-active": "rgb(var(--input-filled-outline-active-base) / <alpha-value>)",
         "interactive-contained-primary-on-toggled-disabled":
-          "var(--interactive-contained-primary-on-toggled-disabled-base)",
-        "interactive-contained-primary-on-toggled-idle": "var(--interactive-contained-primary-on-toggled-idle-base)",
-        "interactive-contained-primary-toggled-disabled": "var(--interactive-contained-primary-toggled-disabled-base)",
-        "interactive-contained-primary-toggled-idle": "var(--interactive-contained-primary-toggled-idle-base)",
+          "rgb(var(--interactive-contained-primary-on-toggled-disabled-base) / <alpha-value>)",
+        "interactive-contained-primary-on-toggled-idle":
+          "rgb(var(--interactive-contained-primary-on-toggled-idle-base) / <alpha-value>)",
+        "interactive-contained-primary-toggled-disabled":
+          "rgb(var(--interactive-contained-primary-toggled-disabled-base) / <alpha-value>)",
+        "interactive-contained-primary-toggled-idle":
+          "rgb(var(--interactive-contained-primary-toggled-idle-base) / <alpha-value>)",
         "interactive-contained-secondary-on-toggled-disabled":
-          "var(--interactive-contained-secondary-on-toggled-disabled-base)",
+          "rgb(var(--interactive-contained-secondary-on-toggled-disabled-base) / <alpha-value>)",
         "interactive-contained-secondary-on-toggled-idle":
-          "var(--interactive-contained-secondary-on-toggled-idle-base)",
+          "rgb(var(--interactive-contained-secondary-on-toggled-idle-base) / <alpha-value>)",
         "interactive-contained-secondary-toggled-disabled":
-          "var(--interactive-contained-secondary-toggled-disabled-base)",
-        "interactive-contained-secondary-toggled-idle": "var(--interactive-contained-secondary-toggled-idle-base)",
+          "rgb(var(--interactive-contained-secondary-toggled-disabled-base) / <alpha-value>)",
+        "interactive-contained-secondary-toggled-idle":
+          "rgb(var(--interactive-contained-secondary-toggled-idle-base) / <alpha-value>)",
         "interactive-contained-success-on-toggled-disabled":
-          "var(--interactive-contained-success-on-toggled-disabled-base)",
-        "interactive-contained-success-on-toggled-idle": "var(--interactive-contained-success-on-toggled-idle-base)",
-        "interactive-contained-success-toggled-disabled": "var(--interactive-contained-success-toggled-disabled-base)",
-        "interactive-contained-success-toggled-idle": "var(--interactive-contained-success-toggled-idle-base)",
-        "interactive-contained-warning-on-toggled-idle": "var(--interactive-contained-warning-on-toggled-idle-base)",
-        "interactive-contained-warning-toggled-disabled": "var(--interactive-contained-warning-toggled-disabled-base)",
+          "rgb(var(--interactive-contained-success-on-toggled-disabled-base) / <alpha-value>)",
+        "interactive-contained-success-on-toggled-idle":
+          "rgb(var(--interactive-contained-success-on-toggled-idle-base) / <alpha-value>)",
+        "interactive-contained-success-toggled-disabled":
+          "rgb(var(--interactive-contained-success-toggled-disabled-base) / <alpha-value>)",
+        "interactive-contained-success-toggled-idle":
+          "rgb(var(--interactive-contained-success-toggled-idle-base) / <alpha-value>)",
+        "interactive-contained-warning-on-toggled-idle":
+          "rgb(var(--interactive-contained-warning-on-toggled-idle-base) / <alpha-value>)",
+        "interactive-contained-warning-toggled-disabled":
+          "rgb(var(--interactive-contained-warning-toggled-disabled-base) / <alpha-value>)",
         "interactive-contained-warning-on-toggled-disabled":
-          "var(--interactive-contained-warning-on-toggled-disabled-base)",
-        "interactive-contained-warning-toggled-idle": "var(--interactive-contained-warning-toggled-idle-base)",
-        "interactive-contained-error-toggled-disabled": "var(--interactive-contained-error-toggled-disabled-base)",
+          "rgb(var(--interactive-contained-warning-on-toggled-disabled-base) / <alpha-value>)",
+        "interactive-contained-warning-toggled-idle":
+          "rgb(var(--interactive-contained-warning-toggled-idle-base) / <alpha-value>)",
+        "interactive-contained-error-toggled-disabled":
+          "rgb(var(--interactive-contained-error-toggled-disabled-base) / <alpha-value>)",
         "interactive-contained-error-on-toggled-disabled":
-          "var(--interactive-contained-error-on-toggled-disabled-base)",
-        "interactive-contained-error-on-toggled-idle": "var(--interactive-contained-error-on-toggled-idle-base)",
-        "interactive-contained-error-toggled-idle": "var(--interactive-contained-error-toggled-idle-base)",
-        "interactive-subtle-success-toggled-disabled": "var(--interactive-subtle-success-toggled-disabled-base)",
-        "interactive-subtle-success-on-toggled-disabled": "var(--interactive-subtle-success-on-toggled-disabled-base)",
-        "interactive-subtle-success-on-toggled-idle": "var(--interactive-subtle-success-on-toggled-idle-base)",
-        "interactive-subtle-success-toggled-idle": "var(--interactive-subtle-success-toggled-idle-base)",
-        "interactive-subtle-warning-on-toggled-idle": "var(--interactive-subtle-warning-on-toggled-idle-base)",
-        "interactive-subtle-warning-toggled-disabled": "var(--interactive-subtle-warning-toggled-disabled-base)",
-        "interactive-subtle-warning-toggled-idle": "var(--interactive-subtle-warning-toggled-idle-base)",
-        "interactive-subtle-warning-on-toggled-disabled": "var(--interactive-subtle-warning-on-toggled-disabled-base)",
-        "interactive-subtle-error-toggled-idle": "var(--interactive-subtle-error-toggled-idle-base)",
-        "interactive-subtle-error-on-toggled-disabled": "var(--interactive-subtle-error-on-toggled-disabled-base)",
-        "interactive-subtle-error-toggled-disabled": "var(--interactive-subtle-error-toggled-disabled-base)",
-        "interactive-subtle-error-on-toggled-idle": "var(--interactive-subtle-error-on-toggled-idle-base)",
-        "interactive-contained-primary-toggled-hovered": "var(--interactive-contained-primary-toggled-hovered-base)",
+          "rgb(var(--interactive-contained-error-on-toggled-disabled-base) / <alpha-value>)",
+        "interactive-contained-error-on-toggled-idle":
+          "rgb(var(--interactive-contained-error-on-toggled-idle-base) / <alpha-value>)",
+        "interactive-contained-error-toggled-idle":
+          "rgb(var(--interactive-contained-error-toggled-idle-base) / <alpha-value>)",
+        "interactive-subtle-success-toggled-disabled":
+          "rgb(var(--interactive-subtle-success-toggled-disabled-base) / <alpha-value>)",
+        "interactive-subtle-success-on-toggled-disabled":
+          "rgb(var(--interactive-subtle-success-on-toggled-disabled-base) / <alpha-value>)",
+        "interactive-subtle-success-on-toggled-idle":
+          "rgb(var(--interactive-subtle-success-on-toggled-idle-base) / <alpha-value>)",
+        "interactive-subtle-success-toggled-idle":
+          "rgb(var(--interactive-subtle-success-toggled-idle-base) / <alpha-value>)",
+        "interactive-subtle-warning-on-toggled-idle":
+          "rgb(var(--interactive-subtle-warning-on-toggled-idle-base) / <alpha-value>)",
+        "interactive-subtle-warning-toggled-disabled":
+          "rgb(var(--interactive-subtle-warning-toggled-disabled-base) / <alpha-value>)",
+        "interactive-subtle-warning-toggled-idle":
+          "rgb(var(--interactive-subtle-warning-toggled-idle-base) / <alpha-value>)",
+        "interactive-subtle-warning-on-toggled-disabled":
+          "rgb(var(--interactive-subtle-warning-on-toggled-disabled-base) / <alpha-value>)",
+        "interactive-subtle-error-toggled-idle":
+          "rgb(var(--interactive-subtle-error-toggled-idle-base) / <alpha-value>)",
+        "interactive-subtle-error-on-toggled-disabled":
+          "rgb(var(--interactive-subtle-error-on-toggled-disabled-base) / <alpha-value>)",
+        "interactive-subtle-error-toggled-disabled":
+          "rgb(var(--interactive-subtle-error-toggled-disabled-base) / <alpha-value>)",
+        "interactive-subtle-error-on-toggled-idle":
+          "rgb(var(--interactive-subtle-error-on-toggled-idle-base) / <alpha-value>)",
+        "interactive-contained-primary-toggled-hovered":
+          "rgb(var(--interactive-contained-primary-toggled-hovered-base) / <alpha-value>)",
         "interactive-contained-primary-on-toggled-hovered":
-          "var(--interactive-contained-primary-on-toggled-hovered-base)",
+          "rgb(var(--interactive-contained-primary-on-toggled-hovered-base) / <alpha-value>)",
         "interactive-contained-secondary-toggled-hovered":
-          "var(--interactive-contained-secondary-toggled-hovered-base)",
+          "rgb(var(--interactive-contained-secondary-toggled-hovered-base) / <alpha-value>)",
         "interactive-contained-secondary-on-toggled-hovered":
-          "var(--interactive-contained-secondary-on-toggled-hovered-base)",
-        "interactive-contained-success-toggled-hovered": "var(--interactive-contained-success-toggled-hovered-base)",
+          "rgb(var(--interactive-contained-secondary-on-toggled-hovered-base) / <alpha-value>)",
+        "interactive-contained-success-toggled-hovered":
+          "rgb(var(--interactive-contained-success-toggled-hovered-base) / <alpha-value>)",
         "interactive-contained-success-on-toggled-hovered":
-          "var(--interactive-contained-success-on-toggled-hovered-base)",
-        "interactive-subtle-success-toggled-hovered": "var(--interactive-subtle-success-toggled-hovered-base)",
-        "interactive-subtle-success-on-toggled-hovered": "var(--interactive-subtle-success-on-toggled-hovered-base)",
-        "interactive-contained-warning-toggled-hovered": "var(--interactive-contained-warning-toggled-hovered-base)",
+          "rgb(var(--interactive-contained-success-on-toggled-hovered-base) / <alpha-value>)",
+        "interactive-subtle-success-toggled-hovered":
+          "rgb(var(--interactive-subtle-success-toggled-hovered-base) / <alpha-value>)",
+        "interactive-subtle-success-on-toggled-hovered":
+          "rgb(var(--interactive-subtle-success-on-toggled-hovered-base) / <alpha-value>)",
+        "interactive-contained-warning-toggled-hovered":
+          "rgb(var(--interactive-contained-warning-toggled-hovered-base) / <alpha-value>)",
         "interactive-contained-warning-on-toggled-hovered":
-          "var(--interactive-contained-warning-on-toggled-hovered-base)",
-        "interactive-subtle-warning-toggled-hovered": "var(--interactive-subtle-warning-toggled-hovered-base)",
-        "interactive-subtle-warning-on-toggled-hovered": "var(--interactive-subtle-warning-on-toggled-hovered-base)",
-        "interactive-contained-error-toggled-hovered": "var(--interactive-contained-error-toggled-hovered-base)",
-        "interactive-contained-error-on-toggled-hovered": "var(--interactive-contained-error-on-toggled-hovered-base)",
-        "interactive-subtle-error-on-toggled-hovered": "var(--interactive-subtle-error-on-toggled-hovered-base)",
-        "interactive-subtle-error-toggled-hovered": "var(--interactive-subtle-error-toggled-hovered-base)",
+          "rgb(var(--interactive-contained-warning-on-toggled-hovered-base) / <alpha-value>)",
+        "interactive-subtle-warning-toggled-hovered":
+          "rgb(var(--interactive-subtle-warning-toggled-hovered-base) / <alpha-value>)",
+        "interactive-subtle-warning-on-toggled-hovered":
+          "rgb(var(--interactive-subtle-warning-on-toggled-hovered-base) / <alpha-value>)",
+        "interactive-contained-error-toggled-hovered":
+          "rgb(var(--interactive-contained-error-toggled-hovered-base) / <alpha-value>)",
+        "interactive-contained-error-on-toggled-hovered":
+          "rgb(var(--interactive-contained-error-on-toggled-hovered-base) / <alpha-value>)",
+        "interactive-subtle-error-on-toggled-hovered":
+          "rgb(var(--interactive-subtle-error-on-toggled-hovered-base) / <alpha-value>)",
+        "interactive-subtle-error-toggled-hovered":
+          "rgb(var(--interactive-subtle-error-toggled-hovered-base) / <alpha-value>)",
       },
       borderRadius: {
         none: "0rem",
@@ -916,6 +1068,7 @@ const config: Config = {
         "2": "0 1px 3px 0 rgba(0, 0, 0, 0.10), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
         "3": "0 4px 6px -1px rgba(0, 0, 0, 0.10), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
         "4": "0 10px 15px -3px rgba(0, 0, 0, 0.10), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+        "5": "0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
         "6": "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
         "text-shadow-dark-mode": "0 2px 6px 0 rgba(0, 0, 0, 0.30)",
         inner: "0 2px 4px 0 rgba(0, 0, 0, 0.06) inset",
