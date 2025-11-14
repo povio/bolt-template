@@ -1,21 +1,14 @@
 import { AuthContext, Button } from "@povio/ui";
 import { useNavigate } from "@tanstack/react-router";
 
+import { RouteConfig } from "@/config/route.config";
+
 export function Header() {
   const { isAuthenticated, logout } = AuthContext.useAuth();
   const navigate = useNavigate();
 
   return (
     <header className="flex justify-end gap-2 p-2">
-      {isAuthenticated && (
-        <Button
-          width="hug"
-          onPress={() => navigate({ to: "/profile" })}
-        >
-          Profile
-        </Button>
-      )}
-
       {isAuthenticated ? (
         <Button
           width="hug"
@@ -26,7 +19,7 @@ export function Header() {
       ) : (
         <Button
           width="hug"
-          onPress={() => navigate({ to: "/login" })}
+          onPress={() => navigate({ to: RouteConfig.login.to })}
         >
           Login
         </Button>

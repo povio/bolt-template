@@ -14,6 +14,6 @@ function HomePage() {
   );
 }
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/(authenticated)/")({
   component: HomePage,
 });

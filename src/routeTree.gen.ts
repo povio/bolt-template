@@ -12,8 +12,8 @@ import { Route as rootRouteImport } from './pages/__root'
 import { Route as CodeExamplesRouteRouteImport } from './pages/code-examples/route'
 import { Route as unauthenticatedRouteRouteImport } from './pages/(unauthenticated)/route'
 import { Route as authenticatedRouteRouteImport } from './pages/(authenticated)/route'
-import { Route as IndexRouteImport } from './pages/index'
 import { Route as CodeExamplesIndexRouteImport } from './pages/code-examples/index'
+import { Route as authenticatedIndexRouteImport } from './pages/(authenticated)/index'
 import { Route as CodeExamplesToastsRouteImport } from './pages/code-examples/toasts'
 import { Route as CodeExamplesTextRouteImport } from './pages/code-examples/text'
 import { Route as CodeExamplesTableRouteImport } from './pages/code-examples/table'
@@ -22,7 +22,6 @@ import { Route as CodeExamplesInputsRouteImport } from './pages/code-examples/in
 import { Route as CodeExamplesFormsRouteImport } from './pages/code-examples/forms'
 import { Route as CodeExamplesButtonsRouteImport } from './pages/code-examples/buttons'
 import { Route as unauthenticatedLoginRouteImport } from './pages/(unauthenticated)/login'
-import { Route as authenticatedProfileRouteImport } from './pages/(authenticated)/profile'
 
 const CodeExamplesRouteRoute = CodeExamplesRouteRouteImport.update({
   id: '/code-examples',
@@ -37,15 +36,15 @@ const authenticatedRouteRoute = authenticatedRouteRouteImport.update({
   id: '/(authenticated)',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const CodeExamplesIndexRoute = CodeExamplesIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => CodeExamplesRouteRoute,
+} as any)
+const authenticatedIndexRoute = authenticatedIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => authenticatedRouteRoute,
 } as any)
 const CodeExamplesToastsRoute = CodeExamplesToastsRouteImport.update({
   id: '/toasts',
@@ -87,16 +86,9 @@ const unauthenticatedLoginRoute = unauthenticatedLoginRouteImport.update({
   path: '/login',
   getParentRoute: () => unauthenticatedRouteRoute,
 } as any)
-const authenticatedProfileRoute = authenticatedProfileRouteImport.update({
-  id: '/profile',
-  path: '/profile',
-  getParentRoute: () => authenticatedRouteRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
   '/code-examples': typeof CodeExamplesRouteRouteWithChildren
-  '/profile': typeof authenticatedProfileRoute
   '/login': typeof unauthenticatedLoginRoute
   '/code-examples/buttons': typeof CodeExamplesButtonsRoute
   '/code-examples/forms': typeof CodeExamplesFormsRoute
@@ -105,11 +97,10 @@ export interface FileRoutesByFullPath {
   '/code-examples/table': typeof CodeExamplesTableRoute
   '/code-examples/text': typeof CodeExamplesTextRoute
   '/code-examples/toasts': typeof CodeExamplesToastsRoute
+  '/': typeof authenticatedIndexRoute
   '/code-examples/': typeof CodeExamplesIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/profile': typeof authenticatedProfileRoute
   '/login': typeof unauthenticatedLoginRoute
   '/code-examples/buttons': typeof CodeExamplesButtonsRoute
   '/code-examples/forms': typeof CodeExamplesFormsRoute
@@ -118,15 +109,14 @@ export interface FileRoutesByTo {
   '/code-examples/table': typeof CodeExamplesTableRoute
   '/code-examples/text': typeof CodeExamplesTextRoute
   '/code-examples/toasts': typeof CodeExamplesToastsRoute
+  '/': typeof authenticatedIndexRoute
   '/code-examples': typeof CodeExamplesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
   '/(authenticated)': typeof authenticatedRouteRouteWithChildren
   '/(unauthenticated)': typeof unauthenticatedRouteRouteWithChildren
   '/code-examples': typeof CodeExamplesRouteRouteWithChildren
-  '/(authenticated)/profile': typeof authenticatedProfileRoute
   '/(unauthenticated)/login': typeof unauthenticatedLoginRoute
   '/code-examples/buttons': typeof CodeExamplesButtonsRoute
   '/code-examples/forms': typeof CodeExamplesFormsRoute
@@ -135,14 +125,13 @@ export interface FileRoutesById {
   '/code-examples/table': typeof CodeExamplesTableRoute
   '/code-examples/text': typeof CodeExamplesTextRoute
   '/code-examples/toasts': typeof CodeExamplesToastsRoute
+  '/(authenticated)/': typeof authenticatedIndexRoute
   '/code-examples/': typeof CodeExamplesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
     | '/code-examples'
-    | '/profile'
     | '/login'
     | '/code-examples/buttons'
     | '/code-examples/forms'
@@ -151,11 +140,10 @@ export interface FileRouteTypes {
     | '/code-examples/table'
     | '/code-examples/text'
     | '/code-examples/toasts'
+    | '/'
     | '/code-examples/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
-    | '/profile'
     | '/login'
     | '/code-examples/buttons'
     | '/code-examples/forms'
@@ -164,14 +152,13 @@ export interface FileRouteTypes {
     | '/code-examples/table'
     | '/code-examples/text'
     | '/code-examples/toasts'
+    | '/'
     | '/code-examples'
   id:
     | '__root__'
-    | '/'
     | '/(authenticated)'
     | '/(unauthenticated)'
     | '/code-examples'
-    | '/(authenticated)/profile'
     | '/(unauthenticated)/login'
     | '/code-examples/buttons'
     | '/code-examples/forms'
@@ -180,11 +167,11 @@ export interface FileRouteTypes {
     | '/code-examples/table'
     | '/code-examples/text'
     | '/code-examples/toasts'
+    | '/(authenticated)/'
     | '/code-examples/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
   authenticatedRouteRoute: typeof authenticatedRouteRouteWithChildren
   unauthenticatedRouteRoute: typeof unauthenticatedRouteRouteWithChildren
   CodeExamplesRouteRoute: typeof CodeExamplesRouteRouteWithChildren
@@ -213,19 +200,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof authenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/code-examples/': {
       id: '/code-examples/'
       path: '/'
       fullPath: '/code-examples/'
       preLoaderRoute: typeof CodeExamplesIndexRouteImport
       parentRoute: typeof CodeExamplesRouteRoute
+    }
+    '/(authenticated)/': {
+      id: '/(authenticated)/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof authenticatedIndexRouteImport
+      parentRoute: typeof authenticatedRouteRoute
     }
     '/code-examples/toasts': {
       id: '/code-examples/toasts'
@@ -283,22 +270,15 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof unauthenticatedLoginRouteImport
       parentRoute: typeof unauthenticatedRouteRoute
     }
-    '/(authenticated)/profile': {
-      id: '/(authenticated)/profile'
-      path: '/profile'
-      fullPath: '/profile'
-      preLoaderRoute: typeof authenticatedProfileRouteImport
-      parentRoute: typeof authenticatedRouteRoute
-    }
   }
 }
 
 interface authenticatedRouteRouteChildren {
-  authenticatedProfileRoute: typeof authenticatedProfileRoute
+  authenticatedIndexRoute: typeof authenticatedIndexRoute
 }
 
 const authenticatedRouteRouteChildren: authenticatedRouteRouteChildren = {
-  authenticatedProfileRoute: authenticatedProfileRoute,
+  authenticatedIndexRoute: authenticatedIndexRoute,
 }
 
 const authenticatedRouteRouteWithChildren =
@@ -341,7 +321,6 @@ const CodeExamplesRouteRouteWithChildren =
   CodeExamplesRouteRoute._addFileChildren(CodeExamplesRouteRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
   authenticatedRouteRoute: authenticatedRouteRouteWithChildren,
   unauthenticatedRouteRoute: unauthenticatedRouteRouteWithChildren,
   CodeExamplesRouteRoute: CodeExamplesRouteRouteWithChildren,

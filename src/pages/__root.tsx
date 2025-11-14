@@ -49,11 +49,21 @@ function RootComponent() {
         { provider: Confirmation.Provider },
       ]}
     >
-      <Header />
-      <Outlet />
+      <RootLayout />
       <ToastContainer />
       <ReactQueryDevtools />
     </Providers>
+  );
+}
+
+function RootLayout() {
+  return (
+    <div>
+      <Header />
+      <main>
+        <Outlet />
+      </main>
+    </div>
   );
 }
 
