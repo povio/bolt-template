@@ -1,4 +1,4 @@
-import type { QueryClientConfig } from "@tanstack/react-query";
+import { QueryClient, type QueryClientConfig } from "@tanstack/react-query";
 
 import type { ApplicationException, GeneralErrorCodes } from "@/util/vendor/error-handling";
 
@@ -11,6 +11,8 @@ export const QueryConfig: QueryClientConfig = {
     },
   },
 };
+
+export const queryClient = new QueryClient(QueryConfig);
 
 declare module "@tanstack/react-query" {
   interface Register {

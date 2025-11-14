@@ -10,6 +10,8 @@
 
 import { Route as rootRouteImport } from './pages/__root'
 import { Route as CodeExamplesRouteRouteImport } from './pages/code-examples/route'
+import { Route as unauthenticatedRouteRouteImport } from './pages/(unauthenticated)/route'
+import { Route as authenticatedRouteRouteImport } from './pages/(authenticated)/route'
 import { Route as IndexRouteImport } from './pages/index'
 import { Route as CodeExamplesIndexRouteImport } from './pages/code-examples/index'
 import { Route as CodeExamplesToastsRouteImport } from './pages/code-examples/toasts'
@@ -19,10 +21,20 @@ import { Route as CodeExamplesModalsRouteImport } from './pages/code-examples/mo
 import { Route as CodeExamplesInputsRouteImport } from './pages/code-examples/inputs'
 import { Route as CodeExamplesFormsRouteImport } from './pages/code-examples/forms'
 import { Route as CodeExamplesButtonsRouteImport } from './pages/code-examples/buttons'
+import { Route as unauthenticatedLoginRouteImport } from './pages/(unauthenticated)/login'
+import { Route as authenticatedProfileRouteImport } from './pages/(authenticated)/profile'
 
 const CodeExamplesRouteRoute = CodeExamplesRouteRouteImport.update({
   id: '/code-examples',
   path: '/code-examples',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const unauthenticatedRouteRoute = unauthenticatedRouteRouteImport.update({
+  id: '/(unauthenticated)',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const authenticatedRouteRoute = authenticatedRouteRouteImport.update({
+  id: '/(authenticated)',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -70,10 +82,22 @@ const CodeExamplesButtonsRoute = CodeExamplesButtonsRouteImport.update({
   path: '/buttons',
   getParentRoute: () => CodeExamplesRouteRoute,
 } as any)
+const unauthenticatedLoginRoute = unauthenticatedLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => unauthenticatedRouteRoute,
+} as any)
+const authenticatedProfileRoute = authenticatedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => authenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/code-examples': typeof CodeExamplesRouteRouteWithChildren
+  '/profile': typeof authenticatedProfileRoute
+  '/login': typeof unauthenticatedLoginRoute
   '/code-examples/buttons': typeof CodeExamplesButtonsRoute
   '/code-examples/forms': typeof CodeExamplesFormsRoute
   '/code-examples/inputs': typeof CodeExamplesInputsRoute
@@ -85,6 +109,8 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/profile': typeof authenticatedProfileRoute
+  '/login': typeof unauthenticatedLoginRoute
   '/code-examples/buttons': typeof CodeExamplesButtonsRoute
   '/code-examples/forms': typeof CodeExamplesFormsRoute
   '/code-examples/inputs': typeof CodeExamplesInputsRoute
@@ -97,7 +123,11 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/(authenticated)': typeof authenticatedRouteRouteWithChildren
+  '/(unauthenticated)': typeof unauthenticatedRouteRouteWithChildren
   '/code-examples': typeof CodeExamplesRouteRouteWithChildren
+  '/(authenticated)/profile': typeof authenticatedProfileRoute
+  '/(unauthenticated)/login': typeof unauthenticatedLoginRoute
   '/code-examples/buttons': typeof CodeExamplesButtonsRoute
   '/code-examples/forms': typeof CodeExamplesFormsRoute
   '/code-examples/inputs': typeof CodeExamplesInputsRoute
@@ -112,6 +142,8 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/code-examples'
+    | '/profile'
+    | '/login'
     | '/code-examples/buttons'
     | '/code-examples/forms'
     | '/code-examples/inputs'
@@ -123,6 +155,8 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/profile'
+    | '/login'
     | '/code-examples/buttons'
     | '/code-examples/forms'
     | '/code-examples/inputs'
@@ -134,7 +168,11 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/(authenticated)'
+    | '/(unauthenticated)'
     | '/code-examples'
+    | '/(authenticated)/profile'
+    | '/(unauthenticated)/login'
     | '/code-examples/buttons'
     | '/code-examples/forms'
     | '/code-examples/inputs'
@@ -147,6 +185,8 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  authenticatedRouteRoute: typeof authenticatedRouteRouteWithChildren
+  unauthenticatedRouteRoute: typeof unauthenticatedRouteRouteWithChildren
   CodeExamplesRouteRoute: typeof CodeExamplesRouteRouteWithChildren
 }
 
@@ -157,6 +197,20 @@ declare module '@tanstack/react-router' {
       path: '/code-examples'
       fullPath: '/code-examples'
       preLoaderRoute: typeof CodeExamplesRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(unauthenticated)': {
+      id: '/(unauthenticated)'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof unauthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(authenticated)': {
+      id: '/(authenticated)'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof authenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -222,8 +276,44 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CodeExamplesButtonsRouteImport
       parentRoute: typeof CodeExamplesRouteRoute
     }
+    '/(unauthenticated)/login': {
+      id: '/(unauthenticated)/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof unauthenticatedLoginRouteImport
+      parentRoute: typeof unauthenticatedRouteRoute
+    }
+    '/(authenticated)/profile': {
+      id: '/(authenticated)/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof authenticatedProfileRouteImport
+      parentRoute: typeof authenticatedRouteRoute
+    }
   }
 }
+
+interface authenticatedRouteRouteChildren {
+  authenticatedProfileRoute: typeof authenticatedProfileRoute
+}
+
+const authenticatedRouteRouteChildren: authenticatedRouteRouteChildren = {
+  authenticatedProfileRoute: authenticatedProfileRoute,
+}
+
+const authenticatedRouteRouteWithChildren =
+  authenticatedRouteRoute._addFileChildren(authenticatedRouteRouteChildren)
+
+interface unauthenticatedRouteRouteChildren {
+  unauthenticatedLoginRoute: typeof unauthenticatedLoginRoute
+}
+
+const unauthenticatedRouteRouteChildren: unauthenticatedRouteRouteChildren = {
+  unauthenticatedLoginRoute: unauthenticatedLoginRoute,
+}
+
+const unauthenticatedRouteRouteWithChildren =
+  unauthenticatedRouteRoute._addFileChildren(unauthenticatedRouteRouteChildren)
 
 interface CodeExamplesRouteRouteChildren {
   CodeExamplesButtonsRoute: typeof CodeExamplesButtonsRoute
@@ -252,6 +342,8 @@ const CodeExamplesRouteRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  authenticatedRouteRoute: authenticatedRouteRouteWithChildren,
+  unauthenticatedRouteRoute: unauthenticatedRouteRouteWithChildren,
   CodeExamplesRouteRoute: CodeExamplesRouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport

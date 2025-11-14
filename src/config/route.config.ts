@@ -1,3 +1,5 @@
+import { Route as ProfileRoute } from "@/pages/(authenticated)/profile";
+import { Route as LoginRoute } from "@/pages/(unauthenticated)/login";
 import { Route as CodeExamplesButtonsRoute } from "@/pages/code-examples/buttons";
 import { Route as CodeExamplesFormsRoute } from "@/pages/code-examples/forms";
 import { Route as CodeExamplesInputsRoute } from "@/pages/code-examples/inputs";
@@ -10,6 +12,8 @@ import { Route as HomeRoute } from "@/pages/index";
 
 export const RouteConfig = {
   home: HomeRoute,
+  login: LoginRoute,
+  profile: ProfileRoute,
   codeExamples: {
     index: CodeExamplesRoute,
     buttons: CodeExamplesButtonsRoute,
