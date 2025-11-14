@@ -1,16 +1,16 @@
 /* do not edit this unless you are bootstraping the project and know what you are doing */
-import axios from 'axios';
-import { z } from 'zod';
+import axios from "axios";
+import { z } from "zod";
 
-import { RestUtils } from '@/util/rest/rest.utils';
+import { RestUtils } from "@/util/rest/rest.utils";
 
 // codes that we want to handle in every scenario
 export type GeneralErrorCodes =
-  | 'DATA_VALIDATION_ERROR'
-  | 'NETWORK_ERROR'
-  | 'CANCELED_ERROR'
-  | 'INTERNAL_ERROR'
-  | 'UNKNOWN_ERROR';
+  | "DATA_VALIDATION_ERROR"
+  | "NETWORK_ERROR"
+  | "CANCELED_ERROR"
+  | "INTERNAL_ERROR"
+  | "UNKNOWN_ERROR";
 
 export class ApplicationException<CodeT> extends Error {
   public code: CodeT;
@@ -40,93 +40,72 @@ export class ErrorHandler<CodeT extends string> {
     // implement checking for each of the general errors
 
     const dataValidationError: ErrorEntry<ICodeT> = {
-      code: 'DATA_VALIDATION_ERROR',
+      code: "DATA_VALIDATION_ERROR",
       condition: (e) => {
         return e instanceof z.ZodError;
       },
-      getMessage: () => '',
+      getMessage: () => "",
     };
 
     const internalError: ErrorEntry<ICodeT> = {
-      code: 'INTERNAL_ERROR',
+      code: "INTERNAL_ERROR",
       condition: (e) => {
         if (axios.isAxiosError(e)) {
-          return (
-            e.response?.status != null &&
-            e.response.status >= 500 &&
-            e.response.status < 600
-          );
+          return e.response?.status != null && e.response.status >= 500 && e.response.status < 600;
         }
 
         return false;
       },
-      getMessage: () => '',
+      getMessage: () => "",
     };
 
     const networkError: ErrorEntry<ICodeT> = {
-      code: 'NETWORK_ERROR',
+      code: "NETWORK_ERROR",
       condition: (e) => {
         if (axios.isAxiosError(e)) {
-          return e.code === 'ERR_NETWORK';
+          return e.code === "ERR_NETWORK";
         }
 
         return false;
       },
-      getMessage: () => '',
+      getMessage: () => "",
     };
 
     const canceledError: ErrorEntry<ICodeT> = {
-      code: 'CANCELED_ERROR',
+      code: "CANCELED_ERROR",
       condition: (e) => {
         if (axios.isCancel(e)) {
           return true;
         }
 
-        if (axios.isAxiosError(e) && e.code === 'ECONNABORTED') {
+        if (axios.isAxiosError(e) && e.code === "ECONNABORTED") {
           return true;
         }
 
         return false;
       },
-      getMessage: () => '',
+      getMessage: () => "",
     };
 
     const unknownError: ErrorEntry<ICodeT> = {
-      code: 'UNKNOWN_ERROR',
+      code: "UNKNOWN_ERROR",
       condition: () => true,
-      getMessage: () => '',
+      getMessage: () => "",
     };
 
     // general errors have the lowest priority
-    this.entries = [
-      ...entries,
-      dataValidationError,
-      internalError,
-      networkError,
-      canceledError,
-      unknownError,
-    ];
+    this.entries = [...entries, dataValidationError, internalError, networkError, canceledError, unknownError];
   }
 
   // convert the error into an application exception
-  public rethrowError(
-    error: unknown
-  ): ApplicationException<CodeT | GeneralErrorCodes> {
-    const errorEntry = this.entries.find((entry) =>
-      entry.condition(error ?? {})
-    )!;
+  public rethrowError(error: unknown): ApplicationException<CodeT | GeneralErrorCodes> {
+    const errorEntry = this.entries.find((entry) => entry.condition(error ?? {}))!;
 
     const serverMessage = RestUtils.extractServerErrorMessage(error);
-    throw new ApplicationException(
-      errorEntry.getMessage(error),
-      errorEntry.code,
-      serverMessage
-    );
+    throw new ApplicationException(errorEntry.getMessage(error), errorEntry.code, serverMessage);
   }
 
-  public getError(
-    error: unknown
-  ): ApplicationException<CodeT | GeneralErrorCodes> | null {
+  public getError(error: unknown): ApplicationException<CodeT | GeneralErrorCodes> | null {
     if (error instanceof ApplicationException) {
       return error;
     }
@@ -142,11 +121,8 @@ export class ErrorHandler<CodeT extends string> {
     return null;
   }
 
-  public static getErrorMessage(
-    error: unknown,
-    fallbackToUnknown: boolean = true
-  ): string | null {
-    if (typeof error === 'string') {
+  public static getErrorMessage(error: unknown, fallbackToUnknown: boolean = true): string | null {
+    if (typeof error === "string") {
       return error;
     }
 
@@ -159,7 +135,7 @@ export class ErrorHandler<CodeT extends string> {
     }
 
     if (fallbackToUnknown) {
-      return '';
+      return "";
     }
 
     return null;

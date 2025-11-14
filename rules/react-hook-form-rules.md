@@ -1,9 +1,22 @@
-**ALWAYS use `useForm` for forms connected to mutations. NEVER use `useState` for form data.**
+ALWAYS use `useForm`/`useFormAutosave` from `@povio/ui`. NEVER use `useState` for forms or `react-hook-form` directly.
+
+- Always pass zodSchema to `useForm`/`useFormAutosave`
 
 ```typescript
-const form = useForm({
-  resolver: zodResolver(PostsModels.createPostSchema),
-});
-```
+import { Button, TextInput, useForm } from "@povio/ui";
+import { PostsModels } from "@/data/posts/posts.models";
 
-Use zodResolver with the schema from your data layer.
+const { control, handleSubmit } = useForm({
+  zodSchema: PostsModels.CreatePostSchema,
+});
+
+return (
+  <form onSubmit={handleSubmit(onSubmit)}>
+    <TextInput 
+      formControl={{ control, name: "title" }}
+      label="Title" 
+    />
+    <Button type="submit">Create</Button>
+  </form>
+);
+```

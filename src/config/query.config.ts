@@ -1,9 +1,6 @@
-import type { QueryClientConfig } from '@tanstack/react-query';
+import { QueryClient, type QueryClientConfig } from "@tanstack/react-query";
 
-import type {
-  ApplicationException,
-  GeneralErrorCodes,
-} from '@/util/vendor/error-handling';
+import type { ApplicationException, GeneralErrorCodes } from "@/util/vendor/error-handling";
 
 export const QueryConfig: QueryClientConfig = {
   defaultOptions: {
@@ -15,7 +12,9 @@ export const QueryConfig: QueryClientConfig = {
   },
 };
 
-declare module '@tanstack/react-query' {
+export const queryClient = new QueryClient(QueryConfig);
+
+declare module "@tanstack/react-query" {
   interface Register {
     defaultError: ApplicationException<GeneralErrorCodes> | null;
   }

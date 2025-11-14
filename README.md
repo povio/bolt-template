@@ -3,6 +3,7 @@ Create a new Bolt project from the template here: http://bolt.new/github.com/pov
 Make sure to copy paste the rules inside the rules folder into your team's Packages knowledge. Example:
 
 Package Name => Package Prompt:
+- `@povio/ui` => `rules/povio-ui-rules.md`
 - `@tanstack/react-query` => `rules/react-query-rules.md`
 - `@tanstack/react-router` => `rules/tanstack-router-rules.md`
 - `clsx` => `rules/clsx-rules.md`

@@ -1,1 +1,10 @@
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --breakpoint-sm: 23.75rem;
+  --breakpoint-md: 37.5rem;
+  --breakpoint-lg: 80rem;
+  --breakpoint-xl: 105rem;
+}

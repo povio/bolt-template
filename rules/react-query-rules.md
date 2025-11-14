@@ -1,16 +1,11 @@
-# Structure
-
+Structure:
 ```
-src/data/
-  └── posts/
-      ├── posts.queries.ts  // PostsQueries namespace
-      └── posts.models.ts   // PostsModels namespace
+src/data/posts/
+  ├── posts.queries.ts  // PostsQueries namespace
+  └── posts.models.ts   // PostsModels namespace
 ```
 
-**Naming:** camelCase folders (`userProfiles/`), PascalCase namespaces (`UserProfilesQueries`)
-
-# Pattern
-
+Pattern:
 ```typescript
 // posts.models.ts
 export namespace PostsModels {
@@ -26,15 +21,12 @@ export namespace PostsQueries {
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["posts"] })
   });
 }
-
-// Usage
-const { data } = PostsQueries.useList();
 ```
 
-# Rules
-
-1. Use namespace syntax (PostsQueries, PostsModels)
-2. Use z.string() for IDs (not z.uuid())
-3. Use react-hook-form with zodResolver
-4. Invalidate cache after mutations
-5. Use Supabase joins for nested data
+Rules:
+1. NEVER use Supabase directly in components - ALL data fetching/mutations MUST go through `*.queries.ts` files
+2. Use namespace syntax: `PostsQueries`, `PostsModels`
+3. Naming: camelCase folders (`userProfiles/`), PascalCase namespaces (`UserProfilesQueries`)
+4. Use `z.string()` for IDs (not `z.uuid()`)
+5. Invalidate cache after mutations
+6. Use Supabase joins for nested data

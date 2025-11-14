@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/oxlint/configuration_schema.json",
+  "extends": [".oxlint-base.json"],
+  "plugins": ["eslint", "typescript", "unicorn", "import", "vitest", "react", "react-perf", "jsx-a11y"],
+  "ignorePatterns": [
+    "openapi-codegen.config.ts",
+    "src/openapi",
+    "src/routeTree.gen.ts",
+    "postcss.config.js",
+    "dist",
+    "public",
+    "scripts",
+    ".vscode",
+    ".turbo",
+    "node_modules"
+  ],
+  "rules": {
+    "react-perf/jsx-no-new-object-as-prop": "off",
+    "react-perf/jsx-no-new-function-as-prop": "off",
+    "react-perf/jsx-no-new-array-as-prop": "off",
+    "react-perf/jsx-no-jsx-as-prop": "off"
+  }
+}
