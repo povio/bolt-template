@@ -7,6 +7,7 @@ Package Name => Package Prompt:
 - `@tanstack/react-query` => `rules/react-query-rules.md`
 - `@tanstack/react-router` => `rules/tanstack-router-rules.md`
 - `clsx` => `rules/clsx-rules.md`
+- `lucide-react` => `rules/lucide-rules.md`
 - `tailwindcss` => `rules/tailwind-rules.md`
 - `react-hook-form` => `rules/react-hook-form-rules.md`
 
