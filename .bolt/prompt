@@ -44,7 +44,9 @@ API Design:
 - Focus on UI needs, not database structure
 - Use single queries with joins over multiple separate queries
 
-Authentication:
-- use and update `src/providers/auth.provider.tsx` and `src/hooks/useAuth.ts` when implementing authentication logic with Supabase
+When implementing user authentication:
+- update `src/data/auth/auth.models.ts` with your user Profile structure
+- update `src/providers/auth.provider.tsx` to use Supabase logic instead of mocks
+- update `src/hooks/useAuth.ts` to use the proper AuthUser type
 
 OpenAPI: Check `rules/openapi-rules.md` when generating/updating specs

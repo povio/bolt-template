@@ -2,7 +2,5 @@ import { AuthContext } from "@povio/ui";
 
 import type { MockAuthUser } from "@/providers/auth.provider";
 
-// import type { UserModels } from "@/data/user/user.models";
-
-// export const useAuth = () => AuthContext.useAuth<UserModels.UserMeResponse>();
+// Replace type with AuthUser from @/providers/auth.provider after switching from mock auth
 export const useAuth = () => AuthContext.useAuth<MockAuthUser>();

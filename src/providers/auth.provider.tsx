@@ -1,9 +1,16 @@
 import { AuthContext, Loader } from "@povio/ui";
+import type { User } from "@supabase/supabase-js";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { type PropsWithChildren, useCallback, useEffect, useState } from "react";
 
 import { RouteConfig } from "@/config/route.config";
+import type { AuthModels } from "@/data/auth/auth.models";
 import { isSupabaseConfigured } from "@/lib/supabase";
+
+export interface AuthUser {
+  user: User;
+  profile: AuthModels.Profile;
+}
 
 interface MockProfile {
   id: string;
@@ -36,7 +43,7 @@ const MOCK_USER: MockAuthUser = {
 };
 
 const STORAGE_KEY = "mock_auth_state";
-const QUERY_KEY = ["auth"];
+const queryKey = ["auth"];
 
 function getMockAuthState(): boolean {
   if (typeof window === "undefined") return false;
@@ -63,12 +70,12 @@ export function useMockAuth() {
 
   const login = useCallback(async () => {
     setMockAuthState(true);
-    queryClient.invalidateQueries({ queryKey: QUERY_KEY });
+    queryClient.invalidateQueries({ queryKey });
   }, [queryClient]);
 
   const logout = useCallback(async () => {
     setMockAuthState(false);
-    queryClient.invalidateQueries({ queryKey: QUERY_KEY });
+    queryClient.invalidateQueries({ queryKey });
   }, [queryClient]);
 
   return {
@@ -83,7 +90,7 @@ export function SupabaseAuthProvider({ children }: PropsWithChildren) {
   const [authReady, setAuthReady] = useState(false);
 
   const { data, isLoading } = useQuery({
-    queryKey: QUERY_KEY,
+    queryKey,
     queryFn: fetchMockAuthState,
     staleTime: 1000 * 60 * 5,
     retry: false,
@@ -105,7 +112,7 @@ export function SupabaseAuthProvider({ children }: PropsWithChildren) {
 
   const logout = useCallback(async () => {
     setMockAuthState(false);
-    queryClient.invalidateQueries({ queryKey: QUERY_KEY });
+    queryClient.invalidateQueries({ queryKey });
   }, [queryClient]);
 
   return (
