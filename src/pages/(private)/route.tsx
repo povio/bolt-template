@@ -3,12 +3,11 @@ import { Outlet, createFileRoute } from "@tanstack/react-router";
 
 function RouteComponent() {
   return (
-    <AuthGuard type="public-only">
+    <AuthGuard type="private">
       <Outlet />
     </AuthGuard>
   );
 }
-
-export const Route = createFileRoute("/(unauthenticated)")({
+export const Route = createFileRoute("/(private)")({
   component: RouteComponent,
 });

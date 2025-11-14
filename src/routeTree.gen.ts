@@ -10,10 +10,10 @@
 
 import { Route as rootRouteImport } from './pages/__root'
 import { Route as CodeExamplesRouteRouteImport } from './pages/code-examples/route'
-import { Route as unauthenticatedRouteRouteImport } from './pages/(unauthenticated)/route'
-import { Route as authenticatedRouteRouteImport } from './pages/(authenticated)/route'
+import { Route as publicOnlyRouteRouteImport } from './pages/(public-only)/route'
+import { Route as privateRouteRouteImport } from './pages/(private)/route'
 import { Route as CodeExamplesIndexRouteImport } from './pages/code-examples/index'
-import { Route as authenticatedIndexRouteImport } from './pages/(authenticated)/index'
+import { Route as privateIndexRouteImport } from './pages/(private)/index'
 import { Route as CodeExamplesToastsRouteImport } from './pages/code-examples/toasts'
 import { Route as CodeExamplesTextRouteImport } from './pages/code-examples/text'
 import { Route as CodeExamplesTableRouteImport } from './pages/code-examples/table'
@@ -21,19 +21,19 @@ import { Route as CodeExamplesModalsRouteImport } from './pages/code-examples/mo
 import { Route as CodeExamplesInputsRouteImport } from './pages/code-examples/inputs'
 import { Route as CodeExamplesFormsRouteImport } from './pages/code-examples/forms'
 import { Route as CodeExamplesButtonsRouteImport } from './pages/code-examples/buttons'
-import { Route as unauthenticatedLoginRouteImport } from './pages/(unauthenticated)/login'
+import { Route as publicOnlyLoginRouteImport } from './pages/(public-only)/login'
 
 const CodeExamplesRouteRoute = CodeExamplesRouteRouteImport.update({
   id: '/code-examples',
   path: '/code-examples',
   getParentRoute: () => rootRouteImport,
 } as any)
-const unauthenticatedRouteRoute = unauthenticatedRouteRouteImport.update({
-  id: '/(unauthenticated)',
+const publicOnlyRouteRoute = publicOnlyRouteRouteImport.update({
+  id: '/(public-only)',
   getParentRoute: () => rootRouteImport,
 } as any)
-const authenticatedRouteRoute = authenticatedRouteRouteImport.update({
-  id: '/(authenticated)',
+const privateRouteRoute = privateRouteRouteImport.update({
+  id: '/(private)',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CodeExamplesIndexRoute = CodeExamplesIndexRouteImport.update({
@@ -41,10 +41,10 @@ const CodeExamplesIndexRoute = CodeExamplesIndexRouteImport.update({
   path: '/',
   getParentRoute: () => CodeExamplesRouteRoute,
 } as any)
-const authenticatedIndexRoute = authenticatedIndexRouteImport.update({
+const privateIndexRoute = privateIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => authenticatedRouteRoute,
+  getParentRoute: () => privateRouteRoute,
 } as any)
 const CodeExamplesToastsRoute = CodeExamplesToastsRouteImport.update({
   id: '/toasts',
@@ -81,15 +81,15 @@ const CodeExamplesButtonsRoute = CodeExamplesButtonsRouteImport.update({
   path: '/buttons',
   getParentRoute: () => CodeExamplesRouteRoute,
 } as any)
-const unauthenticatedLoginRoute = unauthenticatedLoginRouteImport.update({
+const publicOnlyLoginRoute = publicOnlyLoginRouteImport.update({
   id: '/login',
   path: '/login',
-  getParentRoute: () => unauthenticatedRouteRoute,
+  getParentRoute: () => publicOnlyRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/code-examples': typeof CodeExamplesRouteRouteWithChildren
-  '/login': typeof unauthenticatedLoginRoute
+  '/login': typeof publicOnlyLoginRoute
   '/code-examples/buttons': typeof CodeExamplesButtonsRoute
   '/code-examples/forms': typeof CodeExamplesFormsRoute
   '/code-examples/inputs': typeof CodeExamplesInputsRoute
@@ -97,11 +97,11 @@ export interface FileRoutesByFullPath {
   '/code-examples/table': typeof CodeExamplesTableRoute
   '/code-examples/text': typeof CodeExamplesTextRoute
   '/code-examples/toasts': typeof CodeExamplesToastsRoute
-  '/': typeof authenticatedIndexRoute
+  '/': typeof privateIndexRoute
   '/code-examples/': typeof CodeExamplesIndexRoute
 }
 export interface FileRoutesByTo {
-  '/login': typeof unauthenticatedLoginRoute
+  '/login': typeof publicOnlyLoginRoute
   '/code-examples/buttons': typeof CodeExamplesButtonsRoute
   '/code-examples/forms': typeof CodeExamplesFormsRoute
   '/code-examples/inputs': typeof CodeExamplesInputsRoute
@@ -109,15 +109,15 @@ export interface FileRoutesByTo {
   '/code-examples/table': typeof CodeExamplesTableRoute
   '/code-examples/text': typeof CodeExamplesTextRoute
   '/code-examples/toasts': typeof CodeExamplesToastsRoute
-  '/': typeof authenticatedIndexRoute
+  '/': typeof privateIndexRoute
   '/code-examples': typeof CodeExamplesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/(authenticated)': typeof authenticatedRouteRouteWithChildren
-  '/(unauthenticated)': typeof unauthenticatedRouteRouteWithChildren
+  '/(private)': typeof privateRouteRouteWithChildren
+  '/(public-only)': typeof publicOnlyRouteRouteWithChildren
   '/code-examples': typeof CodeExamplesRouteRouteWithChildren
-  '/(unauthenticated)/login': typeof unauthenticatedLoginRoute
+  '/(public-only)/login': typeof publicOnlyLoginRoute
   '/code-examples/buttons': typeof CodeExamplesButtonsRoute
   '/code-examples/forms': typeof CodeExamplesFormsRoute
   '/code-examples/inputs': typeof CodeExamplesInputsRoute
@@ -125,7 +125,7 @@ export interface FileRoutesById {
   '/code-examples/table': typeof CodeExamplesTableRoute
   '/code-examples/text': typeof CodeExamplesTextRoute
   '/code-examples/toasts': typeof CodeExamplesToastsRoute
-  '/(authenticated)/': typeof authenticatedIndexRoute
+  '/(private)/': typeof privateIndexRoute
   '/code-examples/': typeof CodeExamplesIndexRoute
 }
 export interface FileRouteTypes {
@@ -156,10 +156,10 @@ export interface FileRouteTypes {
     | '/code-examples'
   id:
     | '__root__'
-    | '/(authenticated)'
-    | '/(unauthenticated)'
+    | '/(private)'
+    | '/(public-only)'
     | '/code-examples'
-    | '/(unauthenticated)/login'
+    | '/(public-only)/login'
     | '/code-examples/buttons'
     | '/code-examples/forms'
     | '/code-examples/inputs'
@@ -167,13 +167,13 @@ export interface FileRouteTypes {
     | '/code-examples/table'
     | '/code-examples/text'
     | '/code-examples/toasts'
-    | '/(authenticated)/'
+    | '/(private)/'
     | '/code-examples/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  authenticatedRouteRoute: typeof authenticatedRouteRouteWithChildren
-  unauthenticatedRouteRoute: typeof unauthenticatedRouteRouteWithChildren
+  privateRouteRoute: typeof privateRouteRouteWithChildren
+  publicOnlyRouteRoute: typeof publicOnlyRouteRouteWithChildren
   CodeExamplesRouteRoute: typeof CodeExamplesRouteRouteWithChildren
 }
 
@@ -186,18 +186,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CodeExamplesRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/(unauthenticated)': {
-      id: '/(unauthenticated)'
+    '/(public-only)': {
+      id: '/(public-only)'
       path: ''
       fullPath: ''
-      preLoaderRoute: typeof unauthenticatedRouteRouteImport
+      preLoaderRoute: typeof publicOnlyRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/(authenticated)': {
-      id: '/(authenticated)'
+    '/(private)': {
+      id: '/(private)'
       path: ''
       fullPath: ''
-      preLoaderRoute: typeof authenticatedRouteRouteImport
+      preLoaderRoute: typeof privateRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/code-examples/': {
@@ -207,12 +207,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CodeExamplesIndexRouteImport
       parentRoute: typeof CodeExamplesRouteRoute
     }
-    '/(authenticated)/': {
-      id: '/(authenticated)/'
+    '/(private)/': {
+      id: '/(private)/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof authenticatedIndexRouteImport
-      parentRoute: typeof authenticatedRouteRoute
+      preLoaderRoute: typeof privateIndexRouteImport
+      parentRoute: typeof privateRouteRoute
     }
     '/code-examples/toasts': {
       id: '/code-examples/toasts'
@@ -263,37 +263,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CodeExamplesButtonsRouteImport
       parentRoute: typeof CodeExamplesRouteRoute
     }
-    '/(unauthenticated)/login': {
-      id: '/(unauthenticated)/login'
+    '/(public-only)/login': {
+      id: '/(public-only)/login'
       path: '/login'
       fullPath: '/login'
-      preLoaderRoute: typeof unauthenticatedLoginRouteImport
-      parentRoute: typeof unauthenticatedRouteRoute
+      preLoaderRoute: typeof publicOnlyLoginRouteImport
+      parentRoute: typeof publicOnlyRouteRoute
     }
   }
 }
 
-interface authenticatedRouteRouteChildren {
-  authenticatedIndexRoute: typeof authenticatedIndexRoute
+interface privateRouteRouteChildren {
+  privateIndexRoute: typeof privateIndexRoute
 }
 
-const authenticatedRouteRouteChildren: authenticatedRouteRouteChildren = {
-  authenticatedIndexRoute: authenticatedIndexRoute,
+const privateRouteRouteChildren: privateRouteRouteChildren = {
+  privateIndexRoute: privateIndexRoute,
 }
 
-const authenticatedRouteRouteWithChildren =
-  authenticatedRouteRoute._addFileChildren(authenticatedRouteRouteChildren)
+const privateRouteRouteWithChildren = privateRouteRoute._addFileChildren(
+  privateRouteRouteChildren,
+)
 
-interface unauthenticatedRouteRouteChildren {
-  unauthenticatedLoginRoute: typeof unauthenticatedLoginRoute
+interface publicOnlyRouteRouteChildren {
+  publicOnlyLoginRoute: typeof publicOnlyLoginRoute
 }
 
-const unauthenticatedRouteRouteChildren: unauthenticatedRouteRouteChildren = {
-  unauthenticatedLoginRoute: unauthenticatedLoginRoute,
+const publicOnlyRouteRouteChildren: publicOnlyRouteRouteChildren = {
+  publicOnlyLoginRoute: publicOnlyLoginRoute,
 }
 
-const unauthenticatedRouteRouteWithChildren =
-  unauthenticatedRouteRoute._addFileChildren(unauthenticatedRouteRouteChildren)
+const publicOnlyRouteRouteWithChildren = publicOnlyRouteRoute._addFileChildren(
+  publicOnlyRouteRouteChildren,
+)
 
 interface CodeExamplesRouteRouteChildren {
   CodeExamplesButtonsRoute: typeof CodeExamplesButtonsRoute
@@ -321,8 +323,8 @@ const CodeExamplesRouteRouteWithChildren =
   CodeExamplesRouteRoute._addFileChildren(CodeExamplesRouteRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
-  authenticatedRouteRoute: authenticatedRouteRouteWithChildren,
-  unauthenticatedRouteRoute: unauthenticatedRouteRouteWithChildren,
+  privateRouteRoute: privateRouteRouteWithChildren,
+  publicOnlyRouteRoute: publicOnlyRouteRouteWithChildren,
   CodeExamplesRouteRoute: CodeExamplesRouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport

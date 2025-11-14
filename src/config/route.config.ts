@@ -1,5 +1,5 @@
-import { Route as HomeRoute } from "@/pages/(authenticated)/index";
-import { Route as LoginRoute } from "@/pages/(unauthenticated)/login";
+import { Route as HomeRoute } from "@/pages/(private)/index";
+import { Route as LoginRoute } from "@/pages/(public-only)/login";
 import { Route as CodeExamplesButtonsRoute } from "@/pages/code-examples/buttons";
 import { Route as CodeExamplesFormsRoute } from "@/pages/code-examples/forms";
 import { Route as CodeExamplesInputsRoute } from "@/pages/code-examples/inputs";

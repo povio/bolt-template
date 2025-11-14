@@ -18,6 +18,6 @@ function RouteComponent() {
   );
 }
 
-export const Route = createFileRoute("/(unauthenticated)/login")({
+export const Route = createFileRoute("/(public-only)/login")({
   component: RouteComponent,
 });

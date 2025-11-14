@@ -1,8 +1,9 @@
-import { AuthContext, Loader } from "@povio/ui";
+import { AuthContext } from "@povio/ui";
 import type { User } from "@supabase/supabase-js";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { type PropsWithChildren, useCallback, useEffect, useState } from "react";
 
+import { PageLoader } from "@/components/shared/layout/PageLoader";
 import { RouteConfig } from "@/config/route.config";
 import type { AuthModels } from "@/data/auth/auth.models";
 import { isSupabaseConfigured } from "@/lib/supabase";
@@ -125,7 +126,7 @@ export function SupabaseAuthProvider({ children }: PropsWithChildren) {
         authenticated: RouteConfig.home.to,
         unauthenticated: RouteConfig.login.to,
       }}
-      loadingState={<Loader size="l" />}
+      loadingState={<PageLoader />}
     >
       {children}
     </AuthContext.Provider>
