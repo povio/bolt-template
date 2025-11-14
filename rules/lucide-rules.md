@@ -1,0 +1,1 @@
+Import all icons with the "Icon" suffix. For example instead of importing "User", import "UserIcon" from Lucide.
