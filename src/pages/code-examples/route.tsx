@@ -1,3 +1,4 @@
+import { TextButton } from "@povio/ui";
 import { Link, Outlet, createFileRoute } from "@tanstack/react-router";
 
 import { RouteConfig } from "@/config/route.config";
@@ -9,14 +10,14 @@ function CodeExamplesLayout() {
         <Link to={RouteConfig.home.to}>Home</Link>
 
         <nav className="flex gap-4">
-          <Link to={RouteConfig.codeExamples.index.to}>Code Examples</Link>
-          <Link to={RouteConfig.codeExamples.text.to}>Text</Link>
-          <Link to={RouteConfig.codeExamples.buttons.to}>Buttons</Link>
-          <Link to={RouteConfig.codeExamples.forms.to}>Forms</Link>
-          <Link to={RouteConfig.codeExamples.inputs.to}>Inputs</Link>
-          <Link to={RouteConfig.codeExamples.table.to}>Table</Link>
-          <Link to={RouteConfig.codeExamples.modals.to}>Modals</Link>
-          <Link to={RouteConfig.codeExamples.toasts.to}>Toasts</Link>
+          <TextButton link={{ href: RouteConfig.codeExamples.index.to }}>Code Examples</TextButton>
+          <TextButton link={{ href: RouteConfig.codeExamples.text.to }}>Text</TextButton>
+          <TextButton link={{ href: RouteConfig.codeExamples.buttons.to }}>Buttons</TextButton>
+          <TextButton link={{ href: RouteConfig.codeExamples.forms.to }}>Forms</TextButton>
+          <TextButton link={{ href: RouteConfig.codeExamples.inputs.to }}>Inputs</TextButton>
+          <TextButton link={{ href: RouteConfig.codeExamples.table.to }}>Table</TextButton>
+          <TextButton link={{ href: RouteConfig.codeExamples.modals.to }}>Modals</TextButton>
+          <TextButton link={{ href: RouteConfig.codeExamples.toasts.to }}>Toasts</TextButton>
         </nav>
       </header>
 

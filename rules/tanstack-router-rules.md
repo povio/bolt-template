@@ -26,3 +26,4 @@ Rules:
 2. **Layouts:** Create `route.tsx` with `<Outlet />` only when pages share UI (headers, navbars, sidebars)
 3. **Dynamic Routes:** Use `$` prefix (`$userId.tsx`)
 4. **Route Config:** Update `src/config/route.config.ts` after adding routes
+5. **Links:** When using Buttons as links use `link` prop. Do not wrap buttons with a Link!
