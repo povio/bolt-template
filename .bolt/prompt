@@ -49,5 +49,6 @@ When implementing user authentication:
 - update `src/data/auth/auth.models.ts` with your user Profile structure
 - update `src/providers/auth.provider.tsx` to use Supabase logic instead of mocks
 - update `src/hooks/useAuth.ts` to use the proper AuthUser type
+- if you use a "profiles" entity separate from "users", make sure it always gets created when a user is created
 
 OpenAPI: Check `rules/openapi-rules.md` when generating/updating specs
