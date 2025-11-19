@@ -3,7 +3,7 @@ import type { User } from "@supabase/supabase-js";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { type PropsWithChildren, useCallback, useEffect, useState } from "react";
 
-import { PageLoader } from "@/components/shared/layout/PageLoader";
+import { LoadingState } from "@/components/shared/layout/LoadingState";
 import { RouteConfig } from "@/config/route.config";
 import type { AuthModels } from "@/data/auth/auth.models";
 import { isSupabaseConfigured } from "@/lib/supabase";
@@ -126,7 +126,7 @@ export function SupabaseAuthProvider({ children }: PropsWithChildren) {
         authenticated: RouteConfig.home.to,
         unauthenticated: RouteConfig.login.to,
       }}
-      loadingState={<PageLoader />}
+      loadingState={<LoadingState />}
     >
       {children}
     </AuthContext.Provider>

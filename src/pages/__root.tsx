@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import type { UrlObject } from "url";
 
-import { Header } from "@/components/shared/layout/Header";
+import GoogleAnalytics from "@/components/googleAnalytics/GoogleAnalytics";
 import Providers from "@/providers";
 
 import "@/config/i18n";
@@ -42,28 +42,28 @@ function RootComponent() {
   }, [i18n]);
 
   return (
-    <Providers
-      providers={[
-        { provider: UIRouter.UIRouterProvider, props: { pathname, push, query, replace } },
-        { provider: UIConfig.Provider },
-        { provider: Confirmation.Provider },
-      ]}
-    >
-      <RootLayout />
-      <ToastContainer />
-      <ReactQueryDevtools />
-    </Providers>
+    <>
+      <GoogleAnalytics />
+      <Providers
+        providers={[
+          { provider: UIRouter.UIRouterProvider, props: { pathname, push, query, replace } },
+          { provider: UIConfig.Provider },
+          { provider: Confirmation.Provider },
+        ]}
+      >
+        <RootLayout />
+        <ToastContainer />
+        <ReactQueryDevtools />
+      </Providers>
+    </>
   );
 }
 
 function RootLayout() {
   return (
-    <div>
-      <Header />
-      <main>
-        <Outlet />
-      </main>
-    </div>
+    <main>
+      <Outlet />
+    </main>
   );
 }
 

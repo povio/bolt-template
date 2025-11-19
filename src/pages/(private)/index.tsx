@@ -1,7 +1,11 @@
-import { Typography } from "@povio/ui";
+import { Button, Typography } from "@povio/ui";
 import { createFileRoute } from "@tanstack/react-router";
 
+import { useAuth } from "@/hooks/useAuth";
+
 function HomePage() {
+  const { isAuthenticated, logout } = useAuth();
+
   return (
     <div className="flex flex-col items-center justify-center gap-10 p-20">
       <Typography
@@ -10,6 +14,15 @@ function HomePage() {
       >
         Hello World!
       </Typography>
+
+      {isAuthenticated && (
+        <Button
+          width="hug"
+          onPress={logout}
+        >
+          Logout
+        </Button>
+      )}
     </div>
   );
 }

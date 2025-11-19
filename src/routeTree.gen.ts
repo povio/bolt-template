@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './pages/__root'
+import { Route as AuthRouteImport } from './pages/auth'
 import { Route as CodeExamplesRouteRouteImport } from './pages/code-examples/route'
 import { Route as publicOnlyRouteRouteImport } from './pages/(public-only)/route'
 import { Route as privateRouteRouteImport } from './pages/(private)/route'
@@ -23,6 +24,11 @@ import { Route as CodeExamplesFormsRouteImport } from './pages/code-examples/for
 import { Route as CodeExamplesButtonsRouteImport } from './pages/code-examples/buttons'
 import { Route as publicOnlyLoginRouteImport } from './pages/(public-only)/login'
 
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CodeExamplesRouteRoute = CodeExamplesRouteRouteImport.update({
   id: '/code-examples',
   path: '/code-examples',
@@ -89,6 +95,7 @@ const publicOnlyLoginRoute = publicOnlyLoginRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/code-examples': typeof CodeExamplesRouteRouteWithChildren
+  '/auth': typeof AuthRoute
   '/login': typeof publicOnlyLoginRoute
   '/code-examples/buttons': typeof CodeExamplesButtonsRoute
   '/code-examples/forms': typeof CodeExamplesFormsRoute
@@ -101,6 +108,7 @@ export interface FileRoutesByFullPath {
   '/code-examples/': typeof CodeExamplesIndexRoute
 }
 export interface FileRoutesByTo {
+  '/auth': typeof AuthRoute
   '/login': typeof publicOnlyLoginRoute
   '/code-examples/buttons': typeof CodeExamplesButtonsRoute
   '/code-examples/forms': typeof CodeExamplesFormsRoute
@@ -117,6 +125,7 @@ export interface FileRoutesById {
   '/(private)': typeof privateRouteRouteWithChildren
   '/(public-only)': typeof publicOnlyRouteRouteWithChildren
   '/code-examples': typeof CodeExamplesRouteRouteWithChildren
+  '/auth': typeof AuthRoute
   '/(public-only)/login': typeof publicOnlyLoginRoute
   '/code-examples/buttons': typeof CodeExamplesButtonsRoute
   '/code-examples/forms': typeof CodeExamplesFormsRoute
@@ -132,6 +141,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/code-examples'
+    | '/auth'
     | '/login'
     | '/code-examples/buttons'
     | '/code-examples/forms'
@@ -144,6 +154,7 @@ export interface FileRouteTypes {
     | '/code-examples/'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/auth'
     | '/login'
     | '/code-examples/buttons'
     | '/code-examples/forms'
@@ -159,6 +170,7 @@ export interface FileRouteTypes {
     | '/(private)'
     | '/(public-only)'
     | '/code-examples'
+    | '/auth'
     | '/(public-only)/login'
     | '/code-examples/buttons'
     | '/code-examples/forms'
@@ -175,10 +187,18 @@ export interface RootRouteChildren {
   privateRouteRoute: typeof privateRouteRouteWithChildren
   publicOnlyRouteRoute: typeof publicOnlyRouteRouteWithChildren
   CodeExamplesRouteRoute: typeof CodeExamplesRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/code-examples': {
       id: '/code-examples'
       path: '/code-examples'
@@ -326,6 +346,7 @@ const rootRouteChildren: RootRouteChildren = {
   privateRouteRoute: privateRouteRouteWithChildren,
   publicOnlyRouteRoute: publicOnlyRouteRouteWithChildren,
   CodeExamplesRouteRoute: CodeExamplesRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
