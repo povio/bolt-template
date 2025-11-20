@@ -46,14 +46,43 @@
 
 - Use Bearer token authentication
 - Security scheme named "Authorization"
-- Define in components.securitySchemes
+- Define in `components.securitySchemes`
+- **ALWAYS use per-endpoint security** - apply security to individual operations, not globally
 
 ```json
-"Authorization": {
+"securitySchemes": {
+  "Authorization": {
     "scheme": "Bearer",
     "bearerFormat": "Bearer",
+    "name": "Authorization",
     "type": "http",
     "in": "Header"
+  }
+}
+```
+
+Apply security per-endpoint to operations that require authentication:
+
+```json
+{
+  "paths": {
+    "/api/auth/login": {
+      "post": {
+        "operationId": "AuthController_login"
+        // No security - public endpoint
+      }
+    },
+    "/api/user/me": {
+      "get": {
+        "operationId": "UserController_getMe",
+        "security": [
+          {
+            "Authorization": []
+          }
+        ]
+      }
+    }
+  }
 }
 ```
 
