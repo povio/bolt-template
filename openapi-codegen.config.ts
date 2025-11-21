@@ -1,11 +1,16 @@
 import type { OpenAPICodegenConfig } from "@povio/openapi-codegen-cli";
 
 const config: OpenAPICodegenConfig = {
-  input: "openapi.json",
+  input: "https://api.dev.pov.io/api/docs-json",
   output: "src/openapi",
-  standalone: true,
-  acl: false,
-  checkAcl: false,
+  replaceOptionalWithNullish: true,
+  tsPath: "@/openapi",
+  errorHandlingImportPath: "@povio/ui",
+  abilityContextImportPath: "@povio/ui",
+  queryTypesImportPath: "@povio/ui",
+  restClientImportPath: "@/clients/app-rest-client",
+  abilityContextGenericAppAbilities: true,
+  infiniteQueries: true,
   builderConfigs: true,
 };
 
