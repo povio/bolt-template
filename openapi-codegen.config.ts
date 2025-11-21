@@ -1,7 +1,8 @@
 import type { OpenAPICodegenConfig } from "@povio/openapi-codegen-cli";
 
 const config: OpenAPICodegenConfig = {
-  input: "https://api.dev.pov.io/api/docs-json",
+  // input: "https://api.dev.pov.io/api/docs-json",
+  input: "openapi.json",
   output: "src/openapi",
   replaceOptionalWithNullish: true,
   tsPath: "@/openapi",
