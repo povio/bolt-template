@@ -4,7 +4,7 @@ ALWAYS use `useForm`/`useFormAutosave` from `@povio/ui`. NEVER use `useState` fo
 
 ```typescript
 import { Button, TextInput, useForm } from "@povio/ui";
-import { PostsModels } from "@/data/posts/posts.models";
+import { PostsModels } from "@/openapi/posts/posts.models";
 
 const { control, handleSubmit } = useForm({
   zodSchema: PostsModels.CreatePostSchema,
