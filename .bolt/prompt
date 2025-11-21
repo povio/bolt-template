@@ -33,3 +33,4 @@ When implementing user authentication:
 - update `jwt.provider.tsx` to use the correct query for fetching the user
 - switch the mock auth provider to `jwt.provider.tsx` inside `main.tsx`
 - update `src/hooks/useAuth.ts` to use the proper type
+- update `refresh-token-interceptor.ts` and add it in `rest-client.ts`
