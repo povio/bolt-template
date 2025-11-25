@@ -18,6 +18,7 @@ function CodeExamplesLayout() {
           <TextButton link={{ href: RouteConfig.codeExamples.table.to }}>Table</TextButton>
           <TextButton link={{ href: RouteConfig.codeExamples.modals.to }}>Modals</TextButton>
           <TextButton link={{ href: RouteConfig.codeExamples.toasts.to }}>Toasts</TextButton>
+          <TextButton link={{ href: RouteConfig.codeExamples.fileUpload.to }}>File Upload</TextButton>
         </nav>
       </header>
 

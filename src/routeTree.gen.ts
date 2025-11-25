@@ -21,6 +21,7 @@ import { Route as CodeExamplesTableRouteImport } from './pages/code-examples/tab
 import { Route as CodeExamplesModalsRouteImport } from './pages/code-examples/modals'
 import { Route as CodeExamplesInputsRouteImport } from './pages/code-examples/inputs'
 import { Route as CodeExamplesFormsRouteImport } from './pages/code-examples/forms'
+import { Route as CodeExamplesFileUploadRouteImport } from './pages/code-examples/file-upload'
 import { Route as CodeExamplesButtonsRouteImport } from './pages/code-examples/buttons'
 import { Route as publicOnlyLoginRouteImport } from './pages/(public-only)/login'
 
@@ -82,6 +83,11 @@ const CodeExamplesFormsRoute = CodeExamplesFormsRouteImport.update({
   path: '/forms',
   getParentRoute: () => CodeExamplesRouteRoute,
 } as any)
+const CodeExamplesFileUploadRoute = CodeExamplesFileUploadRouteImport.update({
+  id: '/file-upload',
+  path: '/file-upload',
+  getParentRoute: () => CodeExamplesRouteRoute,
+} as any)
 const CodeExamplesButtonsRoute = CodeExamplesButtonsRouteImport.update({
   id: '/buttons',
   path: '/buttons',
@@ -98,6 +104,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/login': typeof publicOnlyLoginRoute
   '/code-examples/buttons': typeof CodeExamplesButtonsRoute
+  '/code-examples/file-upload': typeof CodeExamplesFileUploadRoute
   '/code-examples/forms': typeof CodeExamplesFormsRoute
   '/code-examples/inputs': typeof CodeExamplesInputsRoute
   '/code-examples/modals': typeof CodeExamplesModalsRoute
@@ -111,6 +118,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/login': typeof publicOnlyLoginRoute
   '/code-examples/buttons': typeof CodeExamplesButtonsRoute
+  '/code-examples/file-upload': typeof CodeExamplesFileUploadRoute
   '/code-examples/forms': typeof CodeExamplesFormsRoute
   '/code-examples/inputs': typeof CodeExamplesInputsRoute
   '/code-examples/modals': typeof CodeExamplesModalsRoute
@@ -128,6 +136,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/(public-only)/login': typeof publicOnlyLoginRoute
   '/code-examples/buttons': typeof CodeExamplesButtonsRoute
+  '/code-examples/file-upload': typeof CodeExamplesFileUploadRoute
   '/code-examples/forms': typeof CodeExamplesFormsRoute
   '/code-examples/inputs': typeof CodeExamplesInputsRoute
   '/code-examples/modals': typeof CodeExamplesModalsRoute
@@ -144,6 +153,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/login'
     | '/code-examples/buttons'
+    | '/code-examples/file-upload'
     | '/code-examples/forms'
     | '/code-examples/inputs'
     | '/code-examples/modals'
@@ -157,6 +167,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/login'
     | '/code-examples/buttons'
+    | '/code-examples/file-upload'
     | '/code-examples/forms'
     | '/code-examples/inputs'
     | '/code-examples/modals'
@@ -173,6 +184,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/(public-only)/login'
     | '/code-examples/buttons'
+    | '/code-examples/file-upload'
     | '/code-examples/forms'
     | '/code-examples/inputs'
     | '/code-examples/modals'
@@ -276,6 +288,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CodeExamplesFormsRouteImport
       parentRoute: typeof CodeExamplesRouteRoute
     }
+    '/code-examples/file-upload': {
+      id: '/code-examples/file-upload'
+      path: '/file-upload'
+      fullPath: '/code-examples/file-upload'
+      preLoaderRoute: typeof CodeExamplesFileUploadRouteImport
+      parentRoute: typeof CodeExamplesRouteRoute
+    }
     '/code-examples/buttons': {
       id: '/code-examples/buttons'
       path: '/buttons'
@@ -319,6 +338,7 @@ const publicOnlyRouteRouteWithChildren = publicOnlyRouteRoute._addFileChildren(
 
 interface CodeExamplesRouteRouteChildren {
   CodeExamplesButtonsRoute: typeof CodeExamplesButtonsRoute
+  CodeExamplesFileUploadRoute: typeof CodeExamplesFileUploadRoute
   CodeExamplesFormsRoute: typeof CodeExamplesFormsRoute
   CodeExamplesInputsRoute: typeof CodeExamplesInputsRoute
   CodeExamplesModalsRoute: typeof CodeExamplesModalsRoute
@@ -330,6 +350,7 @@ interface CodeExamplesRouteRouteChildren {
 
 const CodeExamplesRouteRouteChildren: CodeExamplesRouteRouteChildren = {
   CodeExamplesButtonsRoute: CodeExamplesButtonsRoute,
+  CodeExamplesFileUploadRoute: CodeExamplesFileUploadRoute,
   CodeExamplesFormsRoute: CodeExamplesFormsRoute,
   CodeExamplesInputsRoute: CodeExamplesInputsRoute,
   CodeExamplesModalsRoute: CodeExamplesModalsRoute,

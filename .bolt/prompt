@@ -27,7 +27,7 @@ src/openapi/posts/
   └── posts.models.ts   // PostsModels namespace (Zod schemas)
 ```
 
-**CRITICAL:** NEVER use Supabase! The data layer is generated and works with an external REST API!
+**CRITICAL:** NEVER use Supabase! The data layer is generated and works with an external REST API! If the openapi folder is missing, run `npm run openapi:gen` to generate it!
 
 When implementing user authentication:
 - update `jwt.provider.tsx` to use the correct query for fetching the user
