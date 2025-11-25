@@ -3,6 +3,7 @@
 
 ```typescript
 const createPostMutation = PostsQueries.useCreate({
-  invalidateCurrentModule: true;
+  invalidateCurrentModule: true,
+  invalidateModules: [QueryModule.Profiles], // Any other modules that include queries whose data may be affected by this mutation
 });
 ```
