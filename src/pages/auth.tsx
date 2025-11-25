@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import z from "zod";
 
 import { LoadingState } from "@/components/shared/layout/LoadingState";
-import { RouteConfig } from "@/config/route.config";
 import { useAuth } from "@/hooks/useAuth";
 
 const authSearchSchema = z.object({
@@ -23,9 +22,9 @@ function AuthCallbackPage() {
       const decodedRefreshToken = refreshToken ? decodeURIComponent(refreshToken) : undefined;
       updateTokens?.(decodedAccessToken, decodedRefreshToken);
 
-      navigate({ to: RouteConfig.home.to });
+      navigate({ to: "/" });
     } else {
-      navigate({ to: RouteConfig.login.to });
+      navigate({ to: "/login" });
     }
   }, [accessToken, refreshToken, navigate, updateTokens]);
 

@@ -4,7 +4,6 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { type PropsWithChildren, useCallback, useEffect, useState } from "react";
 
 import { LoadingState } from "@/components/shared/layout/LoadingState";
-import { RouteConfig } from "@/config/route.config";
 import type { AuthModels } from "@/data/auth/auth.models";
 import { isSupabaseConfigured } from "@/lib/supabase";
 
@@ -123,8 +122,8 @@ export function SupabaseAuthProvider({ children }: PropsWithChildren) {
       logout={logout}
       user={user}
       routes={{
-        authenticated: RouteConfig.home.to,
-        unauthenticated: RouteConfig.login.to,
+        authenticated: "/",
+        unauthenticated: "/login",
       }}
       loadingState={<LoadingState />}
     >
