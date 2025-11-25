@@ -4,7 +4,6 @@ import { type PropsWithChildren, useCallback, useEffect, useState } from "react"
 
 import { LoadingState } from "@/components/shared/layout/LoadingState";
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "@/config/jwt.config";
-import { RouteConfig } from "@/config/route.config";
 // import { UserQueries } from "@/openapi/user/user.queries";
 
 export const JWTProvider = ({ children }: PropsWithChildren) => {
@@ -67,8 +66,8 @@ export const JWTProvider = ({ children }: PropsWithChildren) => {
       accessToken={accessToken}
       user={user}
       routes={{
-        authenticated: RouteConfig.home.to,
-        unauthenticated: RouteConfig.login.to,
+        authenticated: "/",
+        unauthenticated: "/login",
       }}
       loadingState={<LoadingState />}
     >
