@@ -8,14 +8,14 @@ function CodeExamplesLayout() {
         <Link to="/">Home</Link>
 
         <nav className="flex gap-4">
-          <TextButton link={{ href: "/code-examples" }}>Code Examples</TextButton>
-          <TextButton link={{ href: "/code-examples/text" }}>Text</TextButton>
-          <TextButton link={{ href: "/code-examples/buttons" }}>Buttons</TextButton>
-          <TextButton link={{ href: "/code-examples/forms" }}>Forms</TextButton>
-          <TextButton link={{ href: "/code-examples/inputs" }}>Inputs</TextButton>
-          <TextButton link={{ href: "/code-examples/table" }}>Table</TextButton>
-          <TextButton link={{ href: "/code-examples/modals" }}>Modals</TextButton>
-          <TextButton link={{ href: "/code-examples/toasts" }}>Toasts</TextButton>
+          <TextButton link={{ to: "/code-examples" }}>Code Examples</TextButton>
+          <TextButton link={{ to: "/code-examples/text" }}>Text</TextButton>
+          <TextButton link={{ to: "/code-examples/buttons" }}>Buttons</TextButton>
+          <TextButton link={{ to: "/code-examples/forms" }}>Forms</TextButton>
+          <TextButton link={{ to: "/code-examples/inputs" }}>Inputs</TextButton>
+          <TextButton link={{ to: "/code-examples/table" }}>Table</TextButton>
+          <TextButton link={{ to: "/code-examples/modals" }}>Modals</TextButton>
+          <TextButton link={{ to: "/code-examples/toasts" }}>Toasts</TextButton>
         </nav>
       </header>
 

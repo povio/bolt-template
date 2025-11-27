@@ -148,8 +148,9 @@ function ButtonExamplesPage() {
         </Typography>
 
         <div className="flex flex-row items-center gap-4">
-          <Button link={{ href: "/" }}>Link</Button>
-          <Button link={{ href: "/", target: "_blank" }}>Link on new tab</Button>
+          <Button link={{ to: "/" }}>Link</Button>
+          <Button link={{ to: "/", target: "_blank" }}>Link on new tab</Button>
+          <Button link={{ href: "https://www.google.com", target: "_blank" }}>External link on new tab</Button>
         </div>
       </section>
 
