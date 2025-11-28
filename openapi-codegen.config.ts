@@ -1,7 +1,8 @@
 import type { OpenAPICodegenConfig } from "@povio/openapi-codegen-cli";
 
 const config: OpenAPICodegenConfig = {
-  input: "https://api.dev.pov.io/api/docs-json",
+  // input: "../be/resources/openapi-main.json", // Local backend in monorepo
+  input: "https://api.dev.pov.io/api/docs-json", // External deployed backend
   output: "src/openapi",
   replaceOptionalWithNullish: true,
   tsPath: "@/openapi",

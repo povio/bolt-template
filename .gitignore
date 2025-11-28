@@ -8,7 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
-src/openapi
+# src/openapi # Not ignored for Bolt compatibility
 dist
 dist-ssr
 *.local

@@ -4,17 +4,24 @@ import { type PropsWithChildren, useCallback, useEffect, useState } from "react"
 
 import { LoadingState } from "@/components/shared/layout/LoadingState";
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "@/config/jwt.config";
-// import { UserQueries } from "@/openapi/user/user.queries";
+// Replace these if they are different on your backend
+import { UserApi } from "@/openapi/user/user.api";
+import type { UserModels } from "@/openapi/user/user.models";
+import { UserQueries } from "@/openapi/user/user.queries";
 
 export const JWTProvider = ({ children }: PropsWithChildren) => {
-  const [accessToken, setAccessToken] = useState<string | null | undefined>(undefined);
   const queryClient = useQueryClient();
+  const [accessToken, setAccessToken] = useState<string | null | undefined>(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem(ACCESS_TOKEN_KEY);
+    }
 
+    return null;
+  });
+
+  const user = queryClient.getQueryData<UserModels.UserMeResponse>(UserQueries.keys.get()) ?? null;
   const authenticated = !!accessToken;
   const isInitializing = accessToken === undefined;
-
-  // const { data: user } = UserQueries.useGet({ enabled: authenticated });
-  const user = null;
 
   const onAccessTokenChange = useCallback((token: string | null) => {
     if (token) {
@@ -34,16 +41,27 @@ export const JWTProvider = ({ children }: PropsWithChildren) => {
     }
   }, []);
 
-  useEffect(() => {
-    const token = localStorage.getItem(ACCESS_TOKEN_KEY);
-    onAccessTokenChange(token);
-  }, [onAccessTokenChange]);
-
   const logout = useCallback(() => {
     onAccessTokenChange(null);
     onRefreshTokenChange(null);
     queryClient.clear();
-  }, [onAccessTokenChange, onRefreshTokenChange, queryClient]);
+  }, [queryClient, onAccessTokenChange, onRefreshTokenChange]);
+
+  const userPromise = async () => {
+    try {
+      const user = await UserApi.get();
+      queryClient.setQueryData<UserModels.UserMeResponse>(UserQueries.keys.get(), user);
+      return user;
+    } catch {
+      logout();
+      return null;
+    }
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem(ACCESS_TOKEN_KEY);
+    onAccessTokenChange(token);
+  }, [onAccessTokenChange]);
 
   const updateTokens = useCallback(
     (accessToken: string | null, refreshToken?: string | null) => {
@@ -65,6 +83,7 @@ export const JWTProvider = ({ children }: PropsWithChildren) => {
       updateTokens={updateTokens}
       accessToken={accessToken}
       user={user}
+      userPromise={userPromise}
       routes={{
         authenticated: "/",
         unauthenticated: "/login",

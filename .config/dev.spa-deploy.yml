@@ -1,0 +1,26 @@
+region: us-east-1
+accountId: "000000000000"
+
+configs:
+  destination: ./.env.local
+  values:
+    - name: "@"
+      templateModule: spa.template
+
+deploy:
+  buildPath: "./out"
+  # includeGlob: "**"
+  # ignoreGlob:
+
+  s3:
+    acl: "public-read"
+    bucket: <devDeployBucketName>
+    # prefix:
+    purge: true
+    force: false
+    # extra glob for invalidation
+    # invalidateGlob:
+
+  cloudfront:
+    distributionId: <devDistributionId>
+    invalidatePaths: "/*"

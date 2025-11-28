@@ -1,3 +1,20 @@
 {
-  "shared": {}
+  "appName": "Bolt Template",
+  "appDescription": "A template for building web applications using Bolt.new",
+  "shared": {
+    "notFound": {
+      "head": {
+        "title": "Page not found",
+        "description": "The page you are looking for doesn't exist."
+      },
+      "heading": "Page not found",
+      "subheading": "The page you are looking for doesn't exist.",
+      "homeBtn": "Go to home"
+    },
+    "errorFallback": {
+      "heading": "Something went wrong",
+      "subheading": "Error: {{error}}",
+      "retryBtn": "Try again"
+    }
+  }
 }

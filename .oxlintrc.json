@@ -7,6 +7,7 @@
     "src/openapi",
     "src/routeTree.gen.ts",
     "postcss.config.js",
+    "out",
     "dist",
     "public",
     "scripts",
@@ -15,6 +16,8 @@
     "node_modules"
   ],
   "rules": {
+    "only-throw-error": "warn",
+    "react/exhaustive-deps": "off",
     "react-perf/jsx-no-new-object-as-prop": "off",
     "react-perf/jsx-no-new-function-as-prop": "off",
     "react-perf/jsx-no-new-array-as-prop": "off",
