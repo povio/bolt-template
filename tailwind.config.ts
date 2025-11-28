@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 import { fontFamily } from "tailwindcss/defaultTheme";
 
-import baseTailwindConfig from "./base-tailwind.config";
+import baseTailwindConfig from "./src/styles/tailwind-v3/base-tailwind.config";
 
 const config: Config = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}", "./node_modules/@povio/ui/dist/**/*.js"],

@@ -59,7 +59,6 @@
     "@biomejs/biome": "2.3.7",
     "@povio/openapi-codegen-cli": "^1.2.5",
     "@povio/spa-deploy-cli": "^4.2.2",
-    "@tanstack/router-plugin": "^1.99.14",
     "@types/luxon": "^3.7.1",
     "@types/node": "^24.10.0",
     "@types/react": "^19.2.2",

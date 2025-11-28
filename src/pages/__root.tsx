@@ -20,8 +20,7 @@ import { AppErrorBoundary } from "@/providers/AppErrorBoundary";
 import { Fonts } from "@/styles/fonts/fonts";
 
 import "@/config/i18n";
-import "@/styles/index.css";
-import "@/styles/theme.css";
+import "@/styles/tailwind-v3/globals.css";
 
 initLogger();
 initSentry();

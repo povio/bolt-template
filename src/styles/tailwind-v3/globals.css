@@ -1,8 +1,13 @@
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/geist";
+
+@import "./theme.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* For Tailwind v3 compatibility with @povio/ui */
+/* Temporary fixes for Tailwind v3 compatibility with @povio/ui */
 :root {
   --breakpoint-sm: 23.75rem;
   --breakpoint-md: 37.5rem;

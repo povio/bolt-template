@@ -26,6 +26,7 @@ const viteConfig = defineViteConfig({
       }),
     devtools(),
     viteReact(),
+    // tailwindCSS(), // uncomment for Tailwind v4
     !isInTestMode && devtoolsJson(),
   ],
   server: {
