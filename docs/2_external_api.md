@@ -51,9 +51,10 @@ To ensure Bolt follows our conventions, add these package rules to your team's P
 
 These are common pitfalls and bugs you might encounter. Click to jump to detailed explanations:
 
-1. **[Newly added pages not working](#routing)** - AI creates a folder with the same name as an existing route file
-2. **[Submitting a form does nothing](#forms)** - Required data appended during submission causes validation errors
-3. **[File upload resourceName errors](#file-upload)** - Backend doesn't accept the specified resourceName
+1. **[Bolt tries to setup and use Supabase](#first-prompt)** - In your first prompt, explicitly tell it to use the external API
+2. **[Newly added pages not working](#routing)** - AI creates a folder with the same name as an existing route file
+3. **[Submitting a form does nothing](#forms)** - Required data appended during submission causes validation errors
+4. **[File upload resourceName errors](#file-upload)** - Backend doesn't accept the specified resourceName
 
 ---
 
@@ -67,10 +68,12 @@ These are common pitfalls and bugs you might encounter. Click to jump to detaile
 
 ## First Prompt
 
-Give a rough overview of the app and tell it to only implement user authentication in the first prompt:
+Give a rough overview of the app and tell it to only implement user authentication in the first prompt. **Tell it explicitly that it must use the provided external API!**
 
 ```
 Build me an app named ... which will have the features ... Start with the user authentication - add a login and register page. Logged in users should be redirected to... 
+
+Use the provided external REST API - all queries and mutations were generated inside src/openapi.
 ```
 
 Bolt should automatically update `jwt.provider.tsx` and `refresh-token.interceptor.ts` and also switch to the JWT authentication provider in `main.tsx`. Make sure it did these steps correctly (check Authentication section).
