@@ -28,7 +28,7 @@ export const AppConfig = {
     measurementId: import.meta.env.VITE_PUBLIC_GOOGLE_ANALYTICS_MEASUREMENT_ID,
   },
   supabase: {
-    url: import.meta.env.VITE_PUBLIC_SUPABASE_URL,
-    anonKey: import.meta.env.VITE_PUBLIC_SUPABASE_ANON_KEY,
+    url: import.meta.env.VITE_SUPABASE_URL,
+    anonKey: import.meta.env.VITE_SUPABASE_ANON_KEY,
   },
 };

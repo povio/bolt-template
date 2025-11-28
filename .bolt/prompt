@@ -31,10 +31,9 @@ src/data/posts/
 Naming: camelCase folders (`userProfiles/`), PascalCase namespaces (`UserProfilesModels`, `UserProfilesQueries`)
 
 Database Setup:
-1. Name Supabase env variables `VITE_PUBLIC_SUPABASE_URL` and `VITE_PUBLIC_SUPABASE_ANON_KEY`
-2. Create tables/schema
-3. Add dummy/seed data (enough to demonstrate UI)
-4. Use camelCase for all entity properties
+1. Create tables/schema
+2. Add dummy/seed data (enough to demonstrate UI)
+3. Use camelCase for all entity properties
 
 Data Hooks:
 1. Define Zod schemas in `*.models.ts`, export as namespace
