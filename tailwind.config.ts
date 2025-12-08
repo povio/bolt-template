@@ -821,6 +821,7 @@ const config: Config = {
         "button-segment-control-segment-height-m": "0.375rem",
         "button-segment-control-segment-height-l": "0.375rem",
         "button-gap-icon-to-label": "0.25rem",
+        "input-side-default": "0.75rem",
       },
       spacing: {
         "0": "0rem",
@@ -1062,6 +1063,7 @@ const config: Config = {
         "button-segment-control-segment-height-m": "0.375rem",
         "button-segment-control-segment-height-l": "0.375rem",
         "button-gap-icon-to-label": "0.25rem",
+        "input-side-default": "0.75rem",
       },
       boxShadow: {
         "1": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
