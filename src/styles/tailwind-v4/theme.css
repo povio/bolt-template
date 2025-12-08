@@ -623,6 +623,7 @@
   --container-input-side-xs: 0.25rem;
   --container-input-side-s: 0.375rem;
   --container-input-side-m: 0.625rem;
+  --container-input-side-default: 0.75rem;
   --container-button-side-xxs: 0.125rem;
   --container-button-segment-control-buttonside-xs: 0.875rem;
   --container-button-segment-control-buttonside-s: 1.25rem;
@@ -862,6 +863,7 @@
   --spacing-input-side-xs: 0.25rem;
   --spacing-input-side-s: 0.375rem;
   --spacing-input-side-m: 0.625rem;
+  --spacing-input-side-default: 0.75rem;
   --spacing-button-side-xxs: 0.125rem;
   --spacing-button-segment-control-buttonside-xs: 0.875rem;
   --spacing-button-segment-control-buttonside-s: 1.25rem;
