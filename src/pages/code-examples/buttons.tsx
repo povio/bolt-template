@@ -44,7 +44,6 @@ function ButtonExamplesPage() {
         </Typography>
 
         <div className="flex flex-row items-center gap-4">
-          <Button size="xxs">XXS</Button>
           <Button size="xs">XS</Button>
           <Button size="s">S</Button>
           <Button size="m">M</Button>
