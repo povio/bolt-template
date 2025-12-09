@@ -100,7 +100,7 @@ const Root = () => {
 
 function RootLayout() {
   return (
-    <main className="flex min-h-screen flex-col">
+    <main className="flex min-h-screen flex-col bg-elevation-fill-default-3">
       <Outlet />
     </main>
   );

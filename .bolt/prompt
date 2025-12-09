@@ -1,21 +1,36 @@
 For all designs, create beautiful, production-ready interfaces. Avoid cookie-cutter solutions and aim for fully featured webpages.
 
 Tech Stack:
--   @povio/ui and Lucide React for ALL UI components and icons (DO NOT install other UI/icon libraries)
--   @tanstack/react-query for data fetching/caching
--   @tanstack/react-router for routing:
+- @povio/ui and Lucide React for ALL UI components and icons (DO NOT install other UI/icon libraries)
+- @tanstack/react-query for data fetching/caching
+- @tanstack/react-router for routing:
   - **CRITICAL: After adding/modifying routes, ALWAYS run dev server to regenerate `routeTree.gen.ts`**
   - **NEVER have both a file and folder with the same name (e.g., `posts.tsx` + `posts/`) - move file to `index.tsx` inside folder first**
   - Auth folders: `(private)/` for protected routes, `(public-only)/` for guest-only routes (login/register), all others are public
--   Zustand for global state
--   Absolute imports with @ alias (points to src)
--   Avoid code duplication - extract components and constants
+- Zustand for global state
+- Absolute imports with @ alias (points to src)
+- Avoid code duplication - extract components and constants
 
 Styling & Components:
--   **Use Tailwind's blue palette only** (blue-50 to blue-950) - matches @povio/ui defaults
--   Buttons: pass text as children (not JSX), add icons via `icon` prop, use `width="hug"` for normal width (default is full-width)
--   Buttons as links: use the `link` prop - never wrap any type of button around a Link from tanstack router
--   Avoid other colors except semantic (red=error, green=success)
+- Buttons: pass text as children (not JSX), add icons via `icon` prop, use `width="hug"` for normal width (default is full-width)
+- Buttons as links: use the `link` prop - never wrap any type of button around a Link from tanstack router
+- Avoid other colors except semantic (red=error, green=success)
+- **Use only these semantic colors (Tailwind classes):**
+  - **Backgrounds:**
+    - `bg-elevation-fill-default-3` → Main page background
+    - `bg-elevation-fill-default-2` → Secondary backgrounds (sidebar, nav)
+    - `bg-elevation-fill-default-1` → Elevated elements (cards, containers)
+    - `bg-elevation-fill-inverted-1` → Inverted cards/sections
+    - `bg-elevation-fill-inverted-2` → Secondary inverted elements
+  - **Borders:** `border-elevation-outline-default-1` → Card outlines, separators
+  - **Text:**
+    - `text-text-default-1` → Primary text, titles, labels
+    - `text-text-default-2` → Secondary text, subtitles
+    - `text-text-inverted-1` → Primary text on inverted backgrounds only
+    - `text-text-inverted-2` → Secondary text on inverted backgrounds only
+  - **Accent:**
+    - `interactive-contained-primary-idle` → Primary accent (backgrounds, icons, text)
+    - `interactive-contained-primary-on-idle` → Content on accent backgrounds
 
 Code Examples: `src/pages/code-examples/` contains reference examples for @povio/ui components and routing patterns. **NEVER modify these files** - refer to them as examples only.
 
