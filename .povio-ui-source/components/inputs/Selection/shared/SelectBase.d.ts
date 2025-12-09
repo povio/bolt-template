@@ -1,0 +1,26 @@
+import { ReactElement, Ref } from 'react';
+import { AriaButtonProps } from 'react-aria';
+import { Key } from 'react-aria-components';
+import { FormFieldProps } from '../../FormField/FormField';
+import { DefaultInitialSelectItem, GroupedSelectProps, SelectAsyncProps, SelectItem, SelectNewItemProps, SelectVirtualizationProps } from './select.types';
+import { InputVariantProps } from '../../shared/input.cva';
+export type SelectBaseProps<TKey extends Key = Key, TInitialSelectItem = DefaultInitialSelectItem<TKey>> = FormFieldProps & GroupedSelectProps<TKey, TInitialSelectItem> & SelectNewItemProps & SelectAsyncProps & SelectVirtualizationProps & InputVariantProps & Pick<AriaButtonProps, "onBlur"> & {
+    ref?: Ref<HTMLDivElement>;
+    className?: string;
+    placeholder?: string;
+    hideDropdownIcon?: boolean;
+    isSearchable?: boolean;
+    isClearable?: boolean;
+    isClientSearchDisabled?: boolean;
+    ignoreTriggerWidth?: boolean;
+    items: SelectItem<TKey>[];
+    inputClassName?: string;
+    containerClassName?: string;
+    customTrigger?: ReactElement;
+    selectedTagsType?: "tags" | "list";
+    collapseAfter?: number;
+    onInputChange?: (value: string) => void;
+    onSearchChange?: (value: string) => void;
+    mapInitialToSelectItem?: (item: TInitialSelectItem) => SelectItem<TKey>;
+};
+export declare const SelectBase: <TKey extends Key = Key, TInitialSelectItem = DefaultInitialSelectItem<TKey>>(dProps: SelectBaseProps<TKey, TInitialSelectItem>) => import("react/jsx-runtime").JSX.Element;
