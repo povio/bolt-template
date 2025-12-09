@@ -6,8 +6,7 @@
 @import "./theme.css";
 @import "@povio/ui/styles";
 
-@source "../../../../packages/ui/src";
-@source "../../../../packages/auth/src";
+@source "../../.povio-ui-source";
 
 /* width */
 ::-webkit-scrollbar {
