@@ -176,6 +176,7 @@ When moving from Bolt to the monorepo:
    - Copy and replace `.vscode/settings.json` from admin app
       - Remove `.vscode/extensions.json` from within fe
    - Copy and replace `.gitignore` and `.gitattributes` from admin app
+   - Remove `.bolt` folder
 
 3. **Update scripts in package.json**
    - Switch to zx scripts - refer to admin app. Example:
@@ -213,10 +214,6 @@ When moving from Bolt to the monorepo:
    - Add any additional environment variables (analytics, sentry, etc.)
 
 5. **UI Updates**
-   - Update Tailwind to v4
-      - Update packages "tailwindcss", "tailwindcss-react-aria-components" and "@tailwindcss/vite" (refer to admin package.json)
-      - Inside `__root.tsx` switch the `globals.css` import to tailwind-v4 folder
-      - Remove the "postcss" package, `postcss.config.js`, `tailwind.config.ts` and `src/styles/tailwind-v3` folder
    - Change @povio/ui dependency from npm to local package
       ```json
       {
@@ -225,6 +222,11 @@ When moving from Bolt to the monorepo:
          }
       }
       ```
+   - Change Tailwind source inside `globals.css` to point to the local UI package 
+      ```css
+      @source "../../../../packages/ui/src";
+      ```
+   - Remove `scripts/copy-ui-source.mjs`
 
 6. **Migration to Backend**
    - Update `openapi-codegen.config.ts` OpenAPI spec input path
