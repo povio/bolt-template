@@ -1,5 +1,5 @@
 import { applyEnv, resolveConfigSync } from "@povio/resolve-config";
-// import tailwindCSS from "@tailwindcss/vite";
+import tailwindCSS from "@tailwindcss/vite";
 import { devtools } from "@tanstack/devtools-vite";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import viteReact from "@vitejs/plugin-react";
@@ -26,7 +26,7 @@ const viteConfig = defineViteConfig({
       }),
     devtools(),
     viteReact(),
-    // tailwindCSS(), // uncomment for Tailwind v4
+    tailwindCSS(),
     !isInTestMode && devtoolsJson(),
   ],
   server: {
