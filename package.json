@@ -5,7 +5,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node scripts/copy-ui-source.mjs && vite",
+    "dev": "vite",
     "build": "tsc -b && vite build",
     "clean": "rimraf .turbo dist src/openapi",
     "lint": "oxlint --type-aware . --fix",
@@ -15,7 +15,8 @@
     "typecheck": "tsgo --noEmit",
     "openapi:gen": "openapi-codegen generate --prettier false",
     "openapi:check": "openapi-codegen check",
-    "i18n:missing": "npx tsx scripts/i18n/find-missing-translations.ts"
+    "i18n:missing": "npx tsx scripts/i18n/find-missing-translations.ts",
+    "copy:ui-source": "node scripts/copy-ui-source.mjs"
   },
   "dependencies": {
     "@casl/ability": "^6.7.3",
@@ -25,7 +26,7 @@
     "@hookform/resolvers": "^5.2.2",
     "@internationalized/date": "^3.10.0",
     "@povio/resolve-config": "1.1.2",
-    "@povio/ui": "^2.1.0",
+    "@povio/ui": "2.1.0",
     "@sentry/react": "^10.22.0",
     "@supabase/supabase-js": "^2.80.0",
     "@tanstack/devtools-vite": "^0.3.11",

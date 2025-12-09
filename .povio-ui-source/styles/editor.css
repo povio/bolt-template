@@ -1,0 +1,47 @@
+.tiptap {
+  @apply font-primary;
+
+  h1 {
+    @apply md:text-desktop-title-1 font-secondary text-mobile-title-1;
+  }
+
+  h2 {
+    @apply md:text-desktop-title-2 font-secondary text-mobile-title-2;
+  }
+
+  h3 {
+    @apply md:text-desktop-title-3 font-secondary text-mobile-title-3;
+  }
+
+  h4 {
+    @apply md:text-desktop-title-4 font-secondary text-mobile-title-4;
+  }
+
+  h5 {
+    @apply md:text-desktop-title-5 font-secondary text-mobile-title-5;
+  }
+
+  h6 {
+    @apply md:text-desktop-title-6 font-secondary text-mobile-title-6;
+  }
+
+  ul {
+    @apply list-disc pl-8;
+  }
+
+  ol {
+    @apply list-decimal pl-8;
+  }
+
+  a {
+    @apply text-interactive-text-primary-idle underline;
+  }
+
+  p.is-editor-empty:first-child::before {
+    @apply text-text-default-3;
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    pointer-events: none;
+  }
+}

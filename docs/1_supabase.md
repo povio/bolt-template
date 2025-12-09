@@ -227,6 +227,7 @@ When moving from Bolt to the monorepo:
       @source "../../../../packages/ui/src";
       ```
    - Remove `scripts/copy-ui-source.mjs`
+   - Remove `.povio-ui-source`
 
 6. **Migration to Backend**
    - Update `openapi-codegen.config.ts` OpenAPI spec input path
