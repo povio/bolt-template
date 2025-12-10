@@ -86,34 +86,30 @@ export function SupabaseAuthProvider({ children }: PropsWithChildren) {
   const [authReady, setAuthReady] = useState(false);
 
   // Query to check session state - Bolt AI should replace with supabase.auth.getSession()
-  const { data: isAuthenticated, isLoading } = useQuery({
+  const { data: isAuthenticated, isLoading: isSessionLoading } = useQuery({
     queryKey: AUTH_SESSION_QUERY_KEY,
     queryFn: checkMockSession,
     staleTime: 1000 * 60 * 5, // 5 minutes
     retry: false,
   });
 
-  const user = queryClient.getQueryData<MockAuthUser>(AUTH_USER_QUERY_KEY) ?? null;
   const authenticated = !!isAuthenticated;
-  const isInitializing = isLoading || !authReady;
+
+  // Query to fetch user data - Bolt AI should replace with supabase.auth.getUser()
+  const { data: user } = useQuery({
+    queryKey: AUTH_USER_QUERY_KEY,
+    queryFn: fetchMockUser,
+    enabled: authenticated,
+    staleTime: 1000 * 60 * 5, // 5 minutes
+  });
+
+  const isInitializing = isSessionLoading || !authReady;
 
   const logout = useCallback(async () => {
     // Bolt AI should replace this with await supabase.auth.signOut()
     setMockAuthState(false);
     queryClient.invalidateQueries({ queryKey: AUTH_SESSION_QUERY_KEY });
   }, [queryClient]);
-
-  // Mock userPromise - Bolt AI should replace this with actual Supabase user fetching
-  const userPromise = async () => {
-    try {
-      const userData = await fetchMockUser();
-      queryClient.setQueryData<MockAuthUser>(AUTH_USER_QUERY_KEY, userData);
-      return userData;
-    } catch {
-      logout();
-      return null;
-    }
-  };
 
   useEffect(() => {
     setAuthReady(true);
@@ -138,8 +134,7 @@ export function SupabaseAuthProvider({ children }: PropsWithChildren) {
       isAuthenticated={authenticated}
       isInitializing={isInitializing}
       logout={logout}
-      user={user}
-      userPromise={userPromise}
+      user={user ?? null}
       routes={{
         authenticated: "/",
         unauthenticated: "/login",

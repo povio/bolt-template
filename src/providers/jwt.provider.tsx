@@ -5,9 +5,7 @@ import { type PropsWithChildren, useCallback, useEffect, useState } from "react"
 import { LoadingState } from "@/components/shared/layout/LoadingState";
 import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "@/config/jwt.config";
 // Replace these if they are different on your backend
-import { UserApi } from "@/openapi/user/user.api";
-import type { UserModels } from "@/openapi/user/user.models";
-import { UserQueries } from "@/openapi/user/user.queries";
+// import { UserQueries } from "@/openapi/user/user.queries";
 
 export const JWTProvider = ({ children }: PropsWithChildren) => {
   const queryClient = useQueryClient();
@@ -19,9 +17,11 @@ export const JWTProvider = ({ children }: PropsWithChildren) => {
     return null;
   });
 
-  const user = queryClient.getQueryData<UserModels.UserMeResponse>(UserQueries.keys.get()) ?? null;
-  const authenticated = !!accessToken;
+  const isAuthenticated = !!accessToken;
   const isInitializing = accessToken === undefined;
+
+  // const { data: user } = UserQueries.useGet({ enabled: isAuthenticated });
+  const user = null;
 
   const onAccessTokenChange = useCallback((token: string | null) => {
     if (token) {
@@ -47,17 +47,6 @@ export const JWTProvider = ({ children }: PropsWithChildren) => {
     queryClient.clear();
   }, [queryClient, onAccessTokenChange, onRefreshTokenChange]);
 
-  const userPromise = async () => {
-    try {
-      const user = await UserApi.get();
-      queryClient.setQueryData<UserModels.UserMeResponse>(UserQueries.keys.get(), user);
-      return user;
-    } catch {
-      logout();
-      return null;
-    }
-  };
-
   useEffect(() => {
     const token = localStorage.getItem(ACCESS_TOKEN_KEY);
     onAccessTokenChange(token);
@@ -77,13 +66,12 @@ export const JWTProvider = ({ children }: PropsWithChildren) => {
 
   return (
     <AuthContext.Provider
-      isAuthenticated={authenticated}
+      isAuthenticated={isAuthenticated}
       isInitializing={isInitializing}
       logout={logout}
       updateTokens={updateTokens}
       accessToken={accessToken}
       user={user}
-      userPromise={userPromise}
       routes={{
         authenticated: "/",
         unauthenticated: "/login",
