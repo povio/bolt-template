@@ -14,8 +14,11 @@ Tech Stack:
 Styling & Components:
 - Buttons: pass text as children (not JSX), add icons via `icon` prop, use `width="hug"` for normal width (default is full-width)
 - Buttons as links: use the `link` prop - never wrap any type of button around a Link from tanstack router
-- Avoid other colors except semantic (red=error, green=success)
-- **Use only these semantic colors (Tailwind classes):**
+- **Typography**
+  - Base sizes to use: "title-3", "body-3", "label-2"
+  - Smaller number → larger text
+  - Bigger number → smaller text
+- **Use these semantic Tailwind classes:**
   - **Backgrounds:**
     - `bg-elevation-fill-default-3` → Main page background
     - `bg-elevation-fill-default-2` → Secondary backgrounds (sidebar, nav)
@@ -23,6 +26,7 @@ Styling & Components:
     - `bg-elevation-fill-inverted-1` → Inverted cards/sections
     - `bg-elevation-fill-inverted-2` → Secondary inverted elements
   - **Borders:** `border-elevation-outline-default-1` → Card outlines, separators
+  - **Rounding:** `rounded-m` → Elevated elements (cards, containers)
   - **Text:**
     - `text-text-default-1` → Primary text, titles, labels
     - `text-text-default-2` → Secondary text, subtitles
@@ -31,6 +35,7 @@ Styling & Components:
   - **Accent:**
     - `interactive-contained-primary-idle` → Primary accent (backgrounds, icons, text)
     - `interactive-contained-primary-on-idle` → Content on accent backgrounds
+- Avoid default Tailwind colors besides red and green (error, success)
 
 Code Examples: `src/pages/code-examples/` contains reference examples for @povio/ui components and routing patterns. **NEVER modify these files** - refer to them as examples only.
 

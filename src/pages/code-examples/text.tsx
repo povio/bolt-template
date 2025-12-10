@@ -12,7 +12,7 @@ function TypographyExample() {
       </Typography>
       <Typography
         as="p"
-        size="body-2"
+        size="body-3"
       >
         The Typography component is used to display text with consistent styling across the application. The larger the
         number, the smaller the text.
@@ -30,37 +30,37 @@ function TypographyExample() {
             as="h1"
             size="title-1"
           >
-            Title 1 - Heading
+            Title 1
           </Typography>
           <Typography
             as="h2"
             size="title-2"
           >
-            Title 2 - Heading
+            Title 2
           </Typography>
           <Typography
             as="h3"
             size="title-3"
           >
-            Title 3 - Heading
+            Title 3 - Baseline
           </Typography>
           <Typography
             as="h4"
             size="title-4"
           >
-            Title 4 - Heading
+            Title 4
           </Typography>
           <Typography
             as="h5"
             size="title-5"
           >
-            Title 5 - Heading
+            Title 5
           </Typography>
           <Typography
             as="h6"
             size="title-6"
           >
-            Title 6 - Heading
+            Title 6
           </Typography>
         </div>
 
@@ -75,19 +75,25 @@ function TypographyExample() {
             as="p"
             size="body-1"
           >
-            Body 1 - Large paragraph text
+            Body 1 - Largest paragraph text
           </Typography>
           <Typography
             as="p"
             size="body-2"
           >
-            Body 2 - Regular paragraph text
+            Body 2 - Larger paragraph text
           </Typography>
           <Typography
             as="p"
             size="body-3"
           >
-            Body 3 - Smaller paragraph text
+            Body 3 - Default paragraph text - Baseline
+          </Typography>
+          <Typography
+            as="p"
+            size="body-4"
+          >
+            Body 4 - Small paragraph text
           </Typography>
         </div>
 
@@ -108,13 +114,13 @@ function TypographyExample() {
             as="p"
             size="label-2"
           >
-            Label 2 - Regular label text
+            Label 2 - Default label text - Baseline
           </Typography>
           <Typography
             as="p"
             size="label-3"
           >
-            Label 3 - Smaller label text
+            Label 3 - Small label text
           </Typography>
         </div>
 
@@ -163,7 +169,7 @@ function TagExample() {
       </Typography>
       <Typography
         as="p"
-        size="body-2"
+        size="body-3"
       >
         The Tag component is used to display labels, badges, or status indicators.
       </Typography>
@@ -231,7 +237,7 @@ function LinkExample() {
       </Typography>
       <Typography
         as="p"
-        size="body-2"
+        size="body-3"
       >
         The Link component is used for external links.
       </Typography>
