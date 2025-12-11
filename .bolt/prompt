@@ -13,7 +13,7 @@ Tech Stack:
 
 Styling & Components:
 -   **Use Tailwind's blue palette only** (blue-50 to blue-950) - matches @povio/ui defaults
--   Buttons: pass text as children (not JSX), add icons via `icon` prop, use `width="hug"` for normal width (default is full-width)
+-   Buttons: pass text as children (not JSX), add icons via `icon` prop, use `width="fill"` for full width
 -   Buttons as links: use the `link` prop - never wrap any type of button around a Link from tanstack router
 -   Avoid other colors except semantic (red=error, green=success)
 

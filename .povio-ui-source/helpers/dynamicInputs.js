@@ -5,7 +5,6 @@ import { ZodUtils } from "../utils/zod.utils.js";
 const defaultComponentTypes = {
   datetime: "datePicker",
   dateRange: "dateRangePicker",
-  textEditor: "textEditor",
   boolean: "toggle",
   number: "numberInput",
   enum: "select",
@@ -69,9 +68,6 @@ const convertInputsConfigToObjectDefinitions = (entries) => {
 const getDefaultInputComponentType = (schemaType) => {
   if (ZodUtils.isDateRange(schemaType)) {
     return defaultComponentTypes.dateRange;
-  }
-  if (ZodUtils.isTextEditor(schemaType)) {
-    return defaultComponentTypes.textEditor;
   }
   const unwrappedType = ZodUtils.unwrapZodType(schemaType);
   const componentType = ZOD_TYPE_COMPONENT_TYPE.find(([zodType]) => unwrappedType instanceof zodType)?.[1];

@@ -7,7 +7,5 @@ export declare const useLocalStorage: <ZOutput, ZInput>({ key, schema }: IProps<
     value: ZOutput | null;
     set: (newValue: ZInput) => void;
     remove: () => void;
-    error: Error | null;
-    isInitialLoading: boolean;
 };
 export {};

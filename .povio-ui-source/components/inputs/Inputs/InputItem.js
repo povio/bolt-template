@@ -12,7 +12,6 @@ import { Autocomplete } from "../Selection/Autocomplete/Autocomplete.js";
 import { QueryAutocomplete } from "../Selection/Autocomplete/QueryAutocomplete.js";
 import { Select } from "../Selection/Select/Select.js";
 import { Slider } from "../Slider/Slider.js";
-import { TextEditor } from "../TextEditor/TextEditor.js";
 import { Toggle } from "../Toggle/Toggle.js";
 import { Segment } from "../../segment/Segment.js";
 const componentRegistry = {
@@ -31,7 +30,6 @@ const componentRegistry = {
   dateTimePicker: DateTimePicker,
   timePicker: TimePicker,
   dateRangePicker: DateRangePicker,
-  textEditor: TextEditor,
   unknown: null
 };
 function InputItem({ form, inputDef }) {

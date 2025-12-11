@@ -15,10 +15,6 @@ var ZodUtils;
     const unwrappedType = (0, ZodUtils2.unwrapZodType)(schemaType);
     return unwrappedType instanceof z.ZodObject && hasZodObjectProperty(unwrappedType, "start", z.ZodISODateTime) && hasZodObjectProperty(unwrappedType, "end", z.ZodISODateTime);
   };
-  ZodUtils2.isTextEditor = (schemaType) => {
-    const unwrappedType = (0, ZodUtils2.unwrapZodType)(schemaType);
-    return unwrappedType instanceof z.ZodObject && hasZodObjectProperty(unwrappedType, "html", z.ZodString) && hasZodObjectProperty(unwrappedType, "json", z.ZodObject);
-  };
 })(ZodUtils || (ZodUtils = {}));
 export {
   ZodUtils

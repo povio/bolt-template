@@ -1,4 +1,5 @@
-import { type AuthContext, Confirmation, ToastContainer, UIConfig, UIRouter } from "@povio/ui";
+import { Confirmation, ToastContainer, UIConfig, UIRouter } from "@povio/ui";
+import type { AuthContext } from "@povio/ui/auth";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { ReactQueryDevtoolsPanel } from "@tanstack/react-query-devtools";
 import { Outlet, createRootRouteWithContext, useLocation, useNavigate } from "@tanstack/react-router";
@@ -44,8 +45,7 @@ const Root = () => {
     return true;
   };
 
-  const { pathname } = location;
-  const query = Object.fromEntries(new URLSearchParams(location.search).entries());
+  const { pathname, searchStr: searchString } = location;
 
   useEffect(() => {
     i18n.on("languageChanged", (lng) => {
@@ -67,7 +67,8 @@ const Root = () => {
       <AppErrorBoundary>
         <Providers
           providers={[
-            { provider: UIRouter.UIRouterProvider, props: { pathname, push, query, replace } },
+            // { provider: ThemeContext.ThemeContextProvider }, // Uncomment for dark theme support
+            { provider: UIRouter.UIRouterProvider, props: { pathname, push, searchString, replace } },
             { provider: UIConfig.Provider },
             { provider: Confirmation.Provider },
           ]}

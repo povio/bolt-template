@@ -1,4 +1,4 @@
-import { AuthContext } from "@povio/ui";
+import { AuthContext } from "@povio/ui/auth";
 
 import type { MockAuthUser } from "@/providers/auth.provider";
 

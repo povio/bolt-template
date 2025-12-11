@@ -485,7 +485,7 @@ const button = cva(["group inline-flex items-center justify-center border border
     }
   ],
   defaultVariants: {
-    width: "fill",
+    width: "hug",
     color: "primary",
     variant: "contained",
     inverted: false

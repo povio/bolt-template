@@ -1,4 +1,5 @@
-import { AbilityContext, LinkContext, type LinkNavigationProps } from "@povio/ui";
+import { LinkContext, type LinkNavigationProps } from "@povio/ui";
+import { AbilityContext } from "@povio/ui/auth";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider, createLink, createRouter } from "@tanstack/react-router";
 import { type ComponentType, StrictMode } from "react";
