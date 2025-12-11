@@ -64,7 +64,6 @@ import { Autocomplete } from "./components/inputs/Selection/Autocomplete/Autocom
 import { QueryAutocomplete } from "./components/inputs/Selection/Autocomplete/QueryAutocomplete.js";
 import { Select } from "./components/inputs/Selection/Select/Select.js";
 import { Slider } from "./components/inputs/Slider/Slider.js";
-import { TextEditor } from "./components/inputs/TextEditor/TextEditor.js";
 import { Toggle } from "./components/inputs/Toggle/Toggle.js";
 import { Menu } from "./components/Menu/Menu.js";
 import { MenuPopover } from "./components/Menu/MenuPopover.js";
@@ -96,6 +95,7 @@ import { Confirmation } from "./config/confirmation.context.js";
 import { ns, resources } from "./config/i18n.js";
 import { LinkContext } from "./config/link.context.js";
 import { UIRouter } from "./config/router.context.js";
+import { ThemeContext } from "./config/theme.context.js";
 import { UIConfig } from "./config/uiConfig.context.js";
 import { UIStyle } from "./config/uiStyle.context.js";
 import { dynamicColumns } from "./helpers/dynamicColumns.js";
@@ -130,15 +130,9 @@ import { QueriesUtils } from "./utils/queries.utils.js";
 import { RestUtils } from "./utils/rest.utils.js";
 import { RoutingUtils } from "./utils/routing.utils.js";
 import { StringUtils } from "./utils/string.utils.js";
-import { createAclGuard } from "./utils/vendor/acl/AclGuard.js";
-import { AbilityContext } from "./utils/vendor/acl/ability.context.js";
-import { Can } from "./utils/vendor/acl/Can.js";
-import { AuthGuard } from "./utils/vendor/auth/AuthGuard.js";
-import { AuthContext } from "./utils/vendor/auth/auth.context.js";
 import { ApplicationException, ErrorHandler, SharedErrorHandler } from "./utils/vendor/error-handling.js";
 import { RestInterceptor } from "./utils/vendor/rest-interceptor.js";
 export {
-  AbilityContext,
   ActionModal,
   Alert,
   AlignCenterIcon,
@@ -151,15 +145,12 @@ export {
   ArrowDropUpIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
-  AuthContext,
-  AuthGuard,
   Autocomplete,
   BoldIcon,
   BottomSheet,
   BulletedListIcon,
   Button,
   CalendarIcon,
-  Can,
   CellText,
   CheckIcon,
   Checkbox,
@@ -238,8 +229,8 @@ export {
   TextArea,
   TextButton,
   TextColorIcon,
-  TextEditor,
   TextInput,
+  ThemeContext,
   TimePicker,
   Toast,
   ToastContainer,
@@ -255,7 +246,6 @@ export {
   ViewIcon,
   ViewOffIcon,
   compoundMapper,
-  createAclGuard,
   dynamicColumns,
   dynamicInputs,
   isEqual,

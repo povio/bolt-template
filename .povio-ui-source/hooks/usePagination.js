@@ -5,7 +5,7 @@ const DEFAULT_STATE = {
   pageSize: 20
 };
 function usePagination(defaultPagination) {
-  const { pathname, query, replace, searchParams } = UIRouter.useUIRouter();
+  const { pathname, replace, searchParams } = UIRouter.useUIRouter();
   const [pagination, setPagination] = useState(
     defaultPagination ?? {
       pageIndex: searchParams.has("page") ? Number.parseInt(searchParams.get("page") ?? "", 10) : DEFAULT_STATE.pageIndex,
@@ -13,15 +13,15 @@ function usePagination(defaultPagination) {
     }
   );
   useEffect(() => {
-    const { page: _page, size: _size, ...queryParms } = query;
-    replace({
-      pathname,
-      query: {
-        ...queryParms,
-        ...pagination.pageSize !== DEFAULT_STATE.pageSize ? { size: pagination.pageSize } : {},
-        ...pagination.pageIndex !== DEFAULT_STATE.pageIndex ? { page: pagination.pageIndex } : {}
-      }
-    });
+    const params = new URLSearchParams(searchParams);
+    if (pagination.pageSize !== DEFAULT_STATE.pageSize) {
+      params.append("size", pagination.pageSize.toString());
+    }
+    if (pagination.pageIndex !== DEFAULT_STATE.pageIndex) {
+      params.append("page", pagination.pageIndex.toString());
+    }
+    const url = `${pathname}${params.size > 0 ? `?${params.toString()}` : ""}`;
+    replace(url);
   }, [pagination]);
   return {
     pagination,

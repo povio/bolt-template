@@ -1,4 +1,4 @@
-import { AuthGuard } from "@povio/ui";
+import { AuthGuard } from "@povio/ui/auth";
 import { Outlet, createFileRoute } from "@tanstack/react-router";
 
 function PublicOnlyLayout() {

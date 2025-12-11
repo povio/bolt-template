@@ -28,7 +28,6 @@ declare const componentRegistry: {
     readonly dateTimePicker: <TFieldValues extends import('react-hook-form').FieldValues>({ fullIso, ...props }: import('../DateTime/DateTimePicker/DateTimePicker').ControlledDateTimePickerProps<TFieldValues>) => import("react/jsx-runtime").JSX.Element;
     readonly timePicker: <TFieldValues extends import('react-hook-form').FieldValues>(props: import('../DateTime/TimePicker/TimePicker').ControlledTimePickerProps<TFieldValues>) => import("react/jsx-runtime").JSX.Element;
     readonly dateRangePicker: <TFieldValues extends import('react-hook-form').FieldValues>({ fullIso, minValue, maxValue, ...props }: import('../DateTime/DateRangePicker/DateRangePicker').ControlledDateRangePickerProps<TFieldValues>) => import("react/jsx-runtime").JSX.Element;
-    readonly textEditor: <TFieldValues extends import('react-hook-form').FieldValues>(props: import('../TextEditor/TextEditor').ControlledTextEditorProps<TFieldValues>) => import("react/jsx-runtime").JSX.Element;
     readonly unknown: null;
 };
 export type InputComponentRegistry = typeof componentRegistry;

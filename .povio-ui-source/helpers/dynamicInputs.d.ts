@@ -6,7 +6,6 @@ import { ZodUtils } from '../utils/zod.utils';
 declare const defaultComponentTypes: {
     readonly datetime: "datePicker";
     readonly dateRange: "dateRangePicker";
-    readonly textEditor: "textEditor";
     readonly boolean: "toggle";
     readonly number: "numberInput";
     readonly enum: "select";
@@ -21,7 +20,6 @@ export type DefaultComponentType<TZodType extends z.ZodType> = ZodUtils.ZodTypeS
 export type AllowedComponentType<TZodType extends z.ZodType> = ZodUtils.ZodTypeSwitch<TZodType, {
     datetime: "datePicker" | "dateTimePicker" | "timePicker";
     dateRange: "dateRangePicker";
-    textEditor: "textEditor";
     boolean: "toggle" | "checkbox";
     number: "numberInput" | "slider" | "select" | "autocomplete" | "queryAutocomplete" | "segment";
     enum: "select" | "autocomplete" | "segment";

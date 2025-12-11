@@ -1,10 +1,10 @@
 import { jsx } from "react/jsx-runtime";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { toast } from "react-toastify";
 import { Toast } from "./Toast.js";
 const useToast = () => {
-  const successToast = useCallback((params) => {
-    toast.success(
+  const successToast = useCallback((params, options) => {
+    return toast.success(
       /* @__PURE__ */ jsx(
         Toast,
         {
@@ -13,6 +13,7 @@ const useToast = () => {
         }
       ),
       {
+        ...options,
         position: params.position,
         data: {
           variant: params.variant
@@ -20,8 +21,8 @@ const useToast = () => {
       }
     );
   }, []);
-  const errorToast = useCallback((params) => {
-    toast.error(
+  const errorToast = useCallback((params, options) => {
+    return toast.error(
       /* @__PURE__ */ jsx(
         Toast,
         {
@@ -30,6 +31,7 @@ const useToast = () => {
         }
       ),
       {
+        ...options,
         position: params.position,
         data: {
           variant: params.variant
@@ -37,8 +39,8 @@ const useToast = () => {
       }
     );
   }, []);
-  const warningToast = useCallback((params) => {
-    toast.warning(
+  const warningToast = useCallback((params, options) => {
+    return toast.warning(
       /* @__PURE__ */ jsx(
         Toast,
         {
@@ -47,6 +49,7 @@ const useToast = () => {
         }
       ),
       {
+        ...options,
         position: params.position,
         data: {
           variant: params.variant
@@ -54,8 +57,8 @@ const useToast = () => {
       }
     );
   }, []);
-  const neutralToast = useCallback((params) => {
-    toast.info(
+  const neutralToast = useCallback((params, options) => {
+    return toast.info(
       /* @__PURE__ */ jsx(
         Toast,
         {
@@ -64,6 +67,7 @@ const useToast = () => {
         }
       ),
       {
+        ...options,
         position: params.position,
         data: {
           variant: params.variant
@@ -71,12 +75,19 @@ const useToast = () => {
       }
     );
   }, []);
-  return {
-    successToast,
-    errorToast,
-    warningToast,
-    neutralToast
-  };
+  const closeToast = useCallback((id) => {
+    toast.dismiss(id);
+  }, []);
+  return useMemo(
+    () => ({
+      successToast,
+      errorToast,
+      warningToast,
+      neutralToast,
+      closeToast
+    }),
+    [successToast, errorToast, warningToast, neutralToast, closeToast]
+  );
 };
 export {
   useToast

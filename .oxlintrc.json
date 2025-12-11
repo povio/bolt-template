@@ -13,7 +13,8 @@
     "scripts",
     ".vscode",
     ".turbo",
-    "node_modules"
+    "node_modules",
+    ".povio-ui-source"
   ],
   "rules": {
     "only-throw-error": "warn",

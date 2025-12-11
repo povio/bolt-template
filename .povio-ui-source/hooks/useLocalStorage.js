@@ -1,36 +1,27 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
+const getValue = (key, schema) => {
+  if (!localStorage) {
+    return null;
+  }
+  const lsValue = localStorage.getItem(key);
+  if (!lsValue) {
+    return null;
+  }
+  let jsonOrString;
+  try {
+    jsonOrString = JSON.parse(lsValue);
+  } catch {
+    jsonOrString = lsValue;
+  }
+  const parsedValue = schema.safeParse(jsonOrString);
+  if (parsedValue.success) {
+    return parsedValue.data;
+  } else {
+    return null;
+  }
+};
 const useLocalStorage = ({ key, schema }) => {
-  const [value, setValue] = useState(null);
-  const [isInitialLoading, setIsInitialLoading] = useState(true);
-  const [error, setError] = useState(null);
-  useEffect(() => {
-    if (!localStorage) {
-      setValue(null);
-      return;
-    }
-    try {
-      const lsValue = localStorage.getItem(key);
-      if (!lsValue) {
-        setValue(null);
-        return;
-      }
-      let jsonOrString;
-      try {
-        jsonOrString = JSON.parse(lsValue);
-      } catch {
-        jsonOrString = lsValue;
-      }
-      const parsedValue = schema.safeParse(jsonOrString);
-      if (parsedValue.success) {
-        setValue(parsedValue.data);
-      } else {
-        setError(parsedValue.error);
-        setValue(null);
-      }
-    } finally {
-      setIsInitialLoading(false);
-    }
-  }, [key, schema]);
+  const [value, setValue] = useState(() => getValue(key, schema));
   const set = useCallback(
     (newValue) => {
       if (!localStorage) {
@@ -56,7 +47,7 @@ const useLocalStorage = ({ key, schema }) => {
     localStorage.removeItem(key);
     setValue(null);
   }, [key]);
-  return { value, set, remove, error, isInitialLoading };
+  return { value, set, remove };
 };
 export {
   useLocalStorage

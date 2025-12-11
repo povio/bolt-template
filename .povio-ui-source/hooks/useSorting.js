@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from "react";
 import { UIRouter } from "../config/router.context.js";
 function useSorting(defaultSorting, prefix = "") {
-  const { pathname, replace, searchParams, query } = UIRouter.useUIRouter();
+  const { pathname, replace, searchParams } = UIRouter.useUIRouter();
   const [sorting, setSorting] = useState(
     defaultSorting ?? searchParams.get(`order${prefix && `-${prefix}`}`)?.split(",").map((item) => {
       if (item.startsWith("-")) {
@@ -17,11 +17,13 @@ function useSorting(defaultSorting, prefix = "") {
     return sorting.map((field) => `${field.desc ? "-" : "+"}${field.id}`).join(",");
   }, [sorting]);
   useEffect(() => {
-    const { sort: _sort, ...queryParms } = query;
-    replace({
-      pathname,
-      query: { ...queryParms, ...order ? { [`order${prefix && `-${prefix}`}`]: order } : {} }
-    });
+    const params = new URLSearchParams(searchParams);
+    params.delete("order");
+    if (order) {
+      params.append(`order${prefix && `-${prefix}`}`, order);
+    }
+    const url = `${pathname}${params.size > 0 ? `?${params.toString()}` : ""}`;
+    replace(url);
   }, [order]);
   return { sorting, setSorting, order };
 }

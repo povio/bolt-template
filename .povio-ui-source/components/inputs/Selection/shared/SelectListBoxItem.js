@@ -33,7 +33,7 @@ const SelectListBoxItem = ({
       isDisabled,
       className: clsx(
         selectListBoxItemClass,
-        !isMultiple && "selected:bg-interactive-contained-primary-idle selected:text-interactive-text-secondary-idle-inverted",
+        !isMultiple && "selected:bg-interactive-contained-primary-idle selected:text-interactive-contained-primary-on-idle",
         isNewItem ? "text-interactive-text-primary-idle" : "text-interactive-text-secondary-idle"
       ),
       children: [
@@ -41,7 +41,7 @@ const SelectListBoxItem = ({
           CheckboxCheckmark,
           {
             variant: "default",
-            className: "group-focus-visible:!outline-none"
+            className: "group-focus-visible:outline-none!"
           }
         ),
         isMultiple && isSearchable && /* @__PURE__ */ jsx(
@@ -54,7 +54,7 @@ const SelectListBoxItem = ({
               CheckboxCheckmark,
               {
                 variant: "default",
-                className: "group-focus-visible:!outline-none"
+                className: "group-focus-visible:outline-none!"
               }
             )
           }

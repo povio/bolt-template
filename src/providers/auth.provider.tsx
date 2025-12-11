@@ -1,4 +1,4 @@
-import { AuthContext } from "@povio/ui";
+import { AuthContext } from "@povio/ui/auth";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { type PropsWithChildren, useCallback, useEffect, useState } from "react";
 

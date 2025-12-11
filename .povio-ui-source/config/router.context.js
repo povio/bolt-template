@@ -1,5 +1,5 @@
 import { jsx } from "react/jsx-runtime";
-import { createContext, use } from "react";
+import { createContext, useMemo, use } from "react";
 import { RouterProvider } from "react-aria";
 var UIRouter;
 ((UIRouter2) => {
@@ -8,27 +8,23 @@ var UIRouter;
     children,
     pathname,
     push,
-    query,
-    replace
+    replace,
+    searchString
   }) => {
-    const searchParams = new URLSearchParams();
-    for (const [k, v] of Object.entries(query)) {
-      if (Array.isArray(v)) {
-        for (const item of v) {
-          searchParams.append(k, item);
-        }
-      } else {
-        searchParams.set(k, v);
-      }
-    }
-    const value = {
-      searchParams,
-      pathname,
-      push,
-      query,
-      replace
-    };
-    return /* @__PURE__ */ jsx(UIRouterContext, { value, children: /* @__PURE__ */ jsx(RouterProvider, { navigate: (href) => push(href), children }) });
+    const searchParams = useMemo(() => {
+      return new URLSearchParams(searchString);
+    }, [searchString]);
+    const value = useMemo(
+      () => ({
+        searchParams,
+        pathname,
+        push,
+        searchString,
+        replace
+      }),
+      [searchParams, pathname, push, searchString, replace]
+    );
+    return /* @__PURE__ */ jsx(UIRouterContext, { value, children: /* @__PURE__ */ jsx(RouterProvider, { navigate: push, children }) });
   };
   UIRouter2.useUIRouter = () => {
     const context = use(UIRouterContext);

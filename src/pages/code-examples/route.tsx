@@ -4,7 +4,7 @@ import { Link, Outlet, createFileRoute } from "@tanstack/react-router";
 function CodeExamplesLayout() {
   return (
     <div>
-      <header className="flex items-center justify-between bg-elevation-fill-default-3 p-5">
+      <header className="flex items-center justify-between border-elevation-outline-default-1 border-b bg-elevation-fill-default-2 p-5">
         <Link to="/">Home</Link>
 
         <nav className="flex gap-4">
