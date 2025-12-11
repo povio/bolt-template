@@ -12,11 +12,9 @@ Tech Stack:
 - Avoid code duplication - extract components and constants
 
 Styling & Components:
-- **Use Tailwind's blue palette only** (blue-50 to blue-950) - matches @povio/ui defaults
 - Buttons: pass text as children (not JSX), add icons via `icon` prop, use `width="fill"` for full width
 - Buttons as links: use the `link` prop - never wrap any type of button around a Link from tanstack router
 - **Typography**
-- Avoid other colors except semantic (red=error, green=success)
   - Base sizes to use: "title-3", "body-3", "label-2"
   - Smaller number → larger text
   - Bigger number → smaller text
