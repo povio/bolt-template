@@ -7,7 +7,7 @@ const config: OpenAPICodegenConfig = {
   replaceOptionalWithNullish: true,
   tsPath: "@/openapi",
   errorHandlingImportPath: "@povio/ui",
-  abilityContextImportPath: "@povio/ui",
+  abilityContextImportPath: "@povio/ui/auth",
   queryTypesImportPath: "@povio/ui",
   restClientImportPath: "@/clients/app-rest-client",
   abilityContextGenericAppAbilities: true,
