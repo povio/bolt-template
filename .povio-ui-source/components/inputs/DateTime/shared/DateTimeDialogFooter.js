@@ -3,7 +3,12 @@ import { clsx } from "clsx";
 import { useTranslation } from "react-i18next";
 import { TextButton } from "../../../buttons/TextButton/TextButton.js";
 import { ns } from "../../../../config/i18n.js";
-const DateTimeDialogFooter = ({ isValid = true, onTodayPress, onApply }) => {
+const DateTimeDialogFooter = ({
+  isValid = true,
+  isDisabled = false,
+  onTodayPress,
+  onApply
+}) => {
   const { t } = useTranslation(ns);
   return /* @__PURE__ */ jsxs(
     "footer",
@@ -18,6 +23,7 @@ const DateTimeDialogFooter = ({ isValid = true, onTodayPress, onApply }) => {
           {
             type: "button",
             color: "primary",
+            isDisabled,
             onPress: onTodayPress,
             children: t(($) => $.ui.datePicker.today)
           }

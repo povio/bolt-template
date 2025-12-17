@@ -8,5 +8,6 @@ export interface TooltipProps extends PropsWithChildren<AriaTooltipProps>, Toolt
     closeDelay?: number;
     isNonInteractiveTrigger?: boolean;
     triggerClassName?: string;
+    triggerTabIndex?: number;
 }
-export declare const Tooltip: ({ children, text, isDisabled, delay, closeDelay, color, isNonInteractiveTrigger, triggerClassName, ...tooltipProps }: TooltipProps) => import("react/jsx-runtime").JSX.Element;
+export declare const Tooltip: ({ children, text, isDisabled, delay, closeDelay, color, isNonInteractiveTrigger, triggerClassName, triggerTabIndex, ...tooltipProps }: TooltipProps) => import("react/jsx-runtime").JSX.Element;

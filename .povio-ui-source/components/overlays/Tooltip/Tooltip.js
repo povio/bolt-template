@@ -6,7 +6,12 @@ import { PointerHorizontalIcon } from "../../../assets/icons/PointerHorizontal.j
 import { PointerVerticalIcon } from "../../../assets/icons/PointerVertical.js";
 import { tooltipCva, tooltipPointerHorizontalCva, tooltipPointerVerticalCva, tooltipTextCva } from "./tooltip.cva.js";
 import { Typography } from "../../text/Typography/Typography.js";
-const CustomTrigger = ({ children, className }) => {
+import { UIStyle } from "../../../config/uiStyle.context.js";
+const CustomTrigger = ({
+  children,
+  className,
+  tabIndex
+}) => {
   const ref = useRef(null);
   const { focusableProps } = useFocusable({}, ref);
   return /* @__PURE__ */ jsx(
@@ -14,7 +19,7 @@ const CustomTrigger = ({ children, className }) => {
     {
       ref,
       ...focusableProps,
-      tabIndex: 0,
+      tabIndex: tabIndex ?? 0,
       className,
       children
     }
@@ -29,8 +34,14 @@ const Tooltip = ({
   color,
   isNonInteractiveTrigger,
   triggerClassName,
+  triggerTabIndex,
   ...tooltipProps
 }) => {
+  const uiStyle = UIStyle.useConfig();
+  const tooltipCva$1 = uiStyle?.tooltip?.cva ?? tooltipCva;
+  const tooltipPointerHorizontalCva$1 = uiStyle?.tooltip?.pointerHorizontalCva ?? tooltipPointerHorizontalCva;
+  const tooltipPointerVerticalCva$1 = uiStyle?.tooltip?.pointerVerticalCva ?? tooltipPointerVerticalCva;
+  const tooltipTextCva$1 = uiStyle?.tooltip?.textCva ?? tooltipTextCva;
   const Trigger = isNonInteractiveTrigger ? CustomTrigger : Fragment;
   return /* @__PURE__ */ jsxs(
     TooltipTrigger,
@@ -39,32 +50,33 @@ const Tooltip = ({
       closeDelay: closeDelay ?? 0,
       isDisabled,
       children: [
-        /* @__PURE__ */ jsx(
+        isNonInteractiveTrigger ? /* @__PURE__ */ jsx(
           Trigger,
           {
             ...isNonInteractiveTrigger && {
               className: triggerClassName
             },
+            tabIndex: triggerTabIndex,
             children
           }
-        ),
+        ) : /* @__PURE__ */ jsx(Trigger, { children }),
         /* @__PURE__ */ jsxs(
           Tooltip$1,
           {
-            className: tooltipCva({ color }),
+            className: tooltipCva$1({ color }),
             ...tooltipProps,
             offset: 13,
             children: [
               /* @__PURE__ */ jsxs(OverlayArrow, { children: [
-                /* @__PURE__ */ jsx(PointerHorizontalIcon, { className: tooltipPointerHorizontalCva({ color }) }),
-                /* @__PURE__ */ jsx(PointerVerticalIcon, { className: tooltipPointerVerticalCva({ color }) })
+                /* @__PURE__ */ jsx(PointerHorizontalIcon, { className: tooltipPointerHorizontalCva$1({ color }) }),
+                /* @__PURE__ */ jsx(PointerVerticalIcon, { className: tooltipPointerVerticalCva$1({ color }) })
               ] }),
               /* @__PURE__ */ jsx(
                 Typography,
                 {
                   size: "body-4",
                   variant: "prominent-1",
-                  className: tooltipTextCva({ color }),
+                  className: tooltipTextCva$1({ color }),
                   children: text
                 }
               )

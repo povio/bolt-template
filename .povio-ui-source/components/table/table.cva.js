@@ -6,7 +6,7 @@ const tableRow = cva(
     "disabled:opacity-50",
     "selected:bg-elevation-fill-default-2",
     "hover:selected:bg-interactive-subtle-secondary-hover",
-    "clickable:cursor-pointer",
+    "data-clickable:cursor-pointer",
     "focus-within:bg-elevation-fill-default-2"
   ],
   {
@@ -37,7 +37,7 @@ const tableHeadData = cva(
 );
 const tableData = cva(
   [
-    "relative h-0-5 overflow-hidden text-ellipsis whitespace-nowrap border-t border-t-transparent px-2 py-2",
+    "relative h-0-5 overflow-hidden text-ellipsis whitespace-nowrap border-t border-t-transparent px-2",
     "border-b border-b-elevation-outline-default-1",
     "has-[*>[data-hovered]:not([data-disabled])]:hover:border-b-input-outlined-outline-hover",
     "has-[*>[data-invalid]]:border-b-input-outlined-outline-error!",

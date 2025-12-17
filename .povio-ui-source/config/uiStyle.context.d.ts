@@ -7,6 +7,7 @@ import { RadioVariantProps } from '../components/inputs/RadioGroup/radio.cva';
 import { InputBaseProps, InputSideProps, InputSizeProps } from '../components/inputs/shared/input.cva';
 import { LabelBaseProps } from '../components/inputs/shared/label.cva';
 import { ToggleVariantProps } from '../components/inputs/Toggle/toggle.cva';
+import { TooltipPointerHorizontalVariantProps, TooltipPointerVerticalVariantProps, TooltipTextVariantProps, TooltipVariantProps } from '../components/overlays/Tooltip/tooltip.cva';
 import { AlertVariantProps } from '../components/status/Alert/alert.cva';
 import { ToastVariantProps } from '../components/status/Toast/toast.cva';
 import { TableDataVariantProps, TableHeadDataVariantProps, TableHeadRowVariantProps, TableRowVariantProps } from '../components/table/table.cva';
@@ -74,6 +75,12 @@ export declare namespace UIStyle {
             headDataCva?: Cva<TableHeadDataVariantProps>;
             rowCva?: Cva<TableRowVariantProps>;
             dataCva?: Cva<TableDataVariantProps>;
+        };
+        tooltip: {
+            cva?: Cva<TooltipVariantProps>;
+            pointerHorizontalCva?: Cva<TooltipPointerHorizontalVariantProps>;
+            pointerVerticalCva?: Cva<TooltipPointerVerticalVariantProps>;
+            textCva?: Cva<TooltipTextVariantProps>;
         };
     }
     interface ProviderProps {

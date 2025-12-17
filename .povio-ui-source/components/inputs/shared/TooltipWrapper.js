@@ -12,7 +12,9 @@ const TooltipWrapper = (props) => {
       color: "error",
       hidden: !props.error,
       isNonInteractiveTrigger: true,
-      children: /* @__PURE__ */ jsx("div", { children: props.children })
+      triggerClassName: props.triggerClassName,
+      triggerTabIndex: props.triggerTabIndex,
+      children: /* @__PURE__ */ jsx("div", { tabIndex: -1, children: props.children })
     }
   );
 };

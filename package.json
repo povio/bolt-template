@@ -26,7 +26,7 @@
     "@hookform/resolvers": "^5.2.2",
     "@internationalized/date": "^3.10.0",
     "@povio/resolve-config": "1.1.2",
-    "@povio/ui": "2.1.4",
+    "@povio/ui": "2.1.9",
     "@sentry/react": "^10.22.0",
     "@supabase/supabase-js": "^2.80.0",
     "@tanstack/devtools-vite": "^0.3.11",

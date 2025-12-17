@@ -20,7 +20,7 @@ const modalContent = cva(
   }
 );
 const modalOverlay = cva(
-  ["fixed inset-0 z-10 flex h-(--visual-viewport-height) w-screen overflow-y-auto bg-elevation-fill-default-3/80"],
+  ["fixed inset-0 z-10 flex h-(--visual-viewport-height) w-screen overflow-y-auto bg-support-overlay"],
   {
     variants: {
       aside: {

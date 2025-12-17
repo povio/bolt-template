@@ -16,7 +16,7 @@ export declare namespace AuthContext {
         loadingState?: ReactNode;
     }
     type ProviderProps<TUser = unknown> = Type<TUser>;
-    export const Provider: <TUser = unknown>({ isAuthenticated, isInitializing, logout, updateTokens, accessToken, user, userPromise, routes, loadingState, children, }: PropsWithChildren<ProviderProps<TUser>>) => import("react/jsx-runtime").JSX.Element;
-    export const useAuth: <TUser = unknown>() => Type<TUser>;
+    export const Provider: <TUser>({ isAuthenticated, isInitializing, logout, updateTokens, accessToken, user, userPromise, routes, loadingState, children, }: PropsWithChildren<ProviderProps<TUser>>) => import("react/jsx-runtime").JSX.Element;
+    export const useAuth: <TUser>() => Type<TUser>;
     export {};
 }

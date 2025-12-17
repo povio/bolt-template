@@ -36,10 +36,7 @@ These are common pitfalls and bugs you might encounter. Click to jump to detaile
 
 # Prompting
 
-- Keep prompts to max one new feature at a time
-- When fixing bugs, give more technical directions on how to fix if possible
-- After each prompt Bolt creates a checkpoint that you can revert back to
-- You can also edit code manually and run commands in the terminal 
+For general prompting tips, AI model selection, and planning mode, see the **[Prompting Guide](./3_prompting.md)**.
 
 ## First Prompt
 
@@ -50,21 +47,6 @@ Build me an app named ... which will have the features ... Start with the user a
 ```
 
 Bolt should handle the Supabase and auth context provider setup automatically and add new data layer code. Make sure it did this step correctly (check Authentication section).
-
-## Design & Styling
-
-By default, Bolt apps may look "bland" because the template rules restrict it to using only Tailwind's default **blue color palette** (Povio UI's default colors). This ensures consistency but limits visual variety.
-
-**If you have a design or concept available:**
-- Provide Bolt with screenshots, mockups, or design references
-- Tell it explicitly to match the design, including colors
-- Bolt will implement the design and use appropriate colors beyond blue
-
-Example:
-```
-Here's a screenshot of the design I want. Implement this page matching the design, 
-including the color scheme shown in the image.
-```
 
 ---
 

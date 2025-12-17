@@ -33,9 +33,9 @@ Styling & Components:
     - `text-text-inverted-1` → Primary text on inverted backgrounds only
     - `text-text-inverted-2` → Secondary text on inverted backgrounds only
   - **Accent:**
-    - `interactive-contained-primary-idle` → Primary accent (backgrounds, icons, text)
-    - `interactive-contained-primary-on-idle` → Content on accent backgrounds
-- Avoid default Tailwind colors besides red and green (error, success)
+    - `interactive-contained-primary-idle`, `interactive-contained-primary-hover`, `interactive-contained-primary-pressed`, → Accent color (backgrounds, icons, text)
+    - `interactive-contained-primary-on-idle`, `interactive-contained-primary-on-hover`, `interactive-contained-primary-on-pressed` → Content on accent backgrounds
+- Avoid default Tailwind colors besides red and green (error, success) unless told otherwise!
 
 Code Examples: `src/pages/code-examples/` contains reference examples for @povio/ui components and routing patterns. **NEVER modify these files** - refer to them as examples only.
 

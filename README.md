@@ -52,7 +52,7 @@ The `src/pages/code-examples/` directory contains usage examples of @povio/ui an
 
 ## Additional Resources
 
-- **Mode-specific Documentation**: `docs/` directory
+- **Bolt Documentation**: `docs/` directory
 - **Rules Documentation for Bolt**: `rules/` directory
 - **Component Examples**: `src/pages/code-examples/`
 

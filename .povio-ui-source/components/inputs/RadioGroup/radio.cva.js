@@ -12,10 +12,10 @@ const radio = cva(
     variants: {
       variant: {
         default: [
-          "border-interactive-contained-secondary-idle",
-          "group-disabled:border-interactive-contained-secondary-disabled",
-          "group-hover:border-interactive-contained-secondary-hover",
-          "group-pressed:border-interactive-contained-secondary-pressed",
+          "border-interactive-outlined-secondary-on-idle",
+          "group-disabled:border-interactive-outlined-secondary-on-disabled",
+          "group-hover:border-interactive-outlined-secondary-on-hover",
+          "group-pressed:border-interactive-outlined-secondary-on-pressed",
           "group-selected:border-interactive-contained-primary-idle",
           "group-selected:bg-interactive-contained-primary-idle",
           "group-selected:group-hover:bg-interactive-contained-primary-hover",
@@ -30,7 +30,7 @@ const radio = cva(
           "group-indeterminate:group-hover:border-interactive-contained-primary-hover",
           "group-indeterminate:group-pressed:bg-interactive-contained-primary-pressed",
           "group-indeterminate:group-pressed:border-interactive-contained-primary-pressed",
-          "group-invalid:border-interactive-contained-error-idle",
+          "group-invalid:border-interactive-outlined-error-on-idle",
           "group-focus-visible:outline-interactive-contained-primary-focus",
           "before:bg-interactive-contained-primary-on-idle",
           "group-hover:before:bg-interactive-contained-primary-on-hover",

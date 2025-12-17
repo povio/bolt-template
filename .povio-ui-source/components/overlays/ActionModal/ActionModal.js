@@ -32,7 +32,7 @@ const ActionModal = ({
               size: "title-5",
               variant: "prominent-1",
               as: "h2",
-              className: textAlignClass,
+              className: clsx("text-text-default-1", textAlignClass),
               children: heading
             }
           ),
@@ -40,7 +40,7 @@ const ActionModal = ({
             Typography,
             {
               size: "body-3",
-              className: textAlignClass,
+              className: clsx("text-text-default-1", textAlignClass),
               children: description
             }
           )

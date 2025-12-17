@@ -14,6 +14,7 @@ const SplitButton = ({
   link,
   items,
   className,
+  isLoading,
   ...props
 }) => {
   return /* @__PURE__ */ jsxs(
@@ -31,8 +32,9 @@ const SplitButton = ({
             variant,
             color,
             link,
-            className: clsx("!rounded-r-none! border-r border-solid", className),
+            className: clsx("rounded-r-none! border-r border-solid", className),
             "data-separator": "",
+            isLoading,
             children: label
           }
         ),
@@ -47,7 +49,8 @@ const SplitButton = ({
                 color,
                 label: labelRight,
                 icon: ChevronDownIcon,
-                className: "rounded-l-none! border-l-0!"
+                className: "rounded-l-none! border-l-0!",
+                isDisabled: props.isDisabled || isLoading
               }
             ),
             items

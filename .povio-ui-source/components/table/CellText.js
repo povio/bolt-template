@@ -7,7 +7,7 @@ const CellText = ({ children, style, className }) => /* @__PURE__ */ jsx(
     variant: "default",
     size: "label-1",
     as: "span",
-    className: clsx("block overflow-hidden text-ellipsis px-2 py-1-5 text-text-default-2", className),
+    className: clsx("block overflow-hidden text-ellipsis text-text-default-2", className),
     style,
     "data-rac": true,
     children

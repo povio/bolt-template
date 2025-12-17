@@ -10,7 +10,7 @@ const CheckboxIndeterminateIcon = (props) => /* @__PURE__ */ jsx(
     children: /* @__PURE__ */ jsx(
       "path",
       {
-        stroke: "#F8F8FA",
+        stroke: "currentColor",
         strokeLinecap: "round",
         strokeLinejoin: "round",
         strokeWidth: 2,

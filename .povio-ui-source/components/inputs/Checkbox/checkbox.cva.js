@@ -7,14 +7,14 @@ const checkbox = cva(
     variants: {
       variant: {
         default: [
-          "m-1 border-interactive-contained-secondary-idle",
+          "m-1 border-interactive-outlined-secondary-on-idle",
           "text-interactive-contained-primary-on-idle",
           "group-hover:text-interactive-contained-primary-on-hover",
           "group-pressed:text-interactive-contained-primary-on-pressed",
           "group-disabled:text-interactive-contained-primary-on-disabled",
-          "group-disabled:border-interactive-contained-secondary-disabled",
-          "group-hover:border-interactive-contained-secondary-hover",
-          "group-pressed:border-interactive-contained-secondary-pressed",
+          "group-disabled:border-interactive-outlined-secondary-on-disabled",
+          "group-hover:border-interactive-outlined-secondary-on-hover",
+          "group-pressed:border-interactive-outlined-secondary-on-pressed",
           "group-selected:border-interactive-contained-primary-idle",
           "group-selected:bg-interactive-contained-primary-idle",
           "group-selected:group-hover:bg-interactive-contained-primary-hover",
@@ -27,7 +27,7 @@ const checkbox = cva(
           "group-indeterminate:group-hover:border-interactive-contained-primary-hover",
           "group-indeterminate:group-pressed:bg-interactive-contained-primary-pressed",
           "group-indeterminate:group-pressed:border-interactive-contained-primary-pressed",
-          "group-invalid:border-interactive-contained-error-idle",
+          "group-invalid:border-interactive-outlined-error-on-idle",
           "group-focus-visible:outline-interactive-contained-primary-focus"
         ]
       }

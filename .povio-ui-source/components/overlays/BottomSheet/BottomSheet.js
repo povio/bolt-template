@@ -80,7 +80,7 @@ const BottomSheetBase = ({
         /* @__PURE__ */ jsx(
           motion.div,
           {
-            className: "pointer-events-none absolute inset-0 bg-elevation-fill-default-3/80",
+            className: "pointer-events-none absolute inset-0 bg-support-overlay",
             animate: { opacity: 1 },
             initial: { opacity: 0 },
             exit: { opacity: 0 }

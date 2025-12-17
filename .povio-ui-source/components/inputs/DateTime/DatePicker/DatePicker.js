@@ -153,6 +153,7 @@ const DatePickerBase = (props) => {
                 footer: /* @__PURE__ */ jsx(
                   DateTimeDialogFooter,
                   {
+                    isDisabled,
                     isValid: !dialogState.isInvalid && !!dialogState.value,
                     onTodayPress,
                     onApply

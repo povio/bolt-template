@@ -136,7 +136,7 @@ const DatePickerInput = ({
                   }
                 ),
                 endFieldProps && /* @__PURE__ */ jsxs(Fragment, { children: [
-                  !((as === "floating" || as === "filter") && hidePlaceholder) && /* @__PURE__ */ jsx("span", { className: "select-none", children: "–" }),
+                  !((as === "floating" || as === "filter") && hidePlaceholder) && /* @__PURE__ */ jsx("span", { className: clsx("select-none", isDisabled && "text-interactive-text-secondary-disabled"), children: "–" }),
                   /* @__PURE__ */ jsx(
                     DateField,
                     {

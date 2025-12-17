@@ -162,6 +162,7 @@ const TimePickerBase = (props) => {
                 footer: /* @__PURE__ */ jsx(
                   DateTimeDialogFooter,
                   {
+                    isDisabled,
                     onApply,
                     isValid: !dialogState.isInvalid && !!dialogState.value
                   }

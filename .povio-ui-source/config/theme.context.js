@@ -45,8 +45,12 @@ var ThemeContext;
       document.documentElement.classList.remove("dark");
       if ((!theme || theme === "system") && systemTheme === "dark" || theme === "dark") {
         document.documentElement.classList.add("dark");
+        document.documentElement.style.colorScheme = "dark";
       } else if (theme === "light") {
         document.documentElement.classList.add("light");
+        document.documentElement.style.colorScheme = "light";
+      } else {
+        document.documentElement.style.colorScheme = "light";
       }
     }, [theme, systemTheme]);
     const contextValue = useMemo(
