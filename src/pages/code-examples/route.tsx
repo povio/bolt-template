@@ -16,6 +16,9 @@ function CodeExamplesLayout() {
           <TextButton link={{ to: "/code-examples/table" }}>Table</TextButton>
           <TextButton link={{ to: "/code-examples/modals" }}>Modals</TextButton>
           <TextButton link={{ to: "/code-examples/toasts" }}>Toasts</TextButton>
+
+          {/* Ignore if using Supabase */}
+          <TextButton link={{ to: "/code-examples/file-upload" }}>File Upload</TextButton>
         </nav>
       </header>
 
