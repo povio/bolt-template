@@ -1,16 +1,8 @@
 import { AuthContext } from "@povio/ui/auth";
-import type { User } from "@supabase/supabase-js";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { type PropsWithChildren, useCallback, useEffect, useState } from "react";
 
 import { LoadingState } from "@/components/shared/layout/LoadingState";
-import type { AuthModels } from "@/data/auth/auth.models";
-// import { supabase } from "@/lib/supabase";
-
-export interface AuthUser {
-  user: User;
-  profile: AuthModels.Profile;
-}
 
 interface MockProfile {
   id: string;
