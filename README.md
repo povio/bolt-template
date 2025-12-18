@@ -30,6 +30,14 @@ http://bolt.new/github.com/poviolabs/bolt-template/tree/external-be
 
 ---
 
+## Prompting & Design Guide
+
+**Essential reading:** Best practices for prompting Bolt effectively, choosing AI models, using planning mode, and implementing designs.
+
+📖 **[Read the Prompting Guide](docs/3_prompting_design.md)**
+
+---
+
 ## Tech Stack
 
 - **UI Components**: `@povio/ui` with `lucide-react` icons

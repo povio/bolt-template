@@ -36,7 +36,7 @@ These are common pitfalls and bugs you might encounter. Click to jump to detaile
 
 # Prompting
 
-For general prompting tips, AI model selection, and planning mode, see the **[Prompting Guide](./3_prompting.md)**.
+For general prompting tips, AI model selection, and planning mode, see the **[Prompting Guide](./3_prompting_design.md)**.
 
 ## First Prompt
 
