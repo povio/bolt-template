@@ -196,6 +196,7 @@ function InputExamplesPage() {
       <InputUpload
         formControl={{ control, name: "inputUpload" }}
         allowsMultiple
+        acceptedFileTypes={["image/*"]} // Adjust based on use case
         label="InputUpload label"
       />
 
