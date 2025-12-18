@@ -1,5 +1,5 @@
 .povio-ui-source/*
-.config
-scripts
+.config/*
+scripts/*
 src/pages/code-examples/file-upload.tsx
 src/util/media/upload.utils.ts
