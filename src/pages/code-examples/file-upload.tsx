@@ -33,10 +33,12 @@ function FileUploadExamplePage() {
 import { InputUpload, Button, useToast } from "@povio/ui";
 import { MediaQueries } from "@/openapi/media/media.queries";
 import { uploadFileToS3 } from "@/util/media/upload.utils";
+
 function MyUploadComponent() {
   const [file, setFile] = useState<File | null>(null);
   const [instructions, setInstructions] = useState(null);
   const { successToast, errorToast } = useToast();
+  
   // STEP 1: Get upload instructions mutation
   const uploadRequestMutation = MediaQueries.useUploadRequest();
   
@@ -45,6 +47,7 @@ function MyUploadComponent() {
   const handleFileChange = async (selectedFile: File | null) => {
     if (!selectedFile) return;
     setFile(selectedFile);
+
     try {
       // STEP 1: Request upload instructions from backend
       const uploadInstructions = await uploadRequestMutation.mutateAsync({
@@ -63,8 +66,10 @@ function MyUploadComponent() {
       errorToast({ text: "Failed to get upload instructions" });
     }
   };
+
   const handleUpload = async () => {
     if (!file || !instructions) return;
+
     try {
       // STEP 2: Upload file directly to S3 (bypasses backend)
       await uploadFileToS3(file, instructions);
@@ -80,6 +85,7 @@ function MyUploadComponent() {
       errorToast({ text: "Upload failed" });
     }
   };
+
   return (
     <div>
       <InputUpload
