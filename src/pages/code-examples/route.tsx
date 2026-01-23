@@ -3,7 +3,7 @@ import { Link, Outlet, createFileRoute } from "@tanstack/react-router";
 
 function CodeExamplesLayout() {
   return (
-    <div>
+    <div className="flex h-screen flex-col overflow-hidden">
       <header className="flex items-center justify-between border-elevation-outline-default-1 border-b bg-elevation-fill-default-2 p-5">
         <Link to="/">Home</Link>
 
@@ -22,7 +22,11 @@ function CodeExamplesLayout() {
         </nav>
       </header>
 
-      <Outlet />
+      <main className="grow overflow-y-auto">
+        <Outlet />
+      </main>
+
+      <footer className="bg-elevation-fill-default-2 p-5">test</footer>
     </div>
   );
 }

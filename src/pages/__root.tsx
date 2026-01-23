@@ -1,4 +1,4 @@
-import { Confirmation, ToastContainer, UIConfig, UIRouter } from "@povio/ui";
+import { Confirmation, ToastContainer, UIConfig, UIRouter, UIStyle } from "@povio/ui";
 import type { AuthContext } from "@povio/ui/auth";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { ReactQueryDevtoolsPanel } from "@tanstack/react-query-devtools";
@@ -69,7 +69,22 @@ const Root = () => {
           providers={[
             // { provider: ThemeContext.ThemeContextProvider }, // Uncomment for dark theme support
             { provider: UIRouter.UIRouterProvider, props: { pathname, push, searchString, replace } },
-            { provider: UIConfig.Provider },
+            {
+              provider: UIConfig.Provider,
+              props: {
+                config: {
+                  input: {
+                    size: "small",
+                  },
+                },
+              },
+            },
+            {
+              provider: UIStyle.Provider,
+              props: {
+                config: {},
+              },
+            },
             { provider: Confirmation.Provider },
           ]}
         >
@@ -100,11 +115,7 @@ const Root = () => {
 };
 
 function RootLayout() {
-  return (
-    <main className="flex min-h-screen flex-col">
-      <Outlet />
-    </main>
-  );
+  return <Outlet />;
 }
 
 type RouterContext = {
