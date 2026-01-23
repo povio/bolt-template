@@ -106,7 +106,7 @@ function InputExamplesPage() {
         placeholder="Password placeholder"
       />
 
-      <Select
+      {/* <Select
         formControl={{ control, name: "selectSingleMode" }}
         label="Select single mode label"
         placeholder="Select option..."
@@ -134,7 +134,7 @@ function InputExamplesPage() {
         label="Autocomplete multiple mode label"
         placeholder="Select option..."
         items={options}
-      />
+      /> */}
 
       <Slider
         formControl={{ control, name: "slider" }}
@@ -162,7 +162,7 @@ function InputExamplesPage() {
         ]}
       />
 
-      <DatePicker
+      {/* <DatePicker
         formControl={{ control, name: "date" }}
         label="DatePicker label"
       />
@@ -180,7 +180,7 @@ function InputExamplesPage() {
       <DateTimePicker
         formControl={{ control, name: "dateTime" }}
         label="DateTimePicker label"
-      />
+      /> */}
 
       <Segment
         formControl={{ control, name: "segmentSingleMode" }}

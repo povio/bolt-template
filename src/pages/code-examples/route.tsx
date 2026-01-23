@@ -1,9 +1,9 @@
-import { TextButton } from "@povio/ui";
+import { Button, Menu, TextButton } from "@povio/ui";
 import { Link, Outlet, createFileRoute } from "@tanstack/react-router";
 
 function CodeExamplesLayout() {
   return (
-    <div className="flex h-screen flex-col overflow-hidden">
+    <div className="grid h-screen grid-rows-[auto_1fr_auto] overflow-hidden">
       <header className="flex items-center justify-between border-elevation-outline-default-1 border-b bg-elevation-fill-default-2 p-5">
         <Link to="/">Home</Link>
 
@@ -20,6 +20,11 @@ function CodeExamplesLayout() {
           {/* Ignore if using Supabase */}
           <TextButton link={{ to: "/code-examples/file-upload" }}>File Upload</TextButton>
         </nav>
+
+        <Menu
+          trigger={<Button>Menu</Button>}
+          items={[]}
+        />
       </header>
 
       <main className="grow overflow-y-auto">
